@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 
-function Write(props) {
+function MemberWrite(props) {
     const [writeInfo, setWriteInfo] = useState({
         name: '',
-        sex: '',
         age: '',
+        sex: '',
         birth: '',
         height: '',
         weight: '',
@@ -35,13 +35,13 @@ function Write(props) {
         >
             <h1>신규회원 등록</h1>
             <div className='write'>
-                <form method='post' action='/postWrite'>
+                <form method='post' action='/memberWrite'>
                     <input type='text' placeholder='이름' name='name' onChange={inputChange}
+                        className='write_name' />
+                    <input type='number' placeholder='연령' name='name' onChange={inputChange}
                         className='write_name' />
                     <input type='text' placeholder='성별' name='sex' onChange={inputChange}
                         className='write_sex' />
-                    <input type='number' placeholder='연령' name='name' onChange={inputChange}
-                        className='write_name' />
                     <input type='date' placeholder='생년월일' name='birth' onChange={inputChange}
                         className='write_birth' />
                     <input type='number' placeholder='키' name='height' onChange={inputChange}

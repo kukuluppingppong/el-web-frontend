@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-function View(props) {
+function MemberView(props) {
     const params = window.location.pathname.split('/');
     const viewPost = []
     for (let i = 0; i < props.boardList.length; i++) {
@@ -17,12 +17,14 @@ function View(props) {
         return (
             <div key={data.number}>
                 <p className='view_name'>{data.name}</p>
+                <p className='view_age'>{data.age}</p>
                 <p className='view_sex'>{data.sex}</p>
                 <p className='view_birth'>{data.birth}</p>
                 <p className='view_height'>{data.height}</p>
                 <p className='view_weight'>{data.weight}</p>
                 <p className='view_period'>{data.period}</p>
                 <p className='view_regDate'>{data.regDate}</p>
+                <p className='view_endDate'>{data.endDate}</p>
                 <p className='view_phone'>{data.phone}</p>
                 <p className='view_email'>{data.email}</p>
             </div>
@@ -49,8 +51,8 @@ function View(props) {
             <div className='view'>
                 <div className='view_left'>
                     <p>이름</p>
-                    <p>성별</p>
                     <p>연령</p>
+                    <p>성별</p>
                     <p>생년월일</p>
                     <p>키</p>
                     <p>체중</p>
