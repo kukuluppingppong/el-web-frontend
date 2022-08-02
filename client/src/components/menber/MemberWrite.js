@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Box from '@mui/material/Box';
 
 function MemberWrite(props) {
     const [writeInfo, setWriteInfo] = useState({
@@ -24,38 +23,60 @@ function MemberWrite(props) {
     }
 
     return (
-        <Box
-            sx={{
-                width: '700px',
-                bgcolor: '#cfe8fc', height: '600px', backgroundColor: '#fff',
-                margin: '0 auto',
-                paddingTop: '10px', textAlign: 'center', marginTop: '70px', borderRadius: '20px',
-                boxShadow: '4px 4px 4px 4px gray'
-            }}
-        >
+        <div>
             <h1>신규회원 등록</h1>
-            <div className='write'>
+            <div className='memberWrite'>
                 <form method='post' action='/memberWrite'>
-                    <input type='text' placeholder='이름' name='name' onChange={inputChange}
-                        className='write_name' />
-                    <input type='number' placeholder='연령' name='name' onChange={inputChange}
-                        className='write_name' />
-                    <input type='text' placeholder='성별' name='sex' onChange={inputChange}
-                        className='write_sex' />
-                    <input type='date' placeholder='생년월일' name='birth' onChange={inputChange}
-                        className='write_birth' />
-                    <input type='number' placeholder='키' name='height' onChange={inputChange}
-                        className='write_height' />
-                    <input type='number' placeholder='체중' name='weight' onChange={inputChange}
-                        className='write_weight' />
-                    <input type='date' placeholder='등록일' name='regDate' onChange={inputChange}
-                        className='write_regDate' />
-                    <input type='date' placeholder='종료일' name='endDate' onChange={inputChange}
-                        className='write_endDate' />
-                    <input type='tel' placeholder='연락처' name='phone' onChange={inputChange}
-                        className='write_phone' />
-                    <input type='email' placeholder='이메일' name='email' onChange={inputChange}
-                        className='write_email' />
+                    <div class="form-group">
+                        <label for="name" class="form-label mt-4">이름</label>
+                        <input type='text' class="form-control" id="name" name='name' placeholder='이름' onChange={inputChange}
+                            className='write_name' />
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="form-label mt-4">연령</label>
+                        <input type='number' class="form-control" id="age" name='age' placeholder='연령' onChange={inputChange}
+                            className='write_age' />
+                    </div>
+                    <div class="form-group">
+                        <label for="sex" class="form-label mt-4">성별</label>
+                        <input type='text' class="form-control" id="sex" name='sex' placeholder='성별' onChange={inputChange}
+                            className='write_sex' />
+                    </div>
+                    <div class="form-group">
+                        <label for="birth" class="form-label mt-4">생년월일</label>
+                        <input type='date' class="form-control" id="birth" name='birth' placeholder='생년월일' onChange={inputChange}
+                            className='write_birth' />
+                    </div>
+                    <div class="form-group">
+                        <label for="height" class="form-label mt-4">키</label>
+                        <input type='number' class="form-control" id="height" name='height' placeholder='키' onChange={inputChange}
+                            className='write_height' />
+                    </div>
+                    <div class="form-group">
+                        <label for="weight" class="form-label mt-4">체중</label>
+                        <input type='number' class="form-control" id="weight" name='weight' placeholder='체중' onChange={inputChange}
+                            className='write_weight' />
+                    </div>
+                    <div class="form-group">
+                        <label for="regDate" class="form-label mt-4">등록일</label>
+                        <input type='date' class="form-control" id="regDate" name='regDate' placeholder='등록일' onChange={inputChange}
+                            className='write_regDate' />
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate" class="form-label mt-4">종료일</label>
+                        <input type='date' class="form-control" id="endDate" name='endDate' placeholder='종료일' onChange={inputChange}
+                            className='write_endDate' />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label mt-4">연락처</label>
+                        <input type='tel' class="form-control" id="phone" name='phone' placeholder='연락처' onChange={inputChange}
+                            className='write_phone' />
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label mt-4">이메일</label>
+                        <input type='email' class="form-control" id="email" name='email' placeholder='이메일' onChange={inputChange}
+                            className='write_email' />
+                    </div>
                     {/* <input type='text' value={sessionStorage.getItem('id')} placeholder='id 입력' name='id' onChange={inputChange}
                         className='write_writer_id' /> */}
                     <input type='submit' value='저장' onClick={() => document.location.href = '/'} className='write_submit' />
@@ -63,7 +84,7 @@ function MemberWrite(props) {
                 </form>
 
             </div>
-        </Box>
+        </div>
     )
 }
 

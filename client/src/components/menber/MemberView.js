@@ -48,7 +48,7 @@ function MemberView(props) {
             paddingTop: '10px', textAlign: 'center', marginTop: '70px', borderRadius: '20px',
             boxShadow: '4px 4px 4px 4px gray'
         }}>
-            <div className='view'>
+            <div className='memberView'>
                 <div className='view_left'>
                     <p>이름</p>
                     <p>연령</p>
