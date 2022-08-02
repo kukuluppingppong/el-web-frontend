@@ -67,4 +67,4 @@ function MemberWrite(props) {
     )
 }
 
-export default Write;
+export default MemberWrite;

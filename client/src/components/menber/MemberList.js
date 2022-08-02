@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
-function MemberList(props) {
+function MemberList() {
 
     const [members, setMembers] = useState("");
 
@@ -12,12 +12,12 @@ function MemberList(props) {
     }
 
     useEffect(() => {
-        this.callApi()
+        callApi()
             .then(res => setMembers(res))
             .catch(err => console.log(err));
     }, [members])
 
-    const memberList = (!this.members) ? "" : this.members.map((data, index) => (
+    const memberList = (!members) ? "" : members.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>
             <TableCell align='right'><a href={`/memberView/${data.id}`}>{data.name}</a></TableCell>
@@ -32,18 +32,6 @@ function MemberList(props) {
         </TableRow>
     )
     )
-
-    const spliceContent = () => {
-        for (let i = 0; i < props.boardList.length; i++) {
-            if (props.boardList[i].content.length > 5) {
-                props.boardList[i].content = props.boardList[i].content.slice(0, 4) + '...';
-            }
-        }
-    }
-
-    useEffect(() => {
-        spliceContent()
-    }, [])
 
     return (
         <div className='mainList'>

@@ -31,15 +31,15 @@ function MemberView(props) {
         )
     })
 
-    const updateHit = async () => {
-        console.log(document.location.pathname)
-        const docParams = document.location.pathname
-        const req = await axios.post(docParams);
-    }
+    // const updateHit = async () => {
+    //     console.log(document.location.pathname)
+    //     const docParams = document.location.pathname
+    //     const req = await axios.post(docParams);
+    // }
 
-    useEffect(() => {
-        updateHit()
-    })
+    // useEffect(() => {
+    //     updateHit()
+    // })
 
     return (
         <Box sx={{
@@ -73,4 +73,4 @@ function MemberView(props) {
     )
 }
 
-export default View;
+export default MemberView;
