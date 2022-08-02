@@ -7,9 +7,9 @@ import SignInModal from "../modals/SignInModal";
 const Header = () => {
     const [signUpModalOn, setSignUpModalOn] = useState(false);
     const [signInModalOn, setSignInModalOn] = useState(false);
+
     return (
         <>
-
             <SignUpModal
                 show={signUpModalOn}
                 onHide={() => setSignUpModalOn(false)}
@@ -18,6 +18,7 @@ const Header = () => {
                 show={signInModalOn}
                 onHide={() => setSignInModalOn(false)}
             />
+
             <header>
                 <Navbar bg="light" expand="lg">
                     <Container>

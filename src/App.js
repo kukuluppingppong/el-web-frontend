@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import Layout from "./layouts/Layout";
+import Customer from "./components/Customer";
 
 function App() {
 

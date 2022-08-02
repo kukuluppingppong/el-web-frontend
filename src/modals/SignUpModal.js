@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from 'react'
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Modal, Button, Form, Container } from "react-bootstrap";
@@ -12,20 +12,19 @@ const SignUpModal = ({ show, onHide }) => {
         watch,
         formState: { errors }
     } = useForm();
+    const password = useRef();
+    password.current = watch("password");
+
     const onSubmit = async (data) => {
         console.log(data);
         const id = data.id;
         const password = data.password;
-        const passwordCheck = data.passwordCheck;
+        const passwordConfirm = data.passwordConfirm;
         const name = data.name;
+        const email = data.email;
         const phone = data.phone;
         const addr = data.addr;
-        if (password !== passwordCheck) {
-            alert('비밀번호가 다릅니다!');
-            data.password.value = '';
-            data.passwordCheck.value = '';
-        }
-        const res = await axios.post(`/api/member/${id}&/${password}&/${passwordCheck}&/${name}&/${phone}&/${addr}`)
+        const res = await axios.post(`/api/member/${id}&/${password}&/${name}&/${email}&/${phone}&/${addr}`)
         console.log(res);
     };
 
@@ -45,27 +44,50 @@ const SignUpModal = ({ show, onHide }) => {
                     <Form onSubmit={handleSubmit(onSubmit)} method="post">
                         <Form.Group>
                             <Form.Label>아이디</Form.Label>
-                            <Form.Control type="text" name="id" placeholder="아이디 입력" autoFocus className="mb-3 rounded-pill" {...register("id")} />
+                            <Form.Control type="text" name="id" placeholder="아이디 입력" autoFocus className="mb-3 rounded-pill" {...register("id", { required: true, minLength: 6 })} />
+                            {errors.id && errors.id.type === "required"
+                                && <p> This id field is required</p>}
+                            {errors.id && errors.id.type === "minLength"
+                                && <p> id must have at least 6 characters</p>}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>비밀번호</Form.Label>
-                            <Form.Control type="password" name="password" placeholder="비밀번호 입력" className="mb-3 rounded-pill" {...register("password")} />
+                            <Form.Control type="password" name="password" placeholder="비밀번호 입력" className="mb-3 rounded-pill" {...register("password", { required: true, minLength: 8 })} />
+                            {errors.password && errors.password.type === "required"
+                                && <p> This password field is required</p>}
+                            {errors.password && errors.password.type === "minLength"
+                                && <p> Password must have at least 8 characters</p>}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>비밀번호 확인</Form.Label>
-                            <Form.Control type="password" name="passwordCheck" placeholder="비밀번호 재입력" className="mb-3 rounded-pill" {...register("passwordCheck")} />
+                            <Form.Control type="password" name="passwordConfirm" placeholder="비밀번호 재입력" className="mb-3 rounded-pill" {...register("passwordConfirm", { required: true, validate: (value) => value === password.current })} />
+                            {errors.passwordConfirm && errors.passwordConfirm.type === "required"
+                                && <p> This password confirm field is required</p>}
+                            {errors.passwordConfirm && errors.passwordConfirm.type === "validate"
+                                && <p>The passwords do not match</p>}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>이름</Form.Label>
-                            <Form.Control type="text" name="name" placeholder="이름 입력" className="mb-3 rounded-pill" {...register("name")} />
+                            <Form.Control type="text" name="name" placeholder="이름 입력" className="mb-3 rounded-pill" {...register("name", { required: true, maxLength: 10 })} />
+                            {errors.name && errors.name.type === "required"
+                                && <p> This name field is required</p>}
+                            {errors.name && errors.name.type === "maxLength"
+                                && <p> Your input exceed maximum length</p>}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>전화번호</Form.Label>
-                            <Form.Control type="tel" name="phone" placeholder="전화번호 입력" className="mb-3 rounded-pill" {...register("phone")} />
+                            <Form.Control type="tel" name="phone" placeholder="전화번호 입력" className="mb-3 rounded-pill" {...register("phone", { required: true })} />
+                            {errors.email && <p>This phone field is required</p>}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>이메일</Form.Label>
+                            <Form.Control type="email" name="email" placeholder="이메일 입력" className="mb-3 rounded-pill" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                            {errors.email && <p>This email field is required</p>}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>헬스장 위치</Form.Label>
-                            <Form.Control type="search" name="addr" placeholder="헬스장 위치 입력" className="mb-3 rounded-pill" {...register("addr")} />
+                            <Form.Control type="search" name="addr" placeholder="헬스장 위치 입력" className="mb-3 rounded-pill" {...register("addr", { required: true })} />
+                            {errors.email && <p>This addr field is required</p>}
                         </Form.Group>
                         <Form.Group className="d-grid gap-2">
                             <Button block variant="dark" type="submit" className="my-3 rounded-pill" onClick={loginSuccess}>
