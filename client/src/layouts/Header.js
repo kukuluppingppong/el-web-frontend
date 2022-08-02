@@ -8,6 +8,23 @@ const Header = () => {
     const [signUpModalOn, setSignUpModalOn] = useState(false);
     const [signInModalOn, setSignInModalOn] = useState(false);
 
+    // const logIn = () =>{
+    //     if(sessionStorage.getItem('id') != null){
+    //         return logRender = <p>환영합니다 {sessionStorage.getItem('id')}님 !</p>
+    //     }else{
+    //         return logRender =  null;
+    //     }
+    // }
+
+    const logOut = () => {
+        const logout = window.confirm("로그아웃 하시겠습니까?");
+        if (logout == true) {
+            sessionStorage.clear();
+        } else {
+            document.location.href = '/';
+        }
+    }
+
     return (
         <>
             <SignUpModal
@@ -48,6 +65,15 @@ const Header = () => {
                                         onClick={() => setSignUpModalOn(true)}
                                     >
                                         회원가입
+                                    </Button>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <Button
+                                        variant="outline-dark"
+                                        className="rounded-pill"
+                                        onClick={() => logOut()}
+                                    >
+                                        로그아웃
                                     </Button>
                                 </Nav.Link>
                             </Nav>

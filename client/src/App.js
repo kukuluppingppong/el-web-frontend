@@ -1,8 +1,10 @@
+import React, { useEffect, useState } from 'react';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import axios from 'axios';
 import { Container } from "react-bootstrap";
 import Layout from "./layouts/Layout";
-import Customer from "./components/Customer";
 
-function App() {
+function App(props) {
 
   return (
     <Layout>

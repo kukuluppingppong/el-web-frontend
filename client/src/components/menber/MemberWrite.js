@@ -33,7 +33,7 @@ function Write(props) {
                 boxShadow: '4px 4px 4px 4px gray'
             }}
         >
-            <h1>회원정보 수정</h1>
+            <h1>신규회원 등록</h1>
             <div className='write'>
                 <form method='post' action='/postWrite'>
                     <input type='text' placeholder='이름' name='name' onChange={inputChange}
