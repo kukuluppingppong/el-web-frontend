@@ -1,3 +1,4 @@
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
@@ -11,9 +12,21 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
-app.get('/api/memberData', (req, res) => {
+const data = fs.readFileSync('./config/database.json');
+const conf = JSON.parse(data);
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+    host: conf.host,
+    user: conf.user,
+    password: conf.password,
+    port: conf.port,
+    database: conf.database
+});
+
+app.get('/api/memberList', (req, res) => {
     console.log('/api');
-    db.query('select * from member', (err, data) => {
+    connection.query('select * from member', (err, data) => {
         res.send(data);
     })
 })
@@ -25,11 +38,11 @@ var requestData = function (req, res, next) {
 
 app.use(requestData)
 
-app.post('/memberView/:memberId', (req, res) => {
+app.post('/memberView/:id', (req, res) => {
     console.log(req.params)
-    const id = req.params.memberId;
+    const id = req.params.id;
     const sql = `select * from member where id=${id};`
-    db.query(sql, (err, data) => {
+    connection.query(sql, (err, data) => {
         if (!err) {
             res.send(data);
             console.log(data);
@@ -52,7 +65,7 @@ app.post('/memberWrite', (req, res, next) => {
     const phone = req.requestData.phone;
     const email = req.requestData.email;
     const sql = `insert into member (name,age,sex,birth,height,weight,regDate,endDate,phone,email) values ('${name}','${age}','${sex}','${birth}','${height}','${weight}','${regDate}','${endDate}','${phone}','${email}');`;
-    db.query(sql, async (err, result) => {
+    connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record inserted");
     })
@@ -62,7 +75,7 @@ app.post("/api/search/:searchText", (req, res) => {
     console.log(req.params.searchText);
     const text = req.params.searchText;
     const sql = `select * from member where name like '%${text}%'`
-    db.query(sql, async (err, data) => {
+    connection.query(sql, async (err, data) => {
         if (!err) {
             res.send({ searchData: data })
             console.log(data);
@@ -87,7 +100,7 @@ app.post('/api/member/:id&/:password&/:name&/:email&/:phone&/:addr', (req, res, 
     const phone = req.params.phone;
     const addr = req.params.addr;
     const sql = `insert into member values('${id}','${password}','${name}','${email}','${phone}','${addr}');`
-    db.query(sql, (err, data) => {
+    connection.query(sql, (err, data) => {
         if (!err) {
             res.send()
         } else {
@@ -101,7 +114,7 @@ app.post('/api/login/:id&/:password', (req, res, next) => {
     const password = req.params.password;
     console.log(id, password);
     const sql = `select id,password from member where id='${id}' and password='${password}'`;
-    db.query(sql, (err, data) => {
+    connection.query(sql, (err, data) => {
         console.log(sql);
         res.send(data);
     })

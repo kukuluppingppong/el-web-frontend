@@ -3,10 +3,24 @@ import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell
 
 function MemberList(props) {
 
-    const postList = props.currentPost.map((data, index) => (
+    const [members, setMembers] = useState("");
+
+    const callApi = async () => {
+        const response = await fetch('/api/memberList');
+        const body = await response.json();
+        return body;
+    }
+
+    useEffect(() => {
+        this.callApi()
+            .then(res => setMembers(res))
+            .catch(err => console.log(err));
+    }, [members])
+
+    const memberList = (!this.members) ? "" : this.members.map((data, index) => (
         <TableRow key={index}>
-            <TableCell align='right'>{data.number}</TableCell>
-            <TableCell align='right'><a href={`/memberView/${memberId}`}>{data.name}</a></TableCell>
+            <TableCell align='right'>{index}</TableCell>
+            <TableCell align='right'><a href={`/memberView/${data.id}`}>{data.name}</a></TableCell>
             <TableCell align='right'>{data.age}</TableCell>
             <TableCell align='right'>{data.sex}</TableCell>
             <TableCell align='right'>{data.phone}</TableCell>
@@ -50,7 +64,7 @@ function MemberList(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {postList}
+                        {memberList}
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -58,4 +72,4 @@ function MemberList(props) {
     )
 }
 
-export default MainList;
+export default MemberList;
