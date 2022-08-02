@@ -1,13 +1,112 @@
-const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
+const db = require('./config/db.js');
+var url = require('url');
+var urlObject = url.parse('http://localhost:3000/path/abc.php?id=student&page=12#hash');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(express.json());
 
-app.get('/api/hello', (req, res) => {
-    res.send({ message: 'Hello Express!' });
-});
+app.get('/api/memberData', (req, res) => {
+    console.log('/api');
+    db.query('select * from member', (err, data) => {
+        res.send(data);
+    })
+})
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+var requestData = function (req, res, next) {
+    req.requestData = req.body;
+    next();
+}
+
+app.use(requestData)
+
+app.post('/memberView/:memberId', (req, res) => {
+    console.log(req.params)
+    const id = req.params.memberId;
+    const sql = `select * from member where id=${id};`
+    db.query(sql, (err, data) => {
+        if (!err) {
+            res.send(data);
+            console.log(data);
+        } else {
+            console.log(err);
+        }
+    })
+})
+
+app.post('/memberWrite', (req, res, next) => {
+    console.log(req.requestData);
+    const name = req.requestData.name;
+    const age = req.requestData.age;
+    const sex = req.requestData.sex;
+    const birth = req.requestData.birth;
+    const height = req.requestData.height;
+    const weight = req.requestData.weight;
+    const regDate = req.requestData.regDate;
+    const endDate = req.requestData.endDate;
+    const phone = req.requestData.phone;
+    const email = req.requestData.email;
+    const sql = `insert into member (name,age,sex,birth,height,weight,regDate,endDate,phone,email) values ('${name}','${age}','${sex}','${birth}','${height}','${weight}','${regDate}','${endDate}','${phone}','${email}');`;
+    db.query(sql, async (err, result) => {
+        if (err) throw err;
+        console.log("1 record inserted");
+    })
+})
+
+app.post("/api/search/:searchText", (req, res) => {
+    console.log(req.params.searchText);
+    const text = req.params.searchText;
+    const sql = `select * from member where name like '%${text}%'`
+    db.query(sql, async (err, data) => {
+        if (!err) {
+            res.send({ searchData: data })
+            console.log(data);
+        } else {
+            console.log(err);
+        }
+    })
+})
+
+app.post('/api/member/:id&/:password&/:name&/:email&/:phone&/:addr', (req, res, next) => {
+    console.log("member");
+    console.log(req.params.id);
+    console.log(req.params.password);
+    console.log(req.params.name);
+    console.log(req.params.email);
+    console.log(req.params.phone);
+    console.log(req.params.addr);
+    const id = req.params.id;
+    const password = req.params.password;
+    const name = req.params.name;
+    const email = req.params.email;
+    const phone = req.params.phone;
+    const addr = req.params.addr;
+    const sql = `insert into member values('${id}','${password}','${name}','${email}','${phone}','${addr}');`
+    db.query(sql, (err, data) => {
+        if (!err) {
+            res.send()
+        } else {
+            console.log(err)
+        }
+    })
+})
+
+app.post('/api/login/:id&/:password', (req, res, next) => {
+    const id = req.params.id;
+    const password = req.params.password;
+    console.log(id, password);
+    const sql = `select id,password from member where id='${id}' and password='${password}'`;
+    db.query(sql, (err, data) => {
+        console.log(sql);
+        res.send(data);
+    })
+})
+
+app.listen(PORT, () => {
+    console.log(`Server run : http://localhost:${PORT}/`)
+})

@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
-function QnAList(props) {
-    const [postNum, setPostNum] = useState(0);
-
-    const writeNum = (number) => {
-        console.log(number)
-        setPostNum(number)
-    }
+function MemberList(props) {
 
     const postList = props.currentPost.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{data.number}</TableCell>
-            <TableCell align='right'><a href={`/postView/${postNum}`} onClick={() => { writeNum(data.number) }}>{data.title}</a></TableCell>
-            <TableCell align='right'>{data.id}</TableCell>
-            <TableCell align='right'>{data.data}</TableCell>
-            <TableCell align='right'>{data.hit}</TableCell>
+            <TableCell align='right'><a href={`/memberView/${memberId}`}>{data.name}</a></TableCell>
+            <TableCell align='right'>{data.age}</TableCell>
+            <TableCell align='right'>{data.sex}</TableCell>
+            <TableCell align='right'>{data.phone}</TableCell>
+            <TableCell align='right'>{data.period}</TableCell>
+            <TableCell align='right'>{data.regDate}</TableCell>
+            <TableCell align='right'>{data.endDate}</TableCell>
+            <TableCell align='right'>수정</TableCell>
+            <TableCell align='right'>삭제</TableCell>
         </TableRow>
     )
     )
@@ -39,10 +38,15 @@ function QnAList(props) {
                     <TableHead>
                         <TableRow>
                             <TableCell align='right'>번호</TableCell>
-                            <TableCell align='right'>제목</TableCell>
-                            <TableCell align='right'>작성자</TableCell>
+                            <TableCell align='right'>이름</TableCell>
+                            <TableCell align='right'>연령</TableCell>
+                            <TableCell align='right'>성별</TableCell>
+                            <TableCell align='right'>연락처</TableCell>
+                            <TableCell align='right'>운동기간</TableCell>
                             <TableCell align='right'>등록일</TableCell>
-                            <TableCell align='right'>조회수</TableCell>
+                            <TableCell align='right'>종료일</TableCell>
+                            <TableCell align='right'>수정</TableCell>
+                            <TableCell align='right'>삭제</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
