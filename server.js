@@ -1,9 +1,8 @@
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4000;
-const db = require('./config/db.js');
+const connection = require('./config/db.js');
 var url = require('url');
 var urlObject = url.parse('http://localhost:3000/path/abc.php?id=student&page=12#hash');
 
@@ -12,22 +11,15 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
-const data = fs.readFileSync('./config/database.json');
-const conf = JSON.parse(data);
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-    host: conf.host,
-    user: conf.user,
-    password: conf.password,
-    port: conf.port,
-    database: conf.database
-});
-
 app.get('/api/memberList', (req, res) => {
     console.log('/api');
     connection.query('select * from member', (err, data) => {
-        res.send(data);
+        if (!err) {
+            res.send(data);
+            console.log(data);
+        } else {
+            console.log(err);
+        }
     })
 })
 
@@ -99,7 +91,7 @@ app.post('/api/member/:id&/:password&/:name&/:email&/:phone&/:addr', (req, res, 
     const email = req.params.email;
     const phone = req.params.phone;
     const addr = req.params.addr;
-    const sql = `insert into member values('${id}','${password}','${name}','${email}','${phone}','${addr}');`
+    const sql = `insert into trainer (id,password,name,email,phone,addr) values('${id}','${password}','${name}','${email}','${phone}','${addr}');`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send()
@@ -113,7 +105,7 @@ app.post('/api/login/:id&/:password', (req, res, next) => {
     const id = req.params.id;
     const password = req.params.password;
     console.log(id, password);
-    const sql = `select id,password from member where id='${id}' and password='${password}'`;
+    const sql = `select id,password from trainer where id='${id}' and password='${password}'`;
     connection.query(sql, (err, data) => {
         console.log(sql);
         res.send(data);

@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
-function MemberList() {
+function MemberList(props) {
 
-    const [members, setMembers] = useState("");
-
-    const callApi = async () => {
-        const response = await fetch('/api/memberList');
-        const body = await response.json();
-        return body;
-    }
-
-    useEffect(() => {
-        callApi()
-            .then(res => setMembers(res))
-            .catch(err => console.log(err));
-    }, [members])
-
-    const memberList = (!members) ? "" : members.map((data, index) => (
+    const list = props.memberList.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>
             <TableCell align='right'><a href={`/memberView/${data.id}`}>{data.name}</a></TableCell>
@@ -52,7 +38,7 @@ function MemberList() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {memberList}
+                        {list}
                     </TableBody>
                 </Table>
             </TableContainer>
