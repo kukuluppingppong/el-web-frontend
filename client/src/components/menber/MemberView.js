@@ -7,9 +7,9 @@ import axios from 'axios';
 function MemberView(props) {
     const params = window.location.pathname.split('/');
     const viewPost = []
-    for (let i = 0; i < props.boardList.length; i++) {
-        if (props.boardList[i].number === Number(params[2])) {
-            viewPost.push(props.boardList[i])
+    for (let i = 0; i < props.memberList.length; i++) {
+        if (props.memberList[i].number === Number(params[2])) {
+            viewPost.push(props.memberList[i])
         }
     }
     console.log(viewPost);
