@@ -43,10 +43,10 @@ const Header = () => {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link href="#">회원관리</Nav.Link>
-                                <Nav.Link href="#">회원정보</Nav.Link>
-                                <Nav.Link href="#">피드백</Nav.Link>
-                                <Nav.Link href="#">내정보</Nav.Link>
+                                <Nav.Link href="../component/MemberWrite">회원관리</Nav.Link>
+                                <Nav.Link href="../component/MemberWrite">회원정보</Nav.Link>
+                                <Nav.Link href="../component/MemberWrite">피드백</Nav.Link>
+                                <Nav.Link href="../component/TrainerWrite">내정보</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link>

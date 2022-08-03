@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function MemberWrite(props) {
+
+const TrainerWrite = () => {
     const [writeInfo, setWriteInfo] = useState({
         name: '',
         age: '',
@@ -8,10 +9,10 @@ function MemberWrite(props) {
         birth: '',
         height: '',
         weight: '',
-        regDate: '',
-        endDate: '',
-        phone: '',
-        email: '',
+        award: '',
+        career: '',
+        file: '',
+        fileName: ''
     })
     const inputChange = (e) => {
         console.log(e.target.name)
@@ -24,9 +25,9 @@ function MemberWrite(props) {
 
     return (
         <div>
-            <h1>신규회원 등록</h1>
-            <div className='memberWrite'>
-                <form method='post' action='/api/memberWrite'>
+            <h1>내정보 등록</h1>
+            <div className='trainerWrite'>
+                <form method='post' action='/api/trainerWrite' multipart='form-data'>
                     <div class="form-group">
                         <label for="name" class="form-label mt-4">이름</label>
                         <input type='text' class="form-control" id="name" name='name' placeholder='이름' onChange={inputChange}
@@ -77,15 +78,13 @@ function MemberWrite(props) {
                         <input type='email' class="form-control" id="email" name='email' placeholder='이메일' onChange={inputChange}
                             className='write_email' />
                     </div>
-                    {/* <input type='text' value={sessionStorage.getItem('id')} placeholder='id 입력' name='id' onChange={inputChange}
-                        className='write_writer_id' /> */}
                     <input type='submit' value='등록' onClick={() => document.location.href = '/'} className='write_submit' />
                     <a href='/'>취소</a>
                 </form>
 
             </div>
-        </div>
+        </div >
     )
 }
 
-export default MemberWrite;
+export default TrainerWrite;

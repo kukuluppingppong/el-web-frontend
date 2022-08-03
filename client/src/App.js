@@ -6,6 +6,7 @@ import Layout from "./layouts/Layout";
 import MemberList from './components/menber/MemberList';
 import MemberWrite from './components/menber/MemberWrite';
 import MemberView from './components/menber/MemberView';
+import TrainerWrite from './components/trainer/TrainerWrite';
 
 
 function App(props) {
@@ -26,6 +27,8 @@ function App(props) {
       <Container style={{ minHeight: "80vh" }}>
 
         <MemberList memberList={memberList} />
+        <MemberWrite />
+        <TrainerWrite />
         {/* <BrowserRouter>
           <Routes>
             <Route exact path='/' element={<MemberList />}></Route>
