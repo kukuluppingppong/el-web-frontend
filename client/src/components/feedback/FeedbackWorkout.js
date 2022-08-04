@@ -36,4 +36,4 @@ const QnAWorkout = (props) => {
     )
 }
 
-export default QnAWorkout
+export default QnAWorkout;

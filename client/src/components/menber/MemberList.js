@@ -20,7 +20,7 @@ function MemberList(props) {
     )
 
     return (
-        <div className='mainList'>
+        <div className='memberList'>
             <TableContainer component={Paper} aria-label="simple table">
                 <Table>
                     <TableHead>

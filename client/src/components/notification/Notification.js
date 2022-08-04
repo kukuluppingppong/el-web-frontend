@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
-export const Notification = (props) => {
+const Notification = () => {
     return (
         <TableRow>
             <TableCell align="center">{this.props.id}</TableCell>
@@ -16,3 +16,5 @@ export const Notification = (props) => {
         </TableRow>
     )
 }
+
+export default Notification;

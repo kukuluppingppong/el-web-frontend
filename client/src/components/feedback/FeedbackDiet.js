@@ -36,4 +36,4 @@ const QnADiet = (props) => {
     )
 }
 
-export default QnADiet
+export default QnADiet;
