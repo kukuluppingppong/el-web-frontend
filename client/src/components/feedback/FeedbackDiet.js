@@ -1,28 +1,22 @@
-import React from 'react'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react'
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        paddingTop: 40,
-        paddingLeft: 20,
-        paddingRight: 20
-    },
-    panel: {
-        padding: theme.spacing(0.2, 0),
-    }
-}));
-
-const QnADiet = (props) => {
-    const classes = useStyles();
-
+const QnADiet = () => {
+    const [value, setValue] = useState({
+        date: '2014-08-18T21:11:54',
+    })
     const [feedbackDiet, setFeedbackDiet] = useState({
         feedback: '',
     })
+
+    const handleChange = (e) => {
+        console.log(e.target.name)
+        console.log(e.target.value)
+        setValue({
+            ...value,
+            [e.target.name]: e.target.value
+        })
+    }
+
     const inputChange = (e) => {
         console.log(e.target.name)
         console.log(e.target.value)
@@ -34,19 +28,17 @@ const QnADiet = (props) => {
 
     return (
         <div>
-            <h1>피드백 운동</h1>
+            <h1>피드백 식단</h1>
+            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DesktopDatePicker
+                    label="Date desktop"
+                    inputFormat="MM/dd/yyyy"
+                    value={value}
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+            </LocalizationProvider> */}
             <div className='feedbackDiet'>
-                <ExpansionPanel className={classes.panel}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>사진: {props.image}</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Typography>
-                            피드백: {props.feedback}
-                        </Typography>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
-
                 <form method='post' action='/api/feedbackDiet'>
                     <div class="form-group">
                         <label for="feedback" class="form-label mt-4">피드백 입력</label>
