@@ -7,6 +7,10 @@ import MemberList from './components/menber/MemberList';
 import MemberWrite from './components/menber/MemberWrite';
 import MemberView from './components/menber/MemberView';
 import TrainerWrite from './components/trainer/TrainerWrite';
+import FeedbackWorkout from './components/feedback/FeedbackWorkout';
+import FeedbackDiet from './components/feedback/FeedbackDiet';
+import Notification from './components/notification/Notification';
+import QnAList from './components/QnA/QnAList';
 
 
 function App(props) {
@@ -27,6 +31,10 @@ function App(props) {
       <Container style={{ minHeight: "80vh" }}>
 
         <MemberList memberList={memberList} />
+        <FeedbackWorkout />
+        <FeedbackDiet />
+        <Notification />
+        <QnAList />
         <MemberWrite />
         <TrainerWrite />
         {/* <BrowserRouter>
