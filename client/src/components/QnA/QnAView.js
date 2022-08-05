@@ -1,15 +1,32 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const QnAView = (props) => {
+    const params = window.location.pathname.split('/');
+    const viewPost = []
+    for (let i = 0; i < props.qnaList.length; i++) {
+        if (props.qnaList[i].seq === Number(params[3])) {
+            console.log(props.qnaList[i]);
+            viewPost.push(props.qnaList[i])
+        }
+    }
+    console.log(viewPost);
+    const mapViewPost = viewPost.map(data => {
+        return (
+            <div key={data.seq}>
+                <p className='view_seq'>번호: {data.seq}</p>
+                <p className='view_title'>제목: {data.title}</p>
+                <p className='view_writer'>작성자: {data.writer}</p>
+                <p className='view_regDate'>등록일: {data.regDate}</p>
+                <p className='view_answer'>답변: {data.answer}</p>
+            </div>
+        )
+    })
     return (
         <div className="QnAView">
-            제목: {props.notice['title']}<br />
-            내용: {props.notice['content']}<br />
-            날짜: {props.notice['date']}<br />
-            <NavLink to="./QnAList">
-                <strong>목록 보기</strong>
-            </NavLink>
+            <h3>QnA 상세</h3>
+            {mapViewPost}
+            <Link to='/'>목록</Link>
         </div>
     )
 }

@@ -39,14 +39,14 @@ const Header = () => {
             <header>
                 <Navbar bg="light" expand="lg">
                     <Container>
-                        <Navbar.Brand>Trainer</Navbar.Brand>
+                        <Navbar.Brand><Nav.Link href="../component/MemberList">Trainer</Nav.Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link href="../component/MemberWrite">회원관리</Nav.Link>
-                                <Nav.Link href="../component/MemberWrite">회원정보</Nav.Link>
-                                <Nav.Link href="../component/MemberWrite">피드백</Nav.Link>
-                                <Nav.Link href="../component/TrainerWrite">내정보</Nav.Link>
+                                <Nav.Link href="/api/MemberList">회원목록</Nav.Link>
+                                <Nav.Link href="/api/FeedbackWorkout">피드백</Nav.Link>
+                                <Nav.Link href="/api/QnAList">QnA</Nav.Link>
+                                <Nav.Link href="/api/TrainerWrite">내정보</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link>

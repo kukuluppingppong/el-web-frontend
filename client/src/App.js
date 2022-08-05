@@ -11,19 +11,28 @@ import FeedbackWorkout from './components/feedback/FeedbackWorkout';
 import FeedbackDiet from './components/feedback/FeedbackDiet';
 import Notification from './components/notification/Notification';
 import QnAList from './components/QnA/QnAList';
+import QnAView from './components/QnA/QnAView';
 
 
-function App(props) {
+function App() {
   const [memberList, setMemberList] = useState([]);
+  const [qnaList, setQnaList] = useState([]);
 
-  const resData = async () => {
-    const res = await axios.get('/api/memberList');
-    console.log(res.data);
-    setMemberList(res.data);
+  const resMember = async () => {
+    const memberList = await axios.get('/api/memberList');
+    console.log(memberList.data);
+    setMemberList(memberList.data);
+  }
+
+  const resQnA = async () => {
+    const qnaList = await axios.get('/api/QnAList');
+    console.log(qnaList.data);
+    setQnaList(qnaList.data);
   }
 
   useEffect(() => {
-    resData()
+    resMember()
+    resQnA()
   }, [])
 
   return (
@@ -35,14 +44,20 @@ function App(props) {
         <FeedbackWorkout />
         <FeedbackDiet />
         <Notification />
-        <QnAList />
+        <QnAList qnaList={qnaList} />
+        <QnAView qnaList={qnaList} />
         <MemberWrite />
         <TrainerWrite />
         {/* <BrowserRouter>
           <Routes>
-            <Route exact path='/api/memberList' element={<MemberList memberList={memberList} />}></Route>
-            <Route exact path='/memberWrite' element={<MemberWrite />}></Route>
-            <Route exact path='/memberView/:id' element={<MemberView />}></Route>
+            <Route exact path='/' element={<MemberList memberList={memberList} />}></Route>
+            <Route exact path='/components/memberView/:id' element={<MemberView memberList={memberList} />}></Route>
+            <Route exact path='/components/MemberWrite' element={<MemberWrite />}></Route>
+            <Route exact path='/components/TrainerView' element={<TrainerView />}></Route>
+            <Route exact path='/components/FeedbackWorkout' element={<FeedbackWorkout />}></Route>
+            <Route exact path='/components/FeedbackDiet' element={<FeedbackDiet />}></Route>
+            <Route exact path='/components/QnAList' element={<QnAList />}></Route>
+            <Route exact path='/components/Notification' element={<Notification />}></Route>
           </Routes>
         </BrowserRouter> */}
       </Container>

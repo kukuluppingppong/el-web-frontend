@@ -31,6 +31,18 @@ app.get('/api/memberList', (req, res) => {
     })
 })
 
+app.get('/api/QnAList', (req, res) => {
+    console.log('/api/QnAList');
+    connection.query('select * from board', (err, data) => {
+        if (!err) {
+            res.send(data);
+            console.log(data);
+        } else {
+            console.log(err);
+        }
+    })
+})
+
 var requestData = function (req, res, next) {
     req.requestData = req.body;
     next();
@@ -52,10 +64,24 @@ app.post('/api/memberView/:id', (req, res) => {
     })
 })
 
-app.use('/api/trainerView/:id', (req, res) => {
+app.post('/api/trainerView/:id', (req, res) => {
     console.log(req.params)
     const id = req.params.id;
     const sql = `select * from trainer where id=${id};`
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send(data);
+            console.log(data);
+        } else {
+            console.log(err);
+        }
+    })
+})
+
+app.post('/api/QnAView/:seq', (req, res) => {
+    console.log(req.params)
+    const seq = req.params.seq;
+    const sql = `select * from board where seq=${seq};`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send(data);
