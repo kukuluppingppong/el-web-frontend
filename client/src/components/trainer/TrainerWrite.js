@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const TrainerWrite = () => {
     const [writeInfo, setWriteInfo] = useState({
+        id: '',
         name: '',
         age: '',
         sex: '',
@@ -27,7 +28,12 @@ const TrainerWrite = () => {
         <div>
             <h1>내정보 등록</h1>
             <div className='trainerWrite'>
-                <form method='post' action='/api/trainerWrite' multipart='form-data'>
+                <form method='post' action='/api/trainerUpdate' multipart='form-data'>
+                    <div class="form-group">
+                        <label for="id" class="form-label mt-4">아이디</label>
+                        <input type='text' class="form-control" id="id" name='id' placeholder='아이디' onChange={inputChange}
+                            className='write_id' />
+                    </div>
                     <div class="form-group">
                         <label for="name" class="form-label mt-4">이름</label>
                         <input type='text' class="form-control" id="name" name='name' placeholder='이름' onChange={inputChange}

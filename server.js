@@ -1,15 +1,18 @@
-const bodyParser = require('body-parser');
 const express = require('express');
-const app = express();
+const fs = require('fs');
+const cors = require('cors');
+const path = require('path');
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4000;
 const connection = require('./config/db.js');
 // var url = require('url');
 // var urlObject = url.parse('http://localhost:3000/path/abc.php?id=student&page=12#hash');
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 const multer = require('multer');
 const upload = multer({ dest: './upload' })
@@ -17,7 +20,7 @@ const upload = multer({ dest: './upload' })
 app.use('/image', express.static('./upload'));
 
 app.get('/api/memberList', (req, res) => {
-    console.log('/api');
+    console.log('/api/memberList');
     connection.query('select * from member', (err, data) => {
         if (!err) {
             res.send(data);
@@ -49,7 +52,7 @@ app.post('/api/memberView/:id', (req, res) => {
     })
 })
 
-app.post('/api/trainerView/:id', (req, res) => {
+app.use('/api/trainerView/:id', (req, res) => {
     console.log(req.params)
     const id = req.params.id;
     const sql = `select * from trainer where id=${id};`
@@ -82,24 +85,24 @@ app.post('/api/memberWrite', (req, res, next) => {
     })
 })
 
-app.post('/api/trainerWrite', upload.single('image'), (req, res, next) => {
-    console.log(req.requestData);
-    const age = req.requestData.age;
-    const sex = req.requestData.sex;
-    const birth = req.requestData.birth;
-    const height = req.requestData.height;
-    const weight = req.requestData.weight;
-    const phone = req.requestData.phone;
-    const email = req.requestData.email;
-    const award = req.requestData.award;
-    const career = req.requestData.career;
-    const image = req.file.fileName;
-    const sql = `insert into trainer (age,sex,birth,height,weight,phone,email,award,career,image) values ('${age}','${sex}','${birth}','${height}','${weight}','${phone}','${email}','${award}','${career}','${image}');`;
-    connection.query(sql, async (err, result) => {
-        if (err) throw err;
-        console.log("1 record inserted");
-    })
-})
+// app.post('/api/trainerWrite', upload.single('image'), (req, res, next) => {
+//     console.log(req.requestData);
+//     const age = req.requestData.age;
+//     const sex = req.requestData.sex;
+//     const birth = req.requestData.birth;
+//     const height = req.requestData.height;
+//     const weight = req.requestData.weight;
+//     const phone = req.requestData.phone;
+//     const email = req.requestData.email;
+//     const award = req.requestData.award;
+//     const career = req.requestData.career;
+//     const image = req.file.fileName;
+//     const sql = `insert into trainer (age,sex,birth,height,weight,phone,email,award,career,image) values ('${age}','${sex}','${birth}','${height}','${weight}','${phone}','${email}','${award}','${career}','${image}');`;
+//     connection.query(sql, async (err, result) => {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//     })
+// })
 
 app.post("/api/search/:searchText", (req, res) => {
     console.log(req.params.searchText);
@@ -115,7 +118,7 @@ app.post("/api/search/:searchText", (req, res) => {
     })
 })
 
-app.put('/api/memberUpdate', (req, res, next) => {
+app.post('/api/memberUpdate', (req, res, next) => {
     console.log(req.requestData);
     const name = req.requestData.name;
     const age = req.requestData.age;
@@ -133,9 +136,9 @@ app.put('/api/memberUpdate', (req, res, next) => {
         console.log("1 record updated");
     })
 })
-
-app.put('/api/trainerUpdate', upload.single('image'), (req, res, next) => {
+app.post('/api/trainerUpdate', (req, res, next) => {
     console.log(req.requestData);
+    const id = req.requestData.id;
     const age = req.requestData.age;
     const sex = req.requestData.sex;
     const birth = req.requestData.birth;
@@ -145,13 +148,33 @@ app.put('/api/trainerUpdate', upload.single('image'), (req, res, next) => {
     const email = req.requestData.email;
     const award = req.requestData.award;
     const career = req.requestData.career;
-    const image = req.file.fileName;
+    const image = '';
     const sql = `update member set age=${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', phone='${phone}', email='${email}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record updated");
     })
 })
+
+// app.post('/api/trainerUpdate', upload.single('image'), (req, res, next) => {
+//     console.log(req.requestData);
+//     const id = req.requestData.id;
+//     const age = req.requestData.age;
+//     const sex = req.requestData.sex;
+//     const birth = req.requestData.birth;
+//     const height = req.requestData.height;
+//     const weight = req.requestData.weight;
+//     const phone = req.requestData.phone;
+//     const email = req.requestData.email;
+//     const award = req.requestData.award;
+//     const career = req.requestData.career;
+//     const image = req.file.fileName;
+//     const sql = `update member set age=${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', phone='${phone}', email='${email}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
+//     connection.query(sql, async (err, result) => {
+//         if (err) throw err;
+//         console.log("1 record updated");
+//     })
+// })
 
 app.delete('/api/memberDelete/:id', (req, res, next) => {
     const id = req.params.id;

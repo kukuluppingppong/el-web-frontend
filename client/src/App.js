@@ -17,7 +17,7 @@ function App(props) {
   const [memberList, setMemberList] = useState([]);
 
   const resData = async () => {
-    const res = await axios.get('/api/memberList')
+    const res = await axios.get('/api/memberList');
     console.log(res.data);
     setMemberList(res.data);
   }
@@ -31,6 +31,7 @@ function App(props) {
       <Container style={{ minHeight: "80vh" }}>
 
         <MemberList memberList={memberList} />
+        <MemberView memberList={memberList} />
         <FeedbackWorkout />
         <FeedbackDiet />
         <Notification />
@@ -39,13 +40,13 @@ function App(props) {
         <TrainerWrite />
         {/* <BrowserRouter>
           <Routes>
-            <Route exact path='/' element={<MemberList />}></Route>
+            <Route exact path='/api/memberList' element={<MemberList memberList={memberList} />}></Route>
             <Route exact path='/memberWrite' element={<MemberWrite />}></Route>
             <Route exact path='/memberView/:id' element={<MemberView />}></Route>
           </Routes>
         </BrowserRouter> */}
       </Container>
-    </Layout>
+    </Layout >
   );
 }
 

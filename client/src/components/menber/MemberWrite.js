@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function MemberWrite(props) {
+function MemberWrite() {
     const [writeInfo, setWriteInfo] = useState({
         name: '',
         age: '',
