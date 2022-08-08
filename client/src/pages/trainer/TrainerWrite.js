@@ -40,9 +40,35 @@ const TrainerWrite = () => {
                     <Form.Label>연령</Form.Label>
                     <Form.Control type="number" name="age" placeholder="연령 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
-                <Form.Group>
+                {/* <Form.Group>
                     <Form.Label>성별</Form.Label>
                     <Form.Control type="text" name="sex" placeholder="성별 입력" className="mb-3" onChange={inputChange} />
+                </Form.Group> */}
+                <Form.Group>
+                    <Form.Label>성별</Form.Label>
+                    <div key="custom-inline-radio" className="mb-3">
+                        <Form.Check
+                            custom
+                            inline
+                            name="sex"
+                            label="남자"
+                            type="radio"
+                            id="custom-inline-radio-2"
+                            checked
+                            value="man"
+                            onChange={inputChange}
+                        />
+                        <Form.Check
+                            custom
+                            inline
+                            label="여자"
+                            name="sex"
+                            type="radio"
+                            id="custom-inline-radio-1"
+                            value="woman"
+                            onChange={inputChange}
+                        />
+                    </div>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>생년월일</Form.Label>
@@ -66,11 +92,11 @@ const TrainerWrite = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>수상</Form.Label>
-                    <Form.Control type="text" name="award" placeholder="수상 입력" className="mb-3" onChange={inputChange} />
+                    <Form.Control as="textarea" name="award" placeholder="수상 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>이력</Form.Label>
-                    <Form.Control type="text" name="career" placeholder="이력 입력" className="mb-3" onChange={inputChange} />
+                    <Form.Control as="textarea" name="career" placeholder="이력 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>프로필 사진</Form.Label>
