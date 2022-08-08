@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Container } from "react-bootstrap";
-import Layout from "./layouts/Layout";
-import MemberList from './components/menber/MemberList';
-import MemberWrite from './components/menber/MemberWrite';
-import MemberView from './components/menber/MemberView';
-import TrainerWrite from './components/trainer/TrainerWrite';
-import FeedbackWorkout from './components/feedback/FeedbackWorkout';
-import FeedbackDiet from './components/feedback/FeedbackDiet';
-import Notification from './components/notification/Notification';
-import QnAList from './components/QnA/QnAList';
-import QnAView from './components/QnA/QnAView';
+import Layout from './components/layouts/Layout';
+import MemberList from './pages/menber/MemberList';
+import MemberWrite from './pages/menber/MemberWrite';
+import MemberView from './pages/menber/MemberView';
+import TrainerWrite from './pages/trainer/TrainerWrite';
+import FeedbackWorkout from './pages/feedback/FeedbackWorkout';
+import FeedbackDiet from './pages/feedback/FeedbackDiet';
+import Notification from './pages/notification/Notification';
+import QnAList from './pages/QnA/QnAList';
+import QnAView from './pages/QnA/QnAView';
 
 
 function App() {

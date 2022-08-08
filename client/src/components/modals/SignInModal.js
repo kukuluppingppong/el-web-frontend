@@ -3,7 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 // import { GoogleLogin } from "react-google-login";
-import HorizontalLine from "../components/HorizonLine";
+import HorizontalLine from "../HorizonLine";
 
 const SignInModal = ({ show, onHide }) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
