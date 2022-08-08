@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Button, Container } from "react-bootstrap";
+import { Navbar, Nav, Button, Container, Dropdown } from "react-bootstrap";
 import SignUpModal from "../modals/SignUpModal";
 import SignInModal from "../modals/SignInModal";
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import NotificationsIcon from '@mui/icons-material/Notifications';
 // import { Routes, Route, Link } from "react-router-dom";
 
 const Header = () => {
@@ -39,7 +42,7 @@ const Header = () => {
             <header>
                 <Navbar bg="light" expand="lg">
                     <Container>
-                        <Navbar.Brand><Nav.Link href="../component/MemberList">Trainer</Nav.Link></Navbar.Brand>
+                        <Navbar.Brand><Nav.Link href="/api/MemberList">Trainer</Nav.Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
@@ -68,13 +71,19 @@ const Header = () => {
                                     </Button>
                                 </Nav.Link>
                                 <Nav.Link>
-                                    <Button
-                                        variant="outline-dark"
-                                        className="rounded-pill"
-                                        onClick={() => logOut()}
-                                    >
-                                        로그아웃
-                                    </Button>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="secondary" className="rounded-pill">
+                                            <MenuIcon />
+                                            <AccountCircleIcon />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item href="#" onClick={() => setSignInModalOn(true)}>로그인</Dropdown.Item>
+                                            <Dropdown.Item href="#" onClick={() => setSignUpModalOn(true)}>회원가입</Dropdown.Item>
+                                            <Dropdown.Item href="../../pages/notification/Notification">알림</Dropdown.Item>
+                                            <Dropdown.Item href="#" onClick={() => logOut()}>로그아웃</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>

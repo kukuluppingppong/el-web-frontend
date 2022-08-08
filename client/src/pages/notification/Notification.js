@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { TableCell, TableRow } from '@mui/material';
+import { Toast } from 'react-bootstrap';
 
 const Notification = () => {
     return (
@@ -13,17 +13,21 @@ const Notification = () => {
         //     </TableCell>
         //     <TableCell align="center">{this.props.date}</TableCell>
         // </TableRow>
-        <TableRow>
-            <TableCell align="center">김동양</TableCell>
-            <TableCell align="center">운동 피드백을 등록했습니다.</TableCell>
-            <TableCell align="center">
-                <NavLink to="/">
-                    2022.08.04 운동 피드백
-                </NavLink>
-            </TableCell>
-            <TableCell align="center">밴치프레스</TableCell>
-            <TableCell align="center">2022.08.04 16:00:00</TableCell>
-        </TableRow>
+
+        <div>
+            <Toast>
+                <Toast.Header>
+                    <img src="#" className="rounded me-2" alt="" />
+                    <strong className="me-auto">알림</strong>
+                    <small>11 mins ago</small>
+                </Toast.Header>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
+            </Toast>
+        </div>
     )
 }
 

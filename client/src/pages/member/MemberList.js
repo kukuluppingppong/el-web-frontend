@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function MemberList(props) {
-
 
     const list = props.memberList.map((data, index) => (
         <TableRow key={index}>
@@ -48,6 +46,7 @@ function MemberList(props) {
                 </Table>
             </TableContainer>
         </div>
+
     )
 }
 
