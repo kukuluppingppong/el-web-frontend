@@ -21,7 +21,7 @@ const Header = () => {
 
     const logOut = () => {
         const logout = window.confirm("로그아웃 하시겠습니까?");
-        if (logout == true) {
+        if (logout === true) {
             sessionStorage.clear();
         } else {
             document.location.href = '/';

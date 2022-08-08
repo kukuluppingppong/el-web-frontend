@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 
 function MemberView(props) {
     const params = window.location.pathname.split('/');
@@ -34,9 +34,15 @@ function MemberView(props) {
             <h3>회원상세</h3>
             {mapViewPost}
             <div>
-                <Link to='/'>목록</Link>
-                <Link to='/'>수정</Link>
-                <Link to='/'>삭제</Link>
+                <Button variant="outline-dark" type="button" className="my-3 rounded-pill" onClick={() => document.location.href = '/'} >
+                    목록
+                </Button>
+                <Button variant="dark" type="submit" className="my-3 rounded-pill" onClick={() => document.location.href = '/'}>
+                    수정
+                </Button>
+                <Button variant="dark" type="submit" className="my-3 rounded-pill" onClick={() => document.location.href = '/'}>
+                    삭제
+                </Button>
             </div>
         </div>
     )

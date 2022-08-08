@@ -2,22 +2,22 @@ import React, { useState } from 'react'
 import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
 
 const QnADiet = () => {
-    const [value, setValue] = useState({
-        date: '2014-08-18T21:11:54',
-    })
+    // const [value, setValue] = useState({
+    //     date: '2014-08-18T21:11:54',
+    // })
     const [feedbackDiet, setFeedbackDiet] = useState({
         date: '',
         feedback: '',
     })
 
-    const handleChange = (e) => {
-        console.log(e.target.name)
-        console.log(e.target.value)
-        setValue({
-            ...value,
-            [e.target.name]: e.target.value
-        })
-    }
+    // const handleChange = (e) => {
+    //     console.log(e.target.name)
+    //     console.log(e.target.value)
+    //     setValue({
+    //         ...value,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
     const inputChange = (e) => {
         console.log(e.target.name)
