@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Button, Form, Container } from "react-bootstrap";
 
 function TrainerView(props) {
     const params = window.location.pathname.split('/');
@@ -12,19 +12,70 @@ function TrainerView(props) {
     console.log(viewPost);
     const mapViewPost = viewPost.map(data => {
         return (
-            <div key={data.id}>
-                <p className='view_name'>이름: {data.name}</p>
-                <p className='view_age'>연령: {data.age}</p>
-                <p className='view_sex'>성별: {data.sex}</p>
-                <p className='view_birth'>생년월일: {data.birth}</p>
-                <p className='view_height'>키: {data.height}</p>
-                <p className='view_weight'>체중: {data.weight}</p>
-                <p className='view_period'>헬스장위치: {data.addr}</p>
-                <p className='view_regDate'>수상: {data.award}</p>
-                <p className='view_endDate'>이력: {data.career}</p>
-                <p className='view_phone'>사진: {data.image}</p>
-                <p className='view_email'>이메일: {data.email}</p>
-            </div>
+            <Container key={data.id}>
+                <h3>내정보 상세</h3>
+                <Form method='post' action=''>
+                    <Form.Group>
+                        <Form.Label>이름</Form.Label>
+                        <Form.Control value={data.name} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>연령</Form.Label>
+                        <Form.Control value={data.age} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>성별</Form.Label>
+                        <Form.Control value={data.sex} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>생년월일</Form.Label>
+                        <Form.Control value={data.birth} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>키</Form.Label>
+                        <Form.Control value={data.height} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>체중</Form.Label>
+                        <Form.Control value={data.weight} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>헬스장위치</Form.Label>
+                        <Form.Control value={data.addr} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>수상</Form.Label>
+                        <Form.Control value={data.award} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>이력</Form.Label>
+                        <Form.Control value={data.career} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>전화번호</Form.Label>
+                        <Form.Control value={data.phone} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>이메일</Form.Label>
+                        <Form.Control value={data.email} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>사진</Form.Label>
+                        <Form.Control value={data.image} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                            목록
+                        </Button>
+                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                            수정
+                        </Button>
+                        <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
+                            삭제
+                        </Button>
+                    </Form.Group>
+                </Form>
+            </Container>
         )
     })
 
@@ -40,13 +91,7 @@ function TrainerView(props) {
 
     return (
         <div className='trainerView'>
-            <h3>내정보 상세</h3>
             {mapViewPost}
-            <div>
-                <Link to='/'>목록</Link>
-                <Link to='/'>수정</Link>
-                <Link to='/'>삭제</Link>
-            </div>
         </div>
     )
 }

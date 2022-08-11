@@ -6,13 +6,14 @@ import Layout from './components/layouts/Layout';
 import MemberList from './pages/member/MemberList';
 import MemberWrite from './pages/member/MemberWrite';
 import MemberView from './pages/member/MemberView';
+import MemberEdit from './pages/member/MemberEdit';
 import TrainerWrite from './pages/trainer/TrainerWrite';
 import FeedbackWorkout from './pages/feedback/FeedbackWorkout';
 import FeedbackDiet from './pages/feedback/FeedbackDiet';
 import Notification from './pages/notification/Notification';
 import QnAList from './pages/QnA/QnAList';
 import QnAView from './pages/QnA/QnAView';
-
+import Search from './components/Search';
 
 function App() {
   const [memberList, setMemberList] = useState([]);
@@ -38,9 +39,10 @@ function App() {
   return (
     <Layout>
       <Container style={{ minHeight: "80vh" }}>
-
+        <Search />
         <MemberList memberList={memberList} />
         <MemberView memberList={memberList} />
+        <MemberEdit memberList={memberList} />
         <FeedbackWorkout />
         <FeedbackDiet />
         <Notification />

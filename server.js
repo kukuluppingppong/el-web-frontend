@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4000;
-const connection = require('./config/db.js');
+const connection = require('./config/db');
 // var url = require('url');
 // var urlObject = url.parse('http://localhost:3000/path/abc.php?id=student&page=12#hash');
 
@@ -100,14 +100,16 @@ app.post('/api/memberWrite', (req, res, next) => {
     const birth = req.requestData.birth;
     const height = req.requestData.height;
     const weight = req.requestData.weight;
+    const period = req.requestData.period;
     const regDate = req.requestData.regDate;
     const endDate = req.requestData.endDate;
     const phone = req.requestData.phone;
     const email = req.requestData.email;
-    const sql = `insert into member (name,age,sex,birth,height,weight,regDate,endDate,phone,email) values ('${name}','${age}','${sex}','${birth}','${height}','${weight}','${regDate}','${endDate}','${phone}','${email}');`;
+    const sql = `insert into member (name,age,sex,birth,height,weight,period,regDate,endDate,phone,email) values ('${name}','${age}','${sex}','${birth}','${height}','${weight}','${period}','${regDate}','${endDate}','${phone}','${email}');`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record inserted");
+        res.send(result);
     })
 })
 
@@ -146,6 +148,7 @@ app.post("/api/search/:searchText", (req, res) => {
 
 app.post('/api/memberUpdate', (req, res, next) => {
     console.log(req.requestData);
+    const id = req.requestData.id;
     const name = req.requestData.name;
     const age = req.requestData.age;
     const sex = req.requestData.sex;
@@ -160,6 +163,7 @@ app.post('/api/memberUpdate', (req, res, next) => {
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record updated");
+        res.send(result);
     })
 })
 app.post('/api/trainerUpdate', (req, res, next) => {
@@ -175,7 +179,7 @@ app.post('/api/trainerUpdate', (req, res, next) => {
     const award = req.requestData.award;
     const career = req.requestData.career;
     const image = '';
-    const sql = `update member set age=${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', phone='${phone}', email='${email}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
+    const sql = `update trainer set age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', phone='${phone}', email='${email}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record updated");

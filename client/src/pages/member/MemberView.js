@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from "react-bootstrap";
+import { Button, Form, Container } from "react-bootstrap";
 
 function MemberView(props) {
     const params = window.location.pathname.split('/');
@@ -13,37 +13,72 @@ function MemberView(props) {
     console.log(viewPost);
     const mapViewPost = viewPost.map(data => {
         return (
-            <div key={data.id}>
-                <p className='view_name'>이름: {data.name}</p>
-                <p className='view_age'>연령: {data.age}</p>
-                <p className='view_sex'>성별: {data.sex}</p>
-                <p className='view_birth'>생년월일: {data.birth}</p>
-                <p className='view_height'>키: {data.height}</p>
-                <p className='view_weight'>체중: {data.weight}</p>
-                <p className='view_period'>운동기간: {data.period}</p>
-                <p className='view_regDate'>등록일: {data.regDate}</p>
-                <p className='view_endDate'>종료일: {data.endDate}</p>
-                <p className='view_phone'>연락처: {data.phone}</p>
-                <p className='view_email'>이메일: {data.email}</p>
-            </div>
+            <Container key={data.id}>
+                <h3>회원상세</h3>
+                <Form method='post' action=''>
+                    <Form.Group>
+                        <Form.Label>이름</Form.Label>
+                        <Form.Control value={data.name} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>연령</Form.Label>
+                        <Form.Control value={data.age} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>성별</Form.Label>
+                        <Form.Control value={data.sex} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>생년월일</Form.Label>
+                        <Form.Control value={data.birth} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>키</Form.Label>
+                        <Form.Control value={data.height} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>체중</Form.Label>
+                        <Form.Control value={data.weight} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>운동기간</Form.Label>
+                        <Form.Control value={data.period} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>등록일</Form.Label>
+                        <Form.Control value={data.regDate} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>종료일</Form.Label>
+                        <Form.Control value={data.endDate} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>전화번호</Form.Label>
+                        <Form.Control value={data.phone} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>이메일</Form.Label>
+                        <Form.Control value={data.email} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                            목록
+                        </Button>
+                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                            수정
+                        </Button>
+                        <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
+                            삭제
+                        </Button>
+                    </Form.Group>
+                </Form>
+            </Container>
         )
     })
 
     return (
         <div className='memberView'>
-            <h3>회원상세</h3>
             {mapViewPost}
-            <div>
-                <Button variant="outline-dark" type="button" className="my-3 rounded-pill" onClick={() => document.location.href = '/'} >
-                    목록
-                </Button>
-                <Button variant="dark" type="submit" className="my-3 rounded-pill" onClick={() => document.location.href = '/'}>
-                    수정
-                </Button>
-                <Button variant="dark" type="submit" className="my-3 rounded-pill" onClick={() => document.location.href = '/'}>
-                    삭제
-                </Button>
-            </div>
         </div>
     )
 }
