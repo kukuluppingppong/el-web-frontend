@@ -1,5 +1,6 @@
 import React from 'react';
-import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
+import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Button } from '@mui/material';
+import CreateIcon from '@mui/icons-material/Create';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -15,8 +16,16 @@ function MemberList(props) {
             <TableCell align='right'>{data.period}</TableCell>
             <TableCell align='right'>{data.regDate}</TableCell>
             <TableCell align='right'>{data.endDate}</TableCell>
-            <TableCell align='right'><EditIcon /></TableCell>
-            <TableCell align='right'><DeleteIcon /></TableCell>
+            <TableCell align='right'>
+                <Button variant="dark" type="button" className="my-2 rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                    <EditIcon />
+                </Button>
+            </TableCell>
+            <TableCell align='right'>
+                <Button variant="dark" type="button" className="my-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
+                    <DeleteIcon />
+                </Button>
+            </TableCell>
         </TableRow>
     )
     )
@@ -24,6 +33,9 @@ function MemberList(props) {
     return (
         <div className='memberList'>
             <h3>회원목록</h3>
+            <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = './memberWrite'}>
+                글쓰기<CreateIcon />
+            </Button>
             <TableContainer component={Paper} aria-label="simple table">
                 <Table>
                     <TableHead>

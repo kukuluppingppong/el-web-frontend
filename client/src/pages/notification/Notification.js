@@ -1,6 +1,6 @@
 import React from 'react'
 // import { NavLink } from 'react-router-dom';
-import { Toast } from 'react-bootstrap';
+import { Toast, CloseButton } from 'react-bootstrap';
 
 const Notification = () => {
     return (
@@ -15,17 +15,15 @@ const Notification = () => {
         // </TableRow>
 
         <div>
-            <Toast>
+            <Toast style={{ width: '500px' }}>
                 <Toast.Header>
-                    <img src="#" className="rounded me-2" alt="" />
-                    <strong className="me-auto">알림</strong>
-                    <small>11 mins ago</small>
+                    <strong className="me-auto">모든 알림</strong>
                 </Toast.Header>
-                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
-                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
-                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
-                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
-                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.</Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
+                <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
             </Toast>
         </div>
     )

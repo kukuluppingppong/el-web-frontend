@@ -5,10 +5,11 @@ function MemberWrite() {
     const [writeInfo, setWriteInfo] = useState({
         name: '',
         age: '',
-        sex: '',
+        sex: '남',
         birth: '',
         height: '',
         weight: '',
+        period: '',
         regDate: '',
         endDate: '',
         phone: '',
@@ -48,9 +49,9 @@ function MemberWrite() {
                             name="sex"
                             label="남자"
                             type="radio"
-                            id="custom-inline-radio-2"
-                            checked
-                            value="man"
+                            checked={writeInfo.sex === "남"}
+                            id="custom-inline-radio-1"
+                            value="남"
                             onChange={inputChange}
                         />
                         <Form.Check
@@ -59,8 +60,9 @@ function MemberWrite() {
                             label="여자"
                             name="sex"
                             type="radio"
-                            id="custom-inline-radio-1"
-                            value="woman"
+                            checked={writeInfo.sex === "여"}
+                            id="custom-inline-radio-2"
+                            value="여"
                             onChange={inputChange}
                         />
                     </div>
@@ -76,6 +78,10 @@ function MemberWrite() {
                 <Form.Group>
                     <Form.Label>체중</Form.Label>
                     <Form.Control type="number" name="weight" placeholder="체중 입력" className="mb-3" onChange={inputChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>운동기간</Form.Label>
+                    <Form.Control type="text" name="period" placeholder="운동기간 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>등록일</Form.Label>
@@ -94,10 +100,10 @@ function MemberWrite() {
                     <Form.Control type="email" name="email" placeholder="이메일 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Button variant="dark" type="submit" className="my-3 rounded-pill" onClick={() => document.location.href = '/'}>
+                    <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
                         등록
                     </Button>
-                    <Button variant="outline-dark" type="button" className="my-3 rounded-pill" onClick={() => document.location.href = '/'} >
+                    <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
                         취소
                     </Button>
                 </Form.Group>

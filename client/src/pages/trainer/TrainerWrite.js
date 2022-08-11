@@ -6,7 +6,7 @@ const TrainerWrite = () => {
         id: '',
         name: '',
         age: '',
-        sex: '',
+        sex: '남',
         birth: '',
         height: '',
         weight: '',
@@ -53,9 +53,9 @@ const TrainerWrite = () => {
                             name="sex"
                             label="남자"
                             type="radio"
-                            id="custom-inline-radio-2"
-                            checked
-                            value="man"
+                            id="custom-inline-radio-1"
+                            checked={writeInfo.sex === "남"}
+                            value="남"
                             onChange={inputChange}
                         />
                         <Form.Check
@@ -64,8 +64,9 @@ const TrainerWrite = () => {
                             label="여자"
                             name="sex"
                             type="radio"
-                            id="custom-inline-radio-1"
-                            value="woman"
+                            id="custom-inline-radio-2"
+                            checked={writeInfo.sex === "여"}
+                            value="여"
                             onChange={inputChange}
                         />
                     </div>
@@ -103,10 +104,10 @@ const TrainerWrite = () => {
                     <Form.Control type="file" name="file" placeholder="프로필 사진 업로드" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Button variant="dark" type="submit" className="my-3 rounded-pill" onClick={() => document.location.href = '/'}>
+                    <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
                         등록
                     </Button>
-                    <Button variant="outline-dark" type="button" className="my-3 rounded-pill" onClick={() => document.location.href = '/'} >
+                    <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
                         취소
                     </Button>
                 </Form.Group>
