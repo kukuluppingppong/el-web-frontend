@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const QnAList = (props) => {
-
+    const cellList = ["번호", "제목", "작성자", "등록일", "답변"]
     const list = props.qnaList.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>
@@ -26,11 +26,9 @@ const QnAList = (props) => {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell align="right">번호</TableCell>
-                        <TableCell align="right">제목</TableCell>
-                        <TableCell align="right">작성자</TableCell>
-                        <TableCell align="right">등록일</TableCell>
-                        <TableCell align="right">답변</TableCell>
+                        {cellList.map(c => {
+                            return <TableCell align='right'>{c}</TableCell>
+                        })}
                     </TableRow>
                 </TableHead>
                 <TableBody>

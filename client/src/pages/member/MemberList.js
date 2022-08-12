@@ -5,7 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function MemberList(props) {
-
+    const cellList = ["번호", "이름", "연령", "성별", "연락처", "운동기간", "등록일", "종료일", "수정", "삭제"]
     const list = props.memberList.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>
@@ -40,16 +40,9 @@ function MemberList(props) {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align='right'>번호</TableCell>
-                            <TableCell align='right'>이름</TableCell>
-                            <TableCell align='right'>연령</TableCell>
-                            <TableCell align='right'>성별</TableCell>
-                            <TableCell align='right'>연락처</TableCell>
-                            <TableCell align='right'>운동기간</TableCell>
-                            <TableCell align='right'>등록일</TableCell>
-                            <TableCell align='right'>종료일</TableCell>
-                            <TableCell align='right'>수정</TableCell>
-                            <TableCell align='right'>삭제</TableCell>
+                            {cellList.map(c => {
+                                return <TableCell align='right'>{c}</TableCell>
+                            })}
                         </TableRow>
                     </TableHead>
                     <TableBody>
