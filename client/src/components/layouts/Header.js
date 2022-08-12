@@ -53,20 +53,12 @@ const Header = () => {
                             </Nav>
                             <Nav>
                                 <Nav.Link>
-                                    <Button
-                                        variant="outline-dark"
-                                        className="rounded-pill"
-                                        onClick={() => setSignInModalOn(true)}
-                                    >
+                                    <Button variant="outline-dark" className="rounded-pill" onClick={() => setSignInModalOn(true)}>
                                         로그인
                                     </Button>
                                 </Nav.Link>
                                 <Nav.Link>
-                                    <Button
-                                        variant="outline-dark"
-                                        className="rounded-pill"
-                                        onClick={() => setSignUpModalOn(true)}
-                                    >
+                                    <Button variant="outline-dark" className="rounded-pill" onClick={() => setSignUpModalOn(true)}>
                                         회원가입
                                     </Button>
                                 </Nav.Link>

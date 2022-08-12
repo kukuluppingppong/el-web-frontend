@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ButtonGroup, Button } from '@mui/material';
 
 function Pagination(props) {
+
     const [postPerPage, setPostPerPage] = useState(10);
     const [currentPage, setcurrentPage] = useState(1);
     const pages = [];

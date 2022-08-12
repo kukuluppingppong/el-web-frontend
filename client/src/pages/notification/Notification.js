@@ -3,6 +3,7 @@ import React from 'react'
 import { Toast, CloseButton } from 'react-bootstrap';
 
 const Notification = () => {
+
     return (
         // <TableRow>
         //     <TableCell align="center">{this.props.id}</TableCell>
@@ -25,7 +26,7 @@ const Notification = () => {
                 <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
                 <Toast.Body>김동양님이 피드백 영상을 등록했습니다.<br /><small>11 mins ago</small></Toast.Body>
             </Toast>
-        </div>
+        </div >
     )
 }
 

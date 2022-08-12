@@ -6,6 +6,7 @@ import { Modal, Button, Form, Container } from "react-bootstrap";
 import HorizontalLine from "../HorizonLine";
 
 const SignUpModal = ({ show, onHide }) => {
+
     const {
         register,
         handleSubmit,

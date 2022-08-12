@@ -438,7 +438,8 @@ button {
 [type=reset]:not(:disabled),
 [type=submit]:not(:disabled),
 button:not(:disabled) {
-    cursor: pointer
+    cursor: pointer;
+    float: right
 }
 
 ::-moz-focus-inner {

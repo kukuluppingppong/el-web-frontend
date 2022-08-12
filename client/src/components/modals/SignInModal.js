@@ -6,7 +6,9 @@ import { Modal, Button, Form, Container } from "react-bootstrap";
 import HorizontalLine from "../HorizonLine";
 
 const SignInModal = ({ show, onHide }) => {
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const onSubmit = (data) => {
         console.log(data)
         const req = axios.post(`/api/login/${data.id}&/${data.password}`)
