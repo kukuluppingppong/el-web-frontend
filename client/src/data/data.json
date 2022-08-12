@@ -1,0 +1,23 @@
+{
+    "workoutInfo": [
+        {
+            "id": 1,
+            "image": {
+                "src": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA2MzBfMjE2%2FMDAxNTkzNTEyMTM2NDk4.LXWHKVThhfzkr9ARkn1bm7DX1SFCU7xoebIG33tSZ50g.7AL9nGCERwarKN5eO0ehFuLL0VTWQIy1mukBysrv8lEg.GIF.onthetop111%2F%25C7%25C1%25B7%25D0%25C6%25AE%25B7%25B9%25C0%25CC%25C1%25EE.gif&type=sc960_832_gif",
+                "alt": "운동영상"
+            },
+            "title": "운동명",
+            "desc": "피드백 내용"
+        }
+    ],
+    "dietInfo": [
+        {
+            "id": 1,
+            "image": {
+                "src": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDExMDhfMjgy%2FMDAxNjA0ODQ1NDc5MjE5.jmFmgdZyvLNO4TO5duExmTV4x0Wk90cYiybOdvMDPCAg.bBYf4jDGwMuLVJkzMhJhgNK-m-9caUuFQ06wFs4BBNUg.JPEG.december135%2FIMG%25A3%25DF20200415%25A3%25DF213629%25A3%25DF838.jpg&type=sc960_832",
+                "alt": "식단사진"
+            },
+            "desc": "피드백 내용"
+        }
+    ]
+}

@@ -26,8 +26,8 @@ const QnAList = (props) => {
             <Table>
                 <TableHead>
                     <TableRow>
-                        {cellList.map(c => {
-                            return <TableCell align='right'>{c}</TableCell>
+                        {cellList.map(cell => {
+                            return <TableCell align='right'>{cell}</TableCell>
                         })}
                     </TableRow>
                 </TableHead>

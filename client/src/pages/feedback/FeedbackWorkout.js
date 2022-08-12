@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
+import data from '../../data/data.json';
 
 const QnAWorkout = () => {
+
     const [feedbackWorkout, setFeedbackWorkout] = useState({
         date: '',
         feedback: '',
@@ -15,8 +17,28 @@ const QnAWorkout = () => {
         })
     }
 
+    const list = data.workoutInfo.map((data, index) => (
+        <Card key={index} className="mb-3">
+            <Card.Img variant="top" src={data.image.src} alt={data.image.alt} height="400px" />
+            <Card.Body>
+                <Card.Title>{data.title}</Card.Title>
+                <Card.Text>
+                    {data.desc}
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    )
+    )
+
     return (
         <Container className='feedbackWorkout'>
+            <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                식단
+            </Button>
+            <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
+                운동
+            </Button>
+
             <Form method='post' action='/api/feedbackWorkout'>
                 <Form.Group>
                     <Form.Label>회원명</Form.Label>
@@ -26,7 +48,6 @@ const QnAWorkout = () => {
                     <Form.Control type="date" name="date" placeholder="날짜 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>운동목록</Form.Label>
                     <ListGroup defaultActiveKey="#link1" className="mb-3">
                         <ListGroup.Item action href="#link1">
                             운동명
@@ -37,25 +58,10 @@ const QnAWorkout = () => {
                         <ListGroup.Item action href="#link3">
                             운동명
                         </ListGroup.Item>
-                        <ListGroup.Item action href="#link4">
-                            운동명
-                        </ListGroup.Item>
-                        <ListGroup.Item action href="#link5">
-                            운동명
-                        </ListGroup.Item>
                     </ListGroup>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>운동 영상</Form.Label>
-                    <Card className="mb-3">
-                        <Card.Img variant="top" src="#" />
-                        <Card.Body>
-                            <Card.Title>운동영상입니다.</Card.Title>
-                            <Card.Text>
-                                운동설명
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+
+                    {list}
+
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>피드백</Form.Label>
@@ -70,7 +76,7 @@ const QnAWorkout = () => {
                     </Button>
                 </Form.Group>
             </Form>
-        </Container>
+        </Container >
     )
 }
 

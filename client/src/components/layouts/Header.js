@@ -64,7 +64,7 @@ const Header = () => {
                                 </Nav.Link>
                                 <Nav.Link>
                                     <Dropdown>
-                                        <Dropdown.Toggle variant="secondary" className="rounded-pill">
+                                        <Dropdown.Toggle variant="dark" className="rounded-pill">
                                             <MenuIcon />
                                             <AccountCircleIcon />
                                         </Dropdown.Toggle>

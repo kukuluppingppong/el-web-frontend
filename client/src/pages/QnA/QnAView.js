@@ -25,6 +25,10 @@ const QnAView = (props) => {
                         <Form.Control value={data.title} className="mb-3" />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>내용</Form.Label>
+                        <Form.Control value={data.content} className="mb-3" />
+                    </Form.Group>
+                    <Form.Group>
                         <Form.Label>작성자</Form.Label>
                         <Form.Control value={data.writer} className="mb-3" />
                     </Form.Group>

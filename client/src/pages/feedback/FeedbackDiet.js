@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
+import data from '../../data/data.json';
 
 const QnADiet = () => {
+    const listItem = ["운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명"]
+
     // const [value, setValue] = useState({
     //     date: '2014-08-18T21:11:54',
     // })
@@ -28,6 +31,20 @@ const QnADiet = () => {
         })
     }
 
+    const list = data.dietInfo.map((data, index) => (
+        <Card key={index} className="mb-3">
+            <Card.Img variant="top" src={data.image.src} alt={data.image.alt} height="400px" />
+            <Card.Body>
+                <Card.Title>{data.title}</Card.Title>
+                <Card.Text>
+                    {data.desc}
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    )
+    )
+
+
     return (
         <Container className='feedbackDiet'>
             {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -39,6 +56,12 @@ const QnADiet = () => {
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider> */}
+            <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                식단
+            </Button>
+            <Button variant="outline-dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
+                운동
+            </Button>
 
             <Form method='post' action='/api/feedbackDiet'>
                 <Form.Group>
@@ -48,8 +71,8 @@ const QnADiet = () => {
                     <Form.Label>날짜</Form.Label>
                     <Form.Control type="date" name="date" placeholder="날짜 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
+
                 <Form.Group>
-                    <Form.Label>식단목록</Form.Label>
                     <ListGroup defaultActiveKey="#link1" className="mb-3">
                         <ListGroup.Item action href="#link1">
                             아침
@@ -61,18 +84,18 @@ const QnADiet = () => {
                             저녁
                         </ListGroup.Item>
                     </ListGroup>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>식단사진</Form.Label>
-                    <Card className="mb-3">
-                        <Card.Img variant="top" src="#" />
+
+                    {list}
+
+                    {/* <Card className="mb-3">
+                        <Card.Img variant="top" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDExMDhfMjgy%2FMDAxNjA0ODQ1NDc5MjE5.jmFmgdZyvLNO4TO5duExmTV4x0Wk90cYiybOdvMDPCAg.bBYf4jDGwMuLVJkzMhJhgNK-m-9caUuFQ06wFs4BBNUg.JPEG.december135%2FIMG%25A3%25DF20200415%25A3%25DF213629%25A3%25DF838.jpg&type=sc960_832" height="400px" />
                         <Card.Body>
-                            <Card.Title>식단사진입니다.</Card.Title>
+                            <Card.Title>식단 피드백</Card.Title>
                             <Card.Text>
-                                식단사진 설명
+                                식단 피드백 내용입니다.
                             </Card.Text>
                         </Card.Body>
-                    </Card>
+                    </Card> */}
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>피드백</Form.Label>

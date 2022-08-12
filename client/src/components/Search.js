@@ -37,12 +37,12 @@ const Search = () => {
             transition: theme.transitions.create('width'),
             width: '100%',
             [theme.breakpoints.up('sm')]: {
-                width: '100ch',
+                width: '50ch',
                 border: '1px solid #ddd',
                 borderRadius: '30px',
-                margin: '100px 0',
+                margin: '50px 0',
                 '&:focus': {
-                    width: '110ch',
+                    width: '60ch',
                 },
             },
         },

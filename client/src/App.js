@@ -40,16 +40,16 @@ function App() {
     <Layout>
       <Container style={{ minHeight: "80vh" }}>
         <Search />
-        <MemberList memberList={memberList} />
-        <MemberView memberList={memberList} />
-        <MemberEdit memberList={memberList} />
-        <FeedbackWorkout />
-        <FeedbackDiet />
-        <Notification />
-        <QnAList qnaList={qnaList} />
-        <QnAView qnaList={qnaList} />
+        {/* <MemberList memberList={memberList} /> */}
+        {/* <MemberView memberList={memberList} /> */}
+        {/* <MemberEdit memberList={memberList} /> */}
+        {/* <FeedbackWorkout /> */}
+        {/* <FeedbackDiet /> */}
+        {/* <Notification /> */}
+        {/* <QnAList qnaList={qnaList} /> */}
+        {/* <QnAView qnaList={qnaList} /> */}
         <MemberWrite />
-        <TrainerWrite />
+        {/* <TrainerWrite /> */}
         {/* <BrowserRouter>
           <Routes>
             <Route exact path='/' element={<MemberList memberList={memberList} />}></Route>

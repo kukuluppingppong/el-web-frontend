@@ -17,12 +17,12 @@ function MemberList(props) {
             <TableCell align='right'>{data.regDate}</TableCell>
             <TableCell align='right'>{data.endDate}</TableCell>
             <TableCell align='right'>
-                <Button variant="dark" type="button" className="my-2 rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                <Button variant="dark" type="button" className="rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
                     <EditIcon />
                 </Button>
             </TableCell>
             <TableCell align='right'>
-                <Button variant="dark" type="button" className="my-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
+                <Button variant="dark" type="button" className="rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
                     <DeleteIcon />
                 </Button>
             </TableCell>
@@ -40,8 +40,8 @@ function MemberList(props) {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            {cellList.map(c => {
-                                return <TableCell align='right'>{c}</TableCell>
+                            {cellList.map(cell => {
+                                return <TableCell align='right'>{cell}</TableCell>
                             })}
                         </TableRow>
                     </TableHead>
