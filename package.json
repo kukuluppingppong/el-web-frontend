@@ -8,6 +8,8 @@
         "start": "node server.js"
     },
     "dependencies": {
+        "@fullcalendar/daygrid": "^5.11.2",
+        "@fullcalendar/react": "^5.11.2",
         "axios": "^0.27.2",
         "body-parser": "^1.20.0",
         "cors": "^2.8.5",

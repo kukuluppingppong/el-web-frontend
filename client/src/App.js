@@ -43,12 +43,12 @@ function App() {
         {/* <MemberList memberList={memberList} /> */}
         {/* <MemberView memberList={memberList} /> */}
         {/* <MemberEdit memberList={memberList} /> */}
-        {/* <FeedbackWorkout /> */}
+        <FeedbackWorkout />
         {/* <FeedbackDiet /> */}
         {/* <Notification /> */}
         {/* <QnAList qnaList={qnaList} /> */}
         {/* <QnAView qnaList={qnaList} /> */}
-        <MemberWrite />
+        {/* <MemberWrite /> */}
         {/* <TrainerWrite /> */}
         {/* <BrowserRouter>
           <Routes>

@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
 import data from '../../data/data.json';
+import FullCalendar, { CalendarApi } from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import '../../css/calendar.css';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import AdapterDateFns from '@mui/lab/AdapterDateFns';
+// import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+// import { TextField } from "@mui/material";
 
 const QnADiet = () => {
-    const listItem = ["운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명", "운동명"]
-
     // const [value, setValue] = useState({
     //     date: '2014-08-18T21:11:54',
     // })
+    const events = [{ title: "아침,점심,저녁", date: new Date() }];
     const [feedbackDiet, setFeedbackDiet] = useState({
         date: '',
         feedback: '',
@@ -32,7 +38,7 @@ const QnADiet = () => {
     }
 
     const list = data.dietInfo.map((data, index) => (
-        <Card key={index} className="mb-3">
+        <Card key={index} className="mb-5">
             <Card.Img variant="top" src={data.image.src} alt={data.image.alt} height="400px" />
             <Card.Body>
                 <Card.Title>{data.title}</Card.Title>
@@ -47,58 +53,51 @@ const QnADiet = () => {
 
     return (
         <Container className='feedbackDiet'>
+            <FullCalendar
+                plugins={[dayGridPlugin]}
+                initialView='dayGridMonth'
+                events={events}
+                dayMaxEvents={true}
+                moreLinkClick="popover"
+                contentHeight="500px"
+                eventDisplay='block'
+                eventBackgroundColor="#ddd"
+            />
+
             {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DesktopDatePicker
-                    label="Date desktop"
+                    label="날짜"
                     inputFormat="MM/dd/yyyy"
                     value={value}
                     onChange={handleChange}
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider> */}
-            <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+            <Button variant="dark" type="button" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/'} >
                 식단
             </Button>
-            <Button variant="outline-dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
+            <Button variant="outline-dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/'}>
                 운동
             </Button>
 
+            <div>
+                <ListGroup defaultActiveKey="#link1" className="my-1">
+                    <ListGroup.Item action href="#link1">
+                        아침
+                    </ListGroup.Item>
+                    <ListGroup.Item action href="#link2">
+                        점심
+                    </ListGroup.Item>
+                    <ListGroup.Item action href="#link3">
+                        저녁
+                    </ListGroup.Item>
+                </ListGroup>
+
+                {list}
+            </div>
+
             <Form method='post' action='/api/feedbackDiet'>
                 <Form.Group>
-                    <Form.Label>김동양</Form.Label>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>날짜</Form.Label>
-                    <Form.Control type="date" name="date" placeholder="날짜 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-
-                <Form.Group>
-                    <ListGroup defaultActiveKey="#link1" className="mb-3">
-                        <ListGroup.Item action href="#link1">
-                            아침
-                        </ListGroup.Item>
-                        <ListGroup.Item action href="#link2">
-                            점심
-                        </ListGroup.Item>
-                        <ListGroup.Item action href="#link3">
-                            저녁
-                        </ListGroup.Item>
-                    </ListGroup>
-
-                    {list}
-
-                    {/* <Card className="mb-3">
-                        <Card.Img variant="top" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDExMDhfMjgy%2FMDAxNjA0ODQ1NDc5MjE5.jmFmgdZyvLNO4TO5duExmTV4x0Wk90cYiybOdvMDPCAg.bBYf4jDGwMuLVJkzMhJhgNK-m-9caUuFQ06wFs4BBNUg.JPEG.december135%2FIMG%25A3%25DF20200415%25A3%25DF213629%25A3%25DF838.jpg&type=sc960_832" height="400px" />
-                        <Card.Body>
-                            <Card.Title>식단 피드백</Card.Title>
-                            <Card.Text>
-                                식단 피드백 내용입니다.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card> */}
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>피드백</Form.Label>
                     <Form.Control as="textarea" name="feedback" placeholder="피드백 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
@@ -110,7 +109,7 @@ const QnADiet = () => {
                     </Button>
                 </Form.Group>
             </Form>
-        </Container>
+        </Container >
     )
 }
 

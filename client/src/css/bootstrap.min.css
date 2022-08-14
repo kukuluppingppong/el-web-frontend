@@ -439,7 +439,6 @@ button {
 [type=submit]:not(:disabled),
 button:not(:disabled) {
     cursor: pointer;
-    float: right
 }
 
 ::-moz-focus-inner {
@@ -4864,9 +4863,11 @@ fieldset:disabled .btn {
     --bs-card-img-overlay-padding: 1rem;
     --bs-card-group-margin: 0;
     position: relative;
+    display: inline-block;
     float: right;
-    width: 60%;
+    width: 500px;
     min-width: 0;
+    margin-top: 0;
     height: var(--bs-card-height);
     word-wrap: break-word;
     background-color: var(--bs-card-bg);
@@ -5567,11 +5568,13 @@ fieldset:disabled .btn {
     --bs-list-group-active-color: #fff;
     --bs-list-group-active-bg: #4F4F4F;
     --bs-list-group-active-border-color: #4F4F4F;
+    /* display: flex;
+    flex-wrap: wrap; */
     display: inline-block;
     padding-left: 0;
-    margin-right: 100px;
+    margin-right: 10px;
+    width: 300px;
     border-radius: var(--bs-list-group-border-radius);
-    width: 300px
 }
 
 .list-group-numbered {
