@@ -14,6 +14,10 @@ import Notification from './pages/notification/Notification';
 import QnAList from './pages/QnA/QnAList';
 import QnAView from './pages/QnA/QnAView';
 import Search from './components/Search';
+import BoardList from './pages/board/BoardList';
+import BoardWrite from './pages/board/BoardWrite';
+import BoardView from './pages/board/BoardView';
+import BoardEdit from './pages/board/BoardEdit';
 
 function App() {
   const [memberList, setMemberList] = useState([]);
@@ -43,13 +47,17 @@ function App() {
         {/* <MemberList memberList={memberList} /> */}
         {/* <MemberView memberList={memberList} /> */}
         {/* <MemberEdit memberList={memberList} /> */}
-        <FeedbackWorkout />
+        {/* <FeedbackWorkout /> */}
         {/* <FeedbackDiet /> */}
         {/* <Notification /> */}
         {/* <QnAList qnaList={qnaList} /> */}
         {/* <QnAView qnaList={qnaList} /> */}
         {/* <MemberWrite /> */}
         {/* <TrainerWrite /> */}
+        <BoardList />
+        <BoardWrite />
+        <BoardView />
+        <BoardEdit />
         {/* <BrowserRouter>
           <Routes>
             <Route exact path='/' element={<MemberList memberList={memberList} />}></Route>

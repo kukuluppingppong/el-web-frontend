@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
-import data from '../../data/data.json';
 import FullCalendar, { CalendarApi } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import data from '../../json/data.json';
 import '../../css/calendar.css';
 
 const QnAWorkout = () => {
