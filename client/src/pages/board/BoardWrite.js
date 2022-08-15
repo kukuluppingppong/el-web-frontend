@@ -43,7 +43,6 @@ const BoardWrite = () => {
                     </div>
                 </div>
             </form>
-
         </div>
     )
 }
