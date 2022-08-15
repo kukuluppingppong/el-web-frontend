@@ -17,7 +17,7 @@ function MemberList(props) {
             <TableCell align='right'>{data.regDate}</TableCell>
             <TableCell align='right'>{data.endDate}</TableCell>
             <TableCell align='right'>
-                <Button variant="dark" type="button" className="rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                <Button variant="dark" type="button" className="rounded-pill" onClick={() => document.location.href = `/memberView/${data.id}`}>
                     <EditIcon />
                 </Button>
             </TableCell>

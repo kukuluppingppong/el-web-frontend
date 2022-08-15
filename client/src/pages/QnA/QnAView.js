@@ -40,7 +40,7 @@ const QnAView = (props) => {
                         <Form.Label>답변</Form.Label>
                         <Form.Control value={data.answer} className="mb-3" />
                     </Form.Group>
-                    <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                    <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/QnAList'} >
                         목록
                     </Button>
                 </Form>

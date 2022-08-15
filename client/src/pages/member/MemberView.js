@@ -61,10 +61,10 @@ function MemberView(props) {
                         <Form.Control value={data.email} className="mb-3" />
                     </Form.Group>
                     <Form.Group>
-                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/memberList'} >
                             목록
                         </Button>
-                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `memberView/${data.id}`}>
                             수정
                         </Button>
                         <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>

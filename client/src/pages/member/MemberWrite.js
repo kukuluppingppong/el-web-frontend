@@ -100,10 +100,10 @@ function MemberWrite() {
                     <Form.Control type="email" name="email" placeholder="이메일 입력" className="mb-3" onChange={inputChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
+                    <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/memberList'}>
                         등록
                     </Button>
-                    <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
+                    <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/memberList'} >
                         취소
                     </Button>
                 </Form.Group>

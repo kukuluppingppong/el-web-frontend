@@ -42,14 +42,14 @@ const Header = () => {
             <header>
                 <Navbar bg="light" expand="lg">
                     <Container>
-                        <Navbar.Brand><Nav.Link href="/api/MemberList">Trainer</Nav.Link></Navbar.Brand>
+                        <Navbar.Brand><Nav.Link href="/memberList">Trainer</Nav.Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link href="/api/MemberList">회원목록</Nav.Link>
-                                <Nav.Link href="/api/FeedbackWorkout">피드백</Nav.Link>
-                                <Nav.Link href="/api/QnAList">QnA</Nav.Link>
-                                <Nav.Link href="/api/TrainerWrite">내정보</Nav.Link>
+                                <Nav.Link href="/memberList">회원목록</Nav.Link>
+                                <Nav.Link href="/feedbackWorkout">피드백</Nav.Link>
+                                <Nav.Link href="/QnAList">QnA</Nav.Link>
+                                <Nav.Link href="/trainerWrite">내정보</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link>
@@ -72,7 +72,7 @@ const Header = () => {
                                         <Dropdown.Menu>
                                             <Dropdown.Item href="#" onClick={() => setSignInModalOn(true)}>로그인</Dropdown.Item>
                                             <Dropdown.Item href="#" onClick={() => setSignUpModalOn(true)}>회원가입</Dropdown.Item>
-                                            <Dropdown.Item href="../../pages/notification/Notification">알림</Dropdown.Item>
+                                            <Dropdown.Item href="/notification">알림</Dropdown.Item>
                                             <Dropdown.Item href="#" onClick={() => logOut()}>로그아웃</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>

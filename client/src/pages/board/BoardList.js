@@ -36,7 +36,7 @@ const BoardList = () => {
                     <a href="#" className="bt last">다다음</a>
                 </div>
                 <div class="bt_wrap">
-                    <a href="write.jsp" className="on">등록</a>
+                    <a href="/boardWrite" className="on">등록</a>
                 </div>
             </div>
         </div>

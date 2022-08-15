@@ -44,7 +44,7 @@ const BoardView = () => {
                         </div>
                     </div>
                     <div className="bt_wrap">
-                        <a href="board_control.jsp?action=list">목록</a>
+                        <a href="/boardList">목록</a>
                         <button className="on">수정</button>
                         <button className="on" onClick="delcheck()">삭제</button>
                     </div>

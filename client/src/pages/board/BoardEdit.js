@@ -43,7 +43,7 @@ const BoardEdit = () => {
 
                     <div className="bt_wrap">
                         <button className="on">수정</button>
-                        <a href="view.jsp">취소</a>
+                        <a href="/boardList">취소</a>
                     </div>
                 </div>
             </form>

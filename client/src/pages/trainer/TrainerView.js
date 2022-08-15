@@ -65,9 +65,9 @@ function TrainerView(props) {
                     </Form.Group>
                     <Form.Group>
                         <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                            목록
+                            취소
                         </Button>
-                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberView/${data.id}`}>
+                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `memberView/${data.id}`}>
                             수정
                         </Button>
                         <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>

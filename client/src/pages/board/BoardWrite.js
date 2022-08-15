@@ -39,7 +39,7 @@ const BoardWrite = () => {
                     </div>
                     <div className="bt_wrap">
                         <button className="on">등록</button>
-                        <a href="list.jsp">취소</a>
+                        <a href="/boardList">취소</a>
                     </div>
                 </div>
             </form>
