@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Form, Container } from "react-bootstrap";
+
 
 function MemberView(props) {
     const params = window.location.pathname.split('/');
+
     const viewPost = []
     for (let i = 0; i < props.memberList.length; i++) {
         if (props.memberList[i].id === Number(params[3])) {
@@ -10,69 +11,77 @@ function MemberView(props) {
             viewPost.push(props.memberList[i])
         }
     }
+
     console.log(viewPost);
+
     const mapViewPost = viewPost.map(data => {
         return (
-            <Container key={data.id}>
-                <h3>회원상세</h3>
-                <Form method='post' action=''>
-                    <Form.Group>
-                        <Form.Label>이름</Form.Label>
-                        <Form.Control value={data.name} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>연령</Form.Label>
-                        <Form.Control value={data.age} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>성별</Form.Label>
-                        <Form.Control value={data.sex} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>생년월일</Form.Label>
-                        <Form.Control value={data.birth} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>키</Form.Label>
-                        <Form.Control value={data.height} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>체중</Form.Label>
-                        <Form.Control value={data.weight} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>운동기간</Form.Label>
-                        <Form.Control value={data.period} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>등록일</Form.Label>
-                        <Form.Control value={data.regDate} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>종료일</Form.Label>
-                        <Form.Control value={data.endDate} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>전화번호</Form.Label>
-                        <Form.Control value={data.phone} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>이메일</Form.Label>
-                        <Form.Control value={data.email} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/memberList'} >
-                            목록
-                        </Button>
-                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `memberView/${data.id}`}>
-                            수정
-                        </Button>
-                        <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
-                            삭제
-                        </Button>
-                    </Form.Group>
-                </Form>
-            </Container>
+            <div key={data.id} className="board_wrap">
+                <div className="board_title">
+                    <strong>회원상세</strong>
+                    <p>회원 정보를 확인하세요.</p>
+                </div>
+
+                <div className="board_write_wrap">
+                    <div className="board_write">
+                        <div class="info">
+                            <dl>
+                                <dt>이름</dt>
+                                <dd>{data.name}</dd>
+                            </dl>
+                            <dl>
+                                <dt>연령</dt>
+                                <dd>{data.age}</dd>
+                            </dl>
+                            <dl>
+                                <dt>성별</dt>
+                                <dd><dd>{data.sex}</dd></dd>
+                            </dl>
+                            <dl>
+                                <dt>생년월일</dt>
+                                <dd>{data.birth}</dd>
+                            </dl>
+                            <dl>
+                                <dt>키</dt>
+                                <dd>{data.height}</dd>
+                            </dl>
+                            <dl>
+                                <dt>체중</dt>
+                                <dd>{data.weight}</dd>
+                            </dl>
+                            <dl>
+                                <dt>운동기간</dt>
+                                <dd>{data.period}</dd>
+                            </dl>
+                            <dl>
+                                <dt>등록일</dt>
+                                <dd>{data.regDate}</dd>
+                            </dl>
+                            <dl>
+                                <dt>종료일</dt>
+                                <dd>{data.endDate}</dd>
+                            </dl>
+                            <dl>
+                                <dt>전화번호</dt>
+                                <dd>{data.phone}</dd>
+                            </dl>
+                            <dl>
+                                <dt>이메일</dt>
+                                <dd>{data.email}</dd>
+                            </dl>
+                            <dl>
+                                <dt>사진</dt>
+                                <dd>{data.image}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div className="bt_wrap">
+                        <a href="/memberList">목록</a>
+                        <button className="on" onClick={() => document.location.href = `memberView/${data.id}`}>수정</button>
+                        <button className="on" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>삭제</button>
+                    </div>
+                </div>
+            </div >
         )
     })
 

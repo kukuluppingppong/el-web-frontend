@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
+
 
 const QnAList = (props) => {
     const cellList = ["번호", "제목", "작성자", "등록일", "답변"]
+
     const list = props.qnaList.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>

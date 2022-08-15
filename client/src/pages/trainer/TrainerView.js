@@ -1,93 +1,93 @@
 import React from 'react'
-import { Button, Form, Container } from "react-bootstrap";
+
 
 function TrainerView(props) {
     const params = window.location.pathname.split('/');
+
     const viewPost = []
     for (let i = 0; i < props.trainerList.length; i++) {
         if (props.trainerList[i].number === Number(params[3])) {
             viewPost.push(props.trainerList[i])
         }
     }
+
     console.log(viewPost);
+
     const mapViewPost = viewPost.map(data => {
         return (
-            <Container key={data.id}>
-                <h3>내정보 상세</h3>
-                <Form method='post' action=''>
-                    <Form.Group>
-                        <Form.Label>이름</Form.Label>
-                        <Form.Control value={data.name} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>연령</Form.Label>
-                        <Form.Control value={data.age} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>성별</Form.Label>
-                        <Form.Control value={data.sex} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>생년월일</Form.Label>
-                        <Form.Control value={data.birth} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>키</Form.Label>
-                        <Form.Control value={data.height} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>체중</Form.Label>
-                        <Form.Control value={data.weight} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>헬스장위치</Form.Label>
-                        <Form.Control value={data.addr} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>수상</Form.Label>
-                        <Form.Control value={data.award} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>이력</Form.Label>
-                        <Form.Control value={data.career} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>전화번호</Form.Label>
-                        <Form.Control value={data.phone} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>이메일</Form.Label>
-                        <Form.Control value={data.email} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>사진</Form.Label>
-                        <Form.Control value={data.image} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                            취소
-                        </Button>
-                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = `memberView/${data.id}`}>
-                            수정
-                        </Button>
-                        <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>
-                            삭제
-                        </Button>
-                    </Form.Group>
-                </Form>
-            </Container>
+            <div key={data.id} className="board_wrap">
+                <div className="board_title">
+                    <strong>내정보 상세</strong>
+                    <p>내 정보를 확인하세요.</p>
+                </div>
+
+                <input type="hidden" name="id" value={sessionStorage.getItem('id')} />
+                <div className="board_write_wrap">
+                    <div className="board_write">
+                        <div class="info">
+                            <dl>
+                                <dt>이름</dt>
+                                <dd>{data.name}</dd>
+                            </dl>
+                            <dl>
+                                <dt>연령</dt>
+                                <dd>{data.age}</dd>
+                            </dl>
+                            <dl>
+                                <dt>성별</dt>
+                                <dd>{data.sex}</dd>
+                            </dl>
+                            <dl>
+                                <dt>생년월일</dt>
+                                <dd>{data.birth}</dd>
+                            </dl>
+                            <dl>
+                                <dt>키</dt>
+                                <dd>{data.height}</dd>
+                            </dl>
+                            <dl>
+                                <dt>체중</dt>
+                                <dd>{data.weight}</dd>
+                            </dl>
+                            <dl>
+                                <dt>전화번호</dt>
+                                <dd>{data.phone}</dd>
+                            </dl>
+                            <dl>
+                                <dt>이메일</dt>
+                                <dd>{data.email}</dd>
+                            </dl>
+                            <dl>
+                                <dt>수상</dt>
+                                <dd>{data.award}</dd>
+                            </dl>
+                            <dl>
+                                <dt>이력</dt>
+                                <dd>{data.career}</dd>
+                            </dl>
+                            <dl>
+                                <dt>헬스장위치</dt>
+                                <dd>{data.addr}</dd>
+                            </dl>
+                            <dl>
+                                <dt>프로필사진</dt>
+                                <dd>{data.image}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div className="bt_wrap">
+                        <button className="on">등록</button>
+                        <a href="/">취소</a>
+                    </div>
+                    <div className="bt_wrap">
+                        <a href="/">목록</a>
+                        <button className="on" onClick={() => document.location.href = `trainerView/${data.id}`}>수정</button>
+                        <button className="on" onClick={() => document.location.href = `/api/trainerDelete/${data.id}`}>삭제</button>
+                    </div>
+                </div>
+            </div >
         )
     })
-
-    // const updateHit = async () => {
-    //     console.log(document.location.pathname)
-    //     const docParams = document.location.pathname
-    //     const req = await axios.post(docParams);
-    // }
-
-    // useEffect(() => {
-    //     updateHit()
-    // })
 
     return (
         <div className='trainerView'>

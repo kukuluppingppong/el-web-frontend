@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form, Container } from "react-bootstrap";
+
 
 const MemberEdit = (props) => {
     const [editInfo, setEditInfo] = useState({
@@ -15,6 +15,7 @@ const MemberEdit = (props) => {
         phone: '',
         email: '',
     })
+
     const inputChange = (e) => {
         console.log(e.target.name)
         console.log(e.target.value)
@@ -25,6 +26,7 @@ const MemberEdit = (props) => {
     }
 
     const params = window.location.pathname.split('/');
+
     const viewPost = []
     for (let i = 0; i < props.memberList.length; i++) {
         if (props.memberList[i].id === Number(params[3])) {
@@ -32,92 +34,84 @@ const MemberEdit = (props) => {
             viewPost.push(props.memberList[i])
         }
     }
+
     console.log(viewPost);
+
     const mapViewPost = viewPost.map(data => {
         return (
-            <Container key={data.id}>
-                <h3>회원수정</h3>
-                <Form method='post' action='/api/memberUpdate'>
+            <div key={data.id} className="board_wrap">
+                <div className="board_title">
+                    <strong>회원 수정</strong>
+                    <p>회원 정보를 수정해주세요.</p>
+                </div>
 
-
-                    <Form.Control type="hidden" name="id" value={data.id} />
-                    <Form.Group>
-                        <Form.Label>이름</Form.Label>
-                        <Form.Control type="text" name="name" value={data.name} autoFocus className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>연령</Form.Label>
-                        <Form.Control type="number" name="age" value={data.age} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>성별</Form.Label>
-                        <div key="custom-inline-radio" className="mb-3">
-                            <Form.Check
-                                custom
-                                inline
-                                name="sex"
-                                label="남자"
-                                type="radio"
-                                checked={data.sex === "남"}
-                                id="custom-inline-radio-1"
-                                value="남"
-                                onChange={inputChange}
-                            />
-                            <Form.Check
-                                custom
-                                inline
-                                label="여자"
-                                name="sex"
-                                type="radio"
-                                checked={data.sex === "여"}
-                                id="custom-inline-radio-2"
-                                value="여"
-                                onChange={inputChange}
-                            />
+                <form method="post" action="/api/memberUpdate">
+                    <input type="hidden" name="id" value={data.id} />
+                    <div className="board_write_wrap">
+                        <div className="board_write">
+                            <div class="info">
+                                <dl>
+                                    <dt>이름</dt>
+                                    <dd><input type="text" name="name" value={data.name} autoFocus className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>연령</dt>
+                                    <dd><input type="number" name="age" value={data.age} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>성별</dt>
+                                    <dd>
+                                        <input type="radio" id="man" name="sex" value="남" checked={data.sex === "남"} onChange={inputChange} />
+                                        <label for="man">남자</label>
+                                        <input type="radio" id="woman" name="sex" value="여" checked={data.sex === "여"} onChange={inputChange} />
+                                        <label for="woman">여자</label>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>생년월일</dt>
+                                    <dd><input type="date" name="birth" value={data.birth} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>키</dt>
+                                    <dd><input type="number" name="height" value={data.height} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>체중</dt>
+                                    <dd><input type="number" name="weight" value={data.weight} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>운동기간</dt>
+                                    <dd><input type="text" name="period" value={data.period} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>등록일</dt>
+                                    <dd><input type="date" name="regDate" value={data.regDate} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>종료일</dt>
+                                    <dd><input type="date" name="endDate" value={data.endDate} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>전화번호</dt>
+                                    <dd><input type="tel" name="phone" value={data.phone} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>이메일</dt>
+                                    <dd><input type="email" name="email" value={data.email} className="mb-3" onChange={inputChange} /></dd>
+                                </dl>
+                                <dl>
+                                    <dt>사진</dt>
+                                    <dd><input type="file" name="file" /></dd>
+                                </dl>
+                            </div>
                         </div>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>생년월일</Form.Label>
-                        <Form.Control type="date" name="birth" value={data.birth} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>키</Form.Label>
-                        <Form.Control type="number" name="height" value={data.height} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>체중</Form.Label>
-                        <Form.Control type="number" name="weight" value={data.weight} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>운동기간</Form.Label>
-                        <Form.Control type="text" name="period" value={data.period} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>등록일</Form.Label>
-                        <Form.Control type="date" name="regDate" value={data.regDate} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>종료일</Form.Label>
-                        <Form.Control type="date" name="endDate" value={data.endDate} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>전화번호</Form.Label>
-                        <Form.Control type="tel" name="phone" value={data.phone} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>이메일</Form.Label>
-                        <Form.Control type="email" name="email" value={data.email} className="mb-3" onChange={inputChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
-                            수정
-                        </Button>
-                        <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                            취소
-                        </Button>
-                    </Form.Group>
-                </Form>
-            </Container>
+                        <div className="bt_wrap">
+                            <button className="on">수정</button>
+                            <a href="/memberList">취소</a>
+                        </div>
+                    </div>
+                </form>
+            </div >
         )
     })
 

@@ -4,8 +4,10 @@ import CreateIcon from '@mui/icons-material/Create';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
 function MemberList(props) {
     const cellList = ["번호", "이름", "연령", "성별", "연락처", "운동기간", "등록일", "종료일", "수정", "삭제"]
+
     const list = props.memberList.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>

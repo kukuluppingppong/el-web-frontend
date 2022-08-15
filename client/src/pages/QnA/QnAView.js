@@ -1,8 +1,10 @@
 import React from 'react'
 import { Button, Form, Container } from "react-bootstrap";
 
+
 const QnAView = (props) => {
     const params = window.location.pathname.split('/');
+
     const viewPost = []
     for (let i = 0; i < props.qnaList.length; i++) {
         if (props.qnaList[i].seq === Number(params[3])) {
@@ -10,43 +12,50 @@ const QnAView = (props) => {
             viewPost.push(props.qnaList[i])
         }
     }
+
     console.log(viewPost);
+
     const mapViewPost = viewPost.map(data => {
         return (
-            <Container key={data.seq}>
-                <h3>QnA 상세</h3>
-                <Form method='post' action=''>
-                    <Form.Group>
-                        <Form.Label>번호</Form.Label>
-                        <Form.Control value={data.seq} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>제목</Form.Label>
-                        <Form.Control value={data.title} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>내용</Form.Label>
-                        <Form.Control value={data.content} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>작성자</Form.Label>
-                        <Form.Control value={data.writer} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>등록일</Form.Label>
-                        <Form.Control value={data.regDate} className="mb-3" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>답변</Form.Label>
-                        <Form.Control value={data.answer} className="mb-3" />
-                    </Form.Group>
-                    <Button variant="dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/QnAList'} >
-                        목록
-                    </Button>
-                </Form>
-            </Container>
+            <div key={data.seq} className="board_wrap">
+                <div className="board_title">
+                    <strong>QnA상세</strong>
+                    <p>QnA를 확인하세요.</p>
+                </div>
+
+                <div className="board_write_wrap">
+                    <div className="board_write">
+                        <div class="info">
+                            <dl>
+                                <dt>번호</dt>
+                                <dd>{data.seq}</dd>
+                            </dl>
+                            <dl>
+                                <dt>제목</dt>
+                                <dd>{data.title}</dd>
+                            </dl>
+                            <dl>
+                                <dt>작성자</dt>
+                                <dd><dd>{data.writer}</dd></dd>
+                            </dl>
+                            <dl>
+                                <dt>등록일</dt>
+                                <dd>{data.regDate}</dd>
+                            </dl>
+                            <dl>
+                                <dt>답변</dt>
+                                <dd>{data.answer}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div className="bt_wrap">
+                        <button className="on" onClick={() => document.location.href = "/QnAList"}>목록</button>
+                    </div>
+                </div>
+            </div >
         )
     })
+
     return (
         <div className="QnAView">
             {mapViewPost}

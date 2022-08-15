@@ -5,12 +5,13 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import data from '../../json/data.json';
 import '../../css/calendar.css';
 
+
 const QnAWorkout = () => {
-    const events = [{ title: "숄더프레스,레터럴레이즈,프론트레이즈", date: new Date() }];
     const [feedbackWorkout, setFeedbackWorkout] = useState({
         date: '',
         feedback: '',
     })
+
     const inputChange = (e) => {
         console.log(e.target.name)
         console.log(e.target.value)
@@ -21,7 +22,7 @@ const QnAWorkout = () => {
     }
 
     const list = data.workoutInfo.map((data, index) => (
-        <Card key={index} className="mb-5">
+        <Card key={index} className="mb-5" id={data.id}>
             <Card.Img variant="top" src={data.image.src} alt={data.image.alt} height="400px" />
             <Card.Body>
                 <Card.Title>{data.title}</Card.Title>
@@ -29,9 +30,11 @@ const QnAWorkout = () => {
                     {data.desc}
                 </Card.Text>
             </Card.Body>
-        </Card>
+        </Card >
     )
     )
+
+    const events = [{ title: "숄더프레스,레터럴레이즈,프론트레이즈", date: new Date() }];
 
     return (
         <Container className='feedbackWorkout'>
@@ -46,23 +49,26 @@ const QnAWorkout = () => {
                 eventBackgroundColor="#ddd"
             />
 
-            <Button variant="outline-dark" type="button" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                식단
-            </Button>
-            <Button variant="dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/'}>
+            <Button variant="dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackWorkout'}>
                 운동
+            </Button>
+            <Button variant="outline-dark" type="button" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackDiet'} >
+                식단
             </Button>
 
             <div>
                 <ListGroup defaultActiveKey="#link1" className="my-1">
-                    <ListGroup.Item action href="#link1">
+                    <ListGroup.Item action href="#1">
                         숄더프레스
                     </ListGroup.Item>
-                    <ListGroup.Item action href="#link2">
-                        레터럴레이즈
+                    <ListGroup.Item action href="#2">
+                        프론트레터럴레이즈
                     </ListGroup.Item>
-                    <ListGroup.Item action href="#link3">
-                        프론트레이즈
+                    <ListGroup.Item action href="#3">
+                        스쿼트
+                    </ListGroup.Item>
+                    <ListGroup.Item action href="#4">
+                        런지
                     </ListGroup.Item>
                 </ListGroup>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form, Container } from "react-bootstrap";
+
 
 const TrainerWrite = () => {
     const [writeInfo, setWriteInfo] = useState({
@@ -15,6 +15,7 @@ const TrainerWrite = () => {
         file: '',
         fileName: ''
     })
+
     const inputChange = (e) => {
         console.log(e.target.name)
         console.log(e.target.value)
@@ -25,94 +26,75 @@ const TrainerWrite = () => {
     }
 
     return (
-        <Container className='trainerWrite'>
-            <h3>내정보 등록</h3>
-            <Form method='post' action='/api/trainerUpdate' multipart='form-data'>
-                <Form.Group>
-                    <Form.Label>아이디</Form.Label>
-                    <Form.Control type="text" name="id" placeholder="아이디 입력" autoFocus className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>이름</Form.Label>
-                    <Form.Control type="text" name="name" placeholder="이름 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>연령</Form.Label>
-                    <Form.Control type="number" name="age" placeholder="연령 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                {/* <Form.Group>
-                    <Form.Label>성별</Form.Label>
-                    <Form.Control type="text" name="sex" placeholder="성별 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group> */}
-                <Form.Group>
-                    <Form.Label>성별</Form.Label>
-                    <div key="custom-inline-radio" className="mb-3">
-                        <Form.Check
-                            custom
-                            inline
-                            name="sex"
-                            label="남자"
-                            type="radio"
-                            id="custom-inline-radio-1"
-                            checked={writeInfo.sex === "남"}
-                            value="남"
-                            onChange={inputChange}
-                        />
-                        <Form.Check
-                            custom
-                            inline
-                            label="여자"
-                            name="sex"
-                            type="radio"
-                            id="custom-inline-radio-2"
-                            checked={writeInfo.sex === "여"}
-                            value="여"
-                            onChange={inputChange}
-                        />
+        <div className="board_wrap">
+            <div className="board_title">
+                <strong>내정보 등록</strong>
+                <p>내 정보를 모두 입력해주세요.</p>
+            </div>
+
+            <form method="post" action="/api/trainerUpdate" multipart="form-data">
+                <input type="hidden" name="id" value={sessionStorage.getItem('id')} />
+                <div className="board_write_wrap">
+                    <div className="board_write">
+                        <div class="info">
+                            <dl>
+                                <dt>이름</dt>
+                                <dd><input type="text" name="name" placeholder="이름 입력" autoFocus className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>연령</dt>
+                                <dd><input type="number" name="age" placeholder="연령 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>성별</dt>
+                                <dd>
+                                    <input type="radio" id="man" name="sex" value="남" checked={writeInfo.sex === "남"} onChange={inputChange} />
+                                    <label for="man">남자</label>
+                                    <input type="radio" id="woman" name="sex" value="여" checked={writeInfo.sex === "여"} onChange={inputChange} />
+                                    <label for="woman">여자</label>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>생년월일</dt>
+                                <dd><input type="date" name="birth" placeholder="생년월일 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>키</dt>
+                                <dd><input type="number" name="height" placeholder="키 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>체중</dt>
+                                <dd><input type="number" name="weight" placeholder="체중 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>전화번호</dt>
+                                <dd><input type="tel" name="phone" placeholder="전화번호 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>이메일</dt>
+                                <dd><input type="email" name="email" placeholder="이메일 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>수상</dt>
+                                <dd><textarea name="award" placeholder="수상 입력" className="cont" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>이력</dt>
+                                <dd><textarea name="career" placeholder="이력 입력" className="cont" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>프로필사진</dt>
+                                <dd><input type="file" name="file" /></dd>
+                            </dl>
+                        </div>
                     </div>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>생년월일</Form.Label>
-                    <Form.Control type="date" name="birth" placeholder="생년월일 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>키</Form.Label>
-                    <Form.Control type="number" name="height" placeholder="키 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>체중</Form.Label>
-                    <Form.Control type="number" name="weight" placeholder="체중 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>전화번호</Form.Label>
-                    <Form.Control type="tel" name="phone" placeholder="전화번호 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>이메일</Form.Label>
-                    <Form.Control type="email" name="email" placeholder="이메일 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>수상</Form.Label>
-                    <Form.Control as="textarea" name="award" placeholder="수상 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>이력</Form.Label>
-                    <Form.Control as="textarea" name="career" placeholder="이력 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>프로필 사진</Form.Label>
-                    <Form.Control type="file" name="file" placeholder="프로필 사진 업로드" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
-                        등록
-                    </Button>
-                    <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                        취소
-                    </Button>
-                </Form.Group>
-            </Form>
-        </Container>
+                    <div className="bt_wrap">
+                        <button className="on">등록</button>
+                        <a href="/">취소</a>
+                    </div>
+                </div>
+            </form>
+        </div >
     )
 }
 

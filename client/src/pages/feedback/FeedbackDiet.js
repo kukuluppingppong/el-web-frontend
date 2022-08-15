@@ -9,15 +9,25 @@ import '../../css/calendar.css';
 // import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 // import { TextField } from "@mui/material";
 
+
 const QnADiet = () => {
-    // const [value, setValue] = useState({
-    //     date: '2014-08-18T21:11:54',
-    // })
-    const events = [{ title: "아침,점심,저녁", date: new Date() }];
     const [feedbackDiet, setFeedbackDiet] = useState({
         date: '',
         feedback: '',
     })
+
+    const inputChange = (e) => {
+        console.log(e.target.name)
+        console.log(e.target.value)
+        setFeedbackDiet({
+            ...feedbackDiet,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    // const [value, setValue] = useState({
+    //     date: '2014-08-18T21:11:54',
+    // })
 
     // const handleChange = (e) => {
     //     console.log(e.target.name)
@@ -28,14 +38,7 @@ const QnADiet = () => {
     //     })
     // }
 
-    const inputChange = (e) => {
-        console.log(e.target.name)
-        console.log(e.target.value)
-        setFeedbackDiet({
-            ...feedbackDiet,
-            [e.target.name]: e.target.value
-        })
-    }
+
 
     const list = data.dietInfo.map((data, index) => (
         <Card key={index} className="mb-5">
@@ -50,6 +53,7 @@ const QnADiet = () => {
     )
     )
 
+    const events = [{ title: "아침,점심,저녁", date: new Date() }];
 
     return (
         <Container className='feedbackDiet'>
@@ -73,11 +77,12 @@ const QnADiet = () => {
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider> */}
-            <Button variant="dark" type="button" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                식단
-            </Button>
-            <Button variant="outline-dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/'}>
+
+            <Button variant="outline-dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackWorkout'}>
                 운동
+            </Button>
+            <Button variant="dark" type="button" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackDiet'}>
+                식단
             </Button>
 
             <div>
