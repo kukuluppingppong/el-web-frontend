@@ -55,7 +55,7 @@ const Header = () => {
                                 <Nav.Link href="/memberList">회원목록</Nav.Link>
                                 <Nav.Link href="/feedbackWorkout">피드백</Nav.Link>
                                 <Nav.Link href="/QnAList">QnA</Nav.Link>
-                                <Nav.Link href="/trainerView">내정보</Nav.Link>
+                                <Nav.Link href="/trainerWrite">내정보</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link>

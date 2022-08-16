@@ -20,7 +20,7 @@ const Notification = ({ show, onHide }) => {
         <Modal
             show={show}
             onHide={onHide}
-            size="sm"
+            size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >

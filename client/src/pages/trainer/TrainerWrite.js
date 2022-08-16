@@ -11,9 +11,10 @@ const TrainerWrite = () => {
         height: '',
         weight: '',
         award: '',
-        career: '',
         file: '',
-        fileName: ''
+        fileName: '',
+        career: '',
+        addr: '',
     })
 
     const inputChange = (e) => {
@@ -75,6 +76,14 @@ const TrainerWrite = () => {
                                 <dd><input type="email" name="email" placeholder="이메일 입력" className="mb-3" onChange={inputChange} /></dd>
                             </dl>
                             <dl>
+                                <dt>헬스장위치</dt>
+                                <dd><textarea name="addr" placeholder="헬스장위치 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>프로필사진</dt>
+                                <dd><input type="file" name="file" className="mb-3" /></dd>
+                            </dl>
+                            <dl>
                                 <dt>수상</dt>
                                 <dd><textarea name="award" placeholder="수상 입력" className="cont" onChange={inputChange} /></dd>
                             </dl>
@@ -82,15 +91,12 @@ const TrainerWrite = () => {
                                 <dt>이력</dt>
                                 <dd><textarea name="career" placeholder="이력 입력" className="cont" onChange={inputChange} /></dd>
                             </dl>
-                            <dl>
-                                <dt>프로필사진</dt>
-                                <dd><input type="file" name="file" /></dd>
-                            </dl>
                         </div>
                     </div>
                     <div className="bt_wrap">
-                        <button className="on">등록</button>
-                        <a href="/">취소</a>
+                        <a href="/">목록</a>
+                        <button className="on" onClick={() => document.location.href = `/api/trainerUpdate/${sessionStorage.getItem('id')}`}>수정</button>
+                        <button className="on" onClick={() => document.location.href = `/api/trainerDelete/${sessionStorage.getItem('id')}`}>삭제</button>
                     </div>
                 </div>
             </form>

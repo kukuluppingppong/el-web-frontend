@@ -8,7 +8,6 @@ import MemberWrite from './pages/member/MemberWrite';
 import MemberView from './pages/member/MemberView';
 import MemberEdit from './pages/member/MemberEdit';
 import TrainerWrite from './pages/trainer/TrainerWrite';
-import TrainerView from './pages/trainer/TrainerView';
 import FeedbackWorkout from './pages/feedback/FeedbackWorkout';
 import FeedbackDiet from './pages/feedback/FeedbackDiet';
 import Notification from './pages/notification/Notification';
@@ -27,16 +26,6 @@ function App() {
     <Layout>
       <Container style={{ minHeight: "80vh" }}>
         <Search />
-        {/* <MemberList memberList={memberList} /> */}
-        {/* <MemberView memberList={memberList} /> */}
-        {/* <MemberEdit memberList={memberList} /> */}
-        {/* <FeedbackWorkout /> */}
-        {/* <FeedbackDiet /> */}
-        {/* <Notification /> */}
-        {/* <QnAList qnaList={qnaList} /> */}
-        {/* <QnAView qnaList={qnaList} /> */}
-        {/* <MemberWrite /> */}
-        {/* <TrainerWrite /> */}
         {/* <BoardList />
         <BoardWrite />
         <BoardView />
@@ -49,7 +38,6 @@ function App() {
           <Route exact path='/memberEdit/:id' element={<MemberEdit />}></Route>
           <Route exact path='/memberWrite' element={<MemberWrite />}></Route>
           <Route exact path='/trainerWrite' element={<TrainerWrite />}></Route>
-          <Route exact path='/trainerView' element={<TrainerView />}></Route>
           <Route exact path='/feedbackWorkout' element={<FeedbackWorkout />}></Route>
           <Route exact path='/feedbackDiet' element={<FeedbackDiet />}></Route>
           <Route exact path='/QnAList' element={<QnAList />}></Route>

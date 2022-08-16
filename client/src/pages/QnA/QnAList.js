@@ -6,14 +6,14 @@ import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell
 const QnAList = () => {
     const [loadQnAList, setLoadQnaList] = useState([]);
 
-    const resQnA = async () => {
+    const resQnAList = async () => {
         const loadQnAList = await axios.get('/api/QnAList');
         console.log(loadQnAList.data);
         setLoadQnaList(loadQnAList.data);
     }
 
     useEffect(() => {
-        resQnA()
+        resQnAList()
     }, [])
 
     const cellList = ["번호", "제목", "작성자", "등록일", "답변"]
@@ -24,7 +24,7 @@ const QnAList = () => {
             <TableCell align='right'><a href={`/QnAView/${data.seq}`}>{data.title}</a></TableCell>
             <TableCell align='right'>{data.writer}</TableCell>
             <TableCell align='right'>{data.regDate}</TableCell>
-            <TableCell align='right'>{data.answer}</TableCell>
+            <TableCell align='right'>{data.answerCheck}</TableCell>
         </TableRow>
     )
     )

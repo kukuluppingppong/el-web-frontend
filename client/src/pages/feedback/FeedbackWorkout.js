@@ -34,7 +34,7 @@ const QnAWorkout = () => {
     )
     )
 
-    const events = [{ title: "숄더프레스,레터럴레이즈,프론트레이즈", date: new Date() }];
+    const events = [{ title: "숄더프레스,프론트레터럴레이즈,스쿼트,런지", date: new Date() }];
 
     return (
         <Container className='feedbackWorkout'>
@@ -46,7 +46,7 @@ const QnAWorkout = () => {
                 moreLinkClick="popover"
                 contentHeight="500px"
                 eventDisplay='block'
-                eventBackgroundColor="#ddd"
+                eventColor='#4F4F4F'
             />
 
             <Button variant="dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackWorkout'}>

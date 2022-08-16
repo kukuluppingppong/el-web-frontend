@@ -223,7 +223,25 @@ a {
 
 .board_view .cont {
   padding: 15px;
+  border-bottom: 1px dashed #ddd;
+  height: 300px;
+  line-height: 160%;
+  font-size: 1.4rem;
+}
+
+.board_view .answer {
+  padding: 15px;
   border-bottom: 1px solid #000;
+  height: 100px;
+  line-height: 160%;
+  font-size: 1.4rem;
+}
+
+.board_view_wrap .cont {
+  padding: 15px;
+  margin-top: 30px;
+  width: 100%;
+  height: 100px;
   line-height: 160%;
   font-size: 1.4rem;
 }

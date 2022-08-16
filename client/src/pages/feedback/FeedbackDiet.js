@@ -65,7 +65,7 @@ const QnADiet = () => {
                 moreLinkClick="popover"
                 contentHeight="500px"
                 eventDisplay='block'
-                eventBackgroundColor="#ddd"
+                eventColor='#4F4F4F'
             />
 
             {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
