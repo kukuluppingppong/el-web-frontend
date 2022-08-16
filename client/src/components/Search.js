@@ -40,7 +40,7 @@ const Search = () => {
                 width: '50ch',
                 border: '1px solid #ddd',
                 borderRadius: '30px',
-                margin: '50px 0',
+                margin: '20px 0',
                 '&:focus': {
                     width: '60ch',
                 },

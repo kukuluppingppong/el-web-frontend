@@ -17,6 +17,10 @@ a {
   color: inherit;
 }
 
+h3 {
+  margin-top: 10px;
+}
+
 .horizontal {
   width: 100%;
   text-align: center;

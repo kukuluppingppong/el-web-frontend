@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Search from '../../components/Search';
 import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Button } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import EditIcon from '@mui/icons-material/Edit';
@@ -48,6 +49,7 @@ function MemberList() {
     return (
         <div className='memberList'>
             <h3>회원목록</h3>
+            <Search />
             <Button variant="dark" type="button" className="my-2 rounded-pill" onClick={() => document.location.href = '/memberWrite'}>
                 글쓰기&nbsp;<CreateIcon />
             </Button>

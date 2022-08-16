@@ -74,8 +74,8 @@ function MemberView() {
                                 <dd>{data.email}</dd>
                             </dl>
                             <dl>
-                                <dt>사진</dt>
-                                <dd>{data.image}</dd>
+                                <dt>인바디</dt>
+                                <dd><a href="/memberInbody">인바디 정보 보러가기</a></dd>
                             </dl>
                         </div>
                     </div>

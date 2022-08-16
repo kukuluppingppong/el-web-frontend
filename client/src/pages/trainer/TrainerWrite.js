@@ -77,7 +77,7 @@ const TrainerWrite = () => {
                             </dl>
                             <dl>
                                 <dt>헬스장위치</dt>
-                                <dd><textarea name="addr" placeholder="헬스장위치 입력" className="mb-3" onChange={inputChange} /></dd>
+                                <dd><input type="text" name="addr" placeholder="헬스장위치 입력" className="mb-3" onChange={inputChange} /></dd>
                             </dl>
                             <dl>
                                 <dt>프로필사진</dt>
