@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navbar, Nav, Button, Container, Dropdown } from "react-bootstrap";
 import SignUpModal from "../modals/SignUpModal";
 import SignInModal from "../modals/SignInModal";
+import Notification from "../../pages/notification/Notification";
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -10,12 +11,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Header = () => {
     const [signUpModalOn, setSignUpModalOn] = useState(false);
     const [signInModalOn, setSignInModalOn] = useState(false);
+    const [notificationOn, setNotificationOn] = useState(false);
 
-    // const logIn = () =>{
-    //     if(sessionStorage.getItem('id') != null){
+    // const logIn = () => {
+    //     if (sessionStorage.getItem('id') != null) {
     //         return logRender = <p>환영합니다 {sessionStorage.getItem('id')}님 !</p>
-    //     }else{
-    //         return logRender =  null;
+    //     } else {
+    //         return logRender = null;
     //     }
     // }
 
@@ -38,18 +40,22 @@ const Header = () => {
                 show={signInModalOn}
                 onHide={() => setSignInModalOn(false)}
             />
+            <Notification
+                show={notificationOn}
+                onHide={() => setNotificationOn(false)}
+            />
 
             <header>
                 <Navbar bg="light" expand="lg">
                     <Container>
-                        <Navbar.Brand><Nav.Link href="/memberList">Trainer</Nav.Link></Navbar.Brand>
+                        <Navbar.Brand><Nav.Link href="/">Trainer</Nav.Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
                                 <Nav.Link href="/memberList">회원목록</Nav.Link>
                                 <Nav.Link href="/feedbackWorkout">피드백</Nav.Link>
                                 <Nav.Link href="/QnAList">QnA</Nav.Link>
-                                <Nav.Link href="/trainerWrite">내정보</Nav.Link>
+                                <Nav.Link href="/trainerView">내정보</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link>
@@ -72,7 +78,7 @@ const Header = () => {
                                         <Dropdown.Menu>
                                             <Dropdown.Item href="#" onClick={() => setSignInModalOn(true)}>로그인</Dropdown.Item>
                                             <Dropdown.Item href="#" onClick={() => setSignUpModalOn(true)}>회원가입</Dropdown.Item>
-                                            <Dropdown.Item href="/notification">알림</Dropdown.Item>
+                                            <Dropdown.Item href="#" onClick={() => setNotificationOn(true)}>알림</Dropdown.Item>
                                             <Dropdown.Item href="#" onClick={() => logOut()}>로그아웃</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>

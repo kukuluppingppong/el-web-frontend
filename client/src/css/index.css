@@ -66,6 +66,11 @@ a {
   border-radius: 30px;
 }
 
+.bt_wrap a {
+  text-decoration: none;
+  color: #000;
+}
+
 .bt_wrap .on {
   background: #000;
   color: #fff;
@@ -266,9 +271,13 @@ a {
   width: calc(100% - 100px);
 }
 
-.board_write .title input[type="text"],
 .board_write .info input[type="text"],
-.board_write .info select {
+.board_write .info input[type="password"],
+.board_write .info input[type="number"],
+.board_write .info input[type="date"],
+.board_write .info input[type="tel"],
+.board_write .info input[type="email"],
+.board_write .info .cont {
   width: 300px;
   padding: 10px;
   box-sizing: border-box;
@@ -276,6 +285,10 @@ a {
 
 .board_write .title input[type="text"] {
   width: 100%;
+}
+
+.board_write .info input[type="radio"] {
+  width: 30px;
 }
 
 .board_write .cont {

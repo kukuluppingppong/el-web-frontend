@@ -31,7 +31,7 @@ const SignUpModal = ({ show, onHide }) => {
 
     const loginSuccess = () => {
         alert("회원가입이 성공적으로 이루어졌습니다.")
-        // document.location.href = '/';
+        document.location.href = '/';
     }
     console.log(watch("id"));
 

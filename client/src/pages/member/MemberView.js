@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 
 
-function MemberView(props) {
-    const params = window.location.pathname.split('/');
+function MemberView() {
+    const { id } = useParams();
 
-    const viewPost = []
-    for (let i = 0; i < props.memberList.length; i++) {
-        if (props.memberList[i].id === Number(params[3])) {
-            console.log(props.memberList[i]);
-            viewPost.push(props.memberList[i])
-        }
+    const [loadMemberView, setLoadMemberView] = useState([]);
+
+    const resMemberView = async () => {
+        const loadMemberView = await axios.post(`/api/memberView/${id}`);
+        console.log(loadMemberView.data);
+        setLoadMemberView(loadMemberView.data);
     }
 
-    console.log(viewPost);
+    useEffect(() => {
+        resMemberView()
+    }, [])
 
-    const mapViewPost = viewPost.map(data => {
+    const mapViewPost = loadMemberView.map(data => {
         return (
             <div key={data.id} className="board_wrap">
                 <div className="board_title">
@@ -77,7 +81,7 @@ function MemberView(props) {
                     </div>
                     <div className="bt_wrap">
                         <a href="/memberList">목록</a>
-                        <button className="on" onClick={() => document.location.href = `memberView/${data.id}`}>수정</button>
+                        <button className="on" onClick={() => document.location.href = `/memberEdit/${data.id}`}>수정</button>
                         <button className="on" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>삭제</button>
                     </div>
                 </div>

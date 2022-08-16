@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
-function TrainerView(props) {
-    const params = window.location.pathname.split('/');
+function TrainerView() {
+    const [trainerData, setTrainerData] = useState([]);
 
-    const viewPost = []
-    for (let i = 0; i < props.trainerList.length; i++) {
-        if (props.trainerList[i].number === Number(params[3])) {
-            viewPost.push(props.trainerList[i])
-        }
+    const resTrainer = async () => {
+        const trainerData = await axios.get('/api/trainerView');
+        console.log(trainerData.data);
+        setTrainerData(trainerData.data);
     }
 
-    console.log(viewPost);
+    useEffect(() => {
+        resTrainer()
+    }, [trainerData])
 
-    const mapViewPost = viewPost.map(data => {
+    const mapViewPost = trainerData.map(data => {
         return (
             <div key={data.id} className="board_wrap">
                 <div className="board_title">

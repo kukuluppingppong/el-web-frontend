@@ -22,7 +22,7 @@ const SignInModal = ({ show, onHide }) => {
                         alert("로그인에 성공하였습니다.")
                         alert(`환영합니다 ${data.id}님`)
                         sessionStorage.setItem('id', data.id)
-                        // document.location.href = '/';
+                        document.location.href = '/';
                     }
                     // console.log(id)
                     // console.log(password)

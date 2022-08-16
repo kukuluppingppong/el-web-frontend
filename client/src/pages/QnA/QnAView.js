@@ -1,21 +1,24 @@
-import React from 'react'
-import { Button, Form, Container } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 
 
-const QnAView = (props) => {
-    const params = window.location.pathname.split('/');
+const QnAView = () => {
+    const { seq } = useParams();
 
-    const viewPost = []
-    for (let i = 0; i < props.qnaList.length; i++) {
-        if (props.qnaList[i].seq === Number(params[3])) {
-            console.log(props.qnaList[i]);
-            viewPost.push(props.qnaList[i])
-        }
+    const [loadQnAView, setLoadQnAView] = useState([]);
+
+    const resQnAView = async () => {
+        const loadQnAView = await axios.post(`/api/QnAView/${seq}`);
+        console.log(loadQnAView.data);
+        setLoadQnAView(loadQnAView.data);
     }
 
-    console.log(viewPost);
+    useEffect(() => {
+        resQnAView()
+    }, [])
 
-    const mapViewPost = viewPost.map(data => {
+    const mapViewPost = loadQnAView.map(data => {
         return (
             <div key={data.seq} className="board_wrap">
                 <div className="board_title">

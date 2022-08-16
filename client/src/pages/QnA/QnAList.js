@@ -3,13 +3,25 @@ import axios from 'axios';
 import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
 
-const QnAList = (props) => {
+const QnAList = () => {
+    const [loadQnAList, setLoadQnaList] = useState([]);
+
+    const resQnA = async () => {
+        const loadQnAList = await axios.get('/api/QnAList');
+        console.log(loadQnAList.data);
+        setLoadQnaList(loadQnAList.data);
+    }
+
+    useEffect(() => {
+        resQnA()
+    }, [])
+
     const cellList = ["번호", "제목", "작성자", "등록일", "답변"]
 
-    const list = props.qnaList.map((data, index) => (
+    const list = loadQnAList.map((data, index) => (
         <TableRow key={index}>
             <TableCell align='right'>{index}</TableCell>
-            <TableCell align='right'><a href={`/api/QnAView/${data.seq}`}>{data.title}</a></TableCell>
+            <TableCell align='right'><a href={`/QnAView/${data.seq}`}>{data.title}</a></TableCell>
             <TableCell align='right'>{data.writer}</TableCell>
             <TableCell align='right'>{data.regDate}</TableCell>
             <TableCell align='right'>{data.answer}</TableCell>

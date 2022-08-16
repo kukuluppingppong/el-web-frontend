@@ -57,7 +57,7 @@ const QnAWorkout = () => {
             </Button>
 
             <div>
-                <ListGroup defaultActiveKey="#link1" className="my-1">
+                <ListGroup defaultActiveKey="#1" className="my-1">
                     <ListGroup.Item action href="#1">
                         숄더프레스
                     </ListGroup.Item>
