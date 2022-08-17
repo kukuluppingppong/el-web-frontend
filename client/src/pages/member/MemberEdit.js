@@ -48,6 +48,15 @@ const MemberEdit = () => {
                     <strong>회원 수정</strong>
                     <p>회원 정보를 수정해주세요.</p>
                 </div>
+                <nav className="board_list">
+                    <ul>
+                        <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
+                        <li align='right'>개인정보</li>
+                        <li align='right'>인바디정보</li>
+                        <li align='right'>운동기록</li>
+                        <li align='right'>식단기록</li>
+                    </ul>
+                </nav>
 
                 <form method="post" action="/api/memberUpdate">
                     <input type="hidden" name="id" value={data.id} />

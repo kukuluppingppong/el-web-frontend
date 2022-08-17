@@ -32,6 +32,15 @@ const TrainerWrite = () => {
                 <strong>내정보 등록</strong>
                 <p>내 정보를 모두 입력해주세요.</p>
             </div>
+            <nav className="board_list">
+                <ul>
+                    <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
+                    <li align='right'>개인정보</li>
+                    <li align='right'>자기소개</li>
+                    <li align='right'>인바디정보</li>
+                    <li align='right'>SNS</li>
+                </ul>
+            </nav>
 
             <form method="post" action="/api/trainerUpdate" multipart="form-data">
                 <input type="hidden" name="id" value={sessionStorage.getItem('id')} />

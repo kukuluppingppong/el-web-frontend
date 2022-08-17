@@ -26,7 +26,7 @@ const QnAWorkout = () => {
 
     const list = data.workoutInfo.map((data, index) => (
         <div key={index} className="card">
-            <img className="card_img" src={data.image.src} alt={data.image.alt} width="100%" height="350px" />
+            <img className="card_img" src={data.image.src} alt={data.image.alt} />
             <div className="card_body">
                 <p className="card_text"> {data.desc}</p>
                 <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
@@ -62,7 +62,7 @@ const QnAWorkout = () => {
                         <a href="/feedbackWorkout" className="bt_workout">운동</a>
                         <a href="/feedbackDiet" className="bt_diet">식단</a>
                     </div>
-                    <nav className="board_list">
+                    <nav className="feedback_list">
                         <ul>
                             {cellList.map(cell => {
                                 return <li align='right'>{cell}</li>
