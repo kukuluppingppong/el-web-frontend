@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import FullCalendar, { CalendarApi } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import SendIcon from '@mui/icons-material/Send';
 import data from '../../json/data.json';
 import '../../css/calendar.css';
 
@@ -24,9 +25,11 @@ const QnADiet = () => {
 
     const list = data.dietInfo.map((data, index) => (
         <div key={index} className="card">
-            <img className="card_img" src={data.image.src} alt={data.image.alt} width="100%" height="400px" />
+            <img className="card_img" src={data.image.src} alt={data.image.alt} width="100%" height="350px" />
             <div className="card_body">
                 <p className="card_text"> {data.desc}</p>
+                <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} />
+                <button className="bt_send" onClick={() => document.location.href = '/memberList'}><SendIcon fontSize="large" /></button>
             </div>
         </div>
     )
@@ -68,12 +71,6 @@ const QnADiet = () => {
 
                     {list}
 
-                    <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} />
-
-                    <div className="bt_wrap">
-                        <button className="on" onClick={() => document.location.href = '/memberList'}>등록</button>
-                        <a href="/memberList">목록</a>
-                    </div>
                 </div>
             </form>
         </div >

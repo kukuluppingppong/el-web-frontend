@@ -103,14 +103,24 @@ h3 {
   color: #4F4F4F;
 }
 
+.bt_send {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background-color: #9A9A9A;
+  border: 1px solid #9A9A9A;
+  border-radius: 30px;
+  margin: 0 0 30px 50px;
+}
+
 .board_list_wrap {
-  margin-top: 50px;
+  margin: 50px 0 10px 0;
 }
 
 .board_list {
   float: left;
   width: 30%;
-  height: 450px;
+  height: 600px;
   padding: 15px;
   background-color: #EFF0F2;
   border-radius: 12px 0px 0px 12px;
@@ -129,19 +139,20 @@ h3 {
   color: black;
 }
 
-.board_list_wrap .cont {
-  width: 100%;
+.card_body .card_text {
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 20px 0 0 10px;
+}
+
+.card_body .cont {
+  width: 85%;
   height: 100px;
   padding: 15px;
   margin-top: 30px;
   background: #FFFFFF;
   border: 1px solid #E8EAEC;
-  border-radius: 10px;
-}
-
-.card_text {
-  font-size: 1.5rem;
-  padding: 15px;
+  border-radius: 8px;
 }
 
 .board_page {
