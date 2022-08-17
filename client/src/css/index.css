@@ -80,58 +80,68 @@ h3 {
   color: #fff;
 }
 
-.board_list {
-  width: 100%;
-  border-top: 2px solid #000;
-}
-
-.board_list>div {
-  border-bottom: 1px solid #ddd;
-  font-size: 0;
-}
-
-.board_list>div.top {
-  border-bottom: 1px solid #999;
-}
-
-.board_list>div:last-child {
-  border-bottom: 1px solid #000;
-}
-
-.board_list>div>div {
+.bt_wrap_feedback .bt_workout,
+.bt_diet {
   display: inline-block;
-  padding: 15px 0;
+  text-decoration: none;
   text-align: center;
+  width: 180px;
+  height: 44px;
+  padding: 10px;
+  margin: 30px 10px;
+  border: 1px solid #4F4F4F;
   font-size: 1.4rem;
+  border-radius: 8px;
 }
 
-.board_list>div.top>div {
-  font-weight: 600;
+.bt_wrap_feedback .bt_workout {
+  background: #4F4F4F;
+  color: #fff;
 }
 
-.board_list .num {
-  width: 10%;
+.bt_wrap_feedback .bt_diet {
+  color: #4F4F4F;
 }
 
-.board_list .title {
-  width: 60%;
+.board_list_wrap {
+  margin-top: 50px;
+}
+
+.board_list {
+  float: left;
+  width: 30%;
+  height: 450px;
+  padding: 15px;
+  background-color: #EFF0F2;
+  border-radius: 12px 0px 0px 12px;
+}
+
+.board_list li {
+  display: block;
   text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #888888;
+  padding: 20px 0;
 }
 
-.board_list .top .title {
-  text-align: center;
+.board_list li:hover {
+  color: black;
 }
 
-.board_list .writer {
-  width: 10%;
+.board_list_wrap .cont {
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  margin-top: 30px;
+  background: #FFFFFF;
+  border: 1px solid #E8EAEC;
+  border-radius: 10px;
 }
 
-.board_list .date {
-  width: 10%;
-}
-
-.board_list .count {
-  width: 10%;
+.card_text {
+  font-size: 1.5rem;
+  padding: 15px;
 }
 
 .board_page {

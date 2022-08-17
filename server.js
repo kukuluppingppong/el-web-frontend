@@ -132,6 +132,18 @@ app.post('/api/memberWrite', (req, res, next) => {
 //     })
 // })
 
+app.post('/api/feedback', (req, res, next) => {
+    console.log(req.requestData);
+    const date = req.requestData.date;
+    const feedback = req.requestData.feedback;
+    const sql = `insert into feedback (date,feedback) values ('${date}','${feedback}');`;
+    connection.query(sql, async (err, result) => {
+        if (err) throw err;
+        console.log("1 record inserted");
+        res.send(result);
+    })
+})
+
 app.post("/api/search/:searchText", (req, res) => {
     console.log(req.params.searchText);
     const text = req.params.searchText;

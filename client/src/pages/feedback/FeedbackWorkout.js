@@ -21,23 +21,27 @@ const QnAWorkout = () => {
         })
     }
 
+    const cellList = ["숄더프레스", "프론트레이즈", "스쿼트", "런지"]
+
     const list = data.workoutInfo.map((data, index) => (
-        <Card key={index} className="mb-5" id={data.id}>
-            <Card.Img variant="top" src={data.image.src} alt={data.image.alt} height="400px" />
-            <Card.Body>
-                <Card.Title>{data.title}</Card.Title>
-                <Card.Text>
-                    {data.desc}
-                </Card.Text>
-            </Card.Body>
-        </Card >
+        <div key={index} className="card">
+            <img className="card_img" src={data.image.src} alt={data.image.alt} width="100%" height="400px" />
+            <div className="card_body">
+                <p className="card_text"> {data.desc}</p>
+            </div>
+        </div>
     )
     )
 
-    const events = [{ title: "숄더프레스,프론트레터럴레이즈,스쿼트,런지", date: new Date() }];
+    const events = [{ title: cellList, date: new Date() }];
 
     return (
-        <Container className='feedbackWorkout'>
+        <div className="board_wrap">
+            <div className="board_title">
+                <strong>김동양님</strong>
+                <p>운동 피드백을 입력해주세요.</p>
+            </div>
+
             <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView='dayGridMonth'
@@ -49,46 +53,31 @@ const QnAWorkout = () => {
                 eventColor='#4F4F4F'
             />
 
-            <Button variant="dark" type="submit" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackWorkout'}>
-                운동
-            </Button>
-            <Button variant="outline-dark" type="button" className="my-5 m-2 rounded-pill" onClick={() => document.location.href = '/feedbackDiet'} >
-                식단
-            </Button>
+            <form method="post" action="/api/feedback">
+                <div className="board_list_wrap">
+                    <div className="bt_wrap_feedback">
+                        <a href="/feedbackWorkout" className="bt_workout">운동</a>
+                        <a href="/feedbackDiet" className="bt_diet">식단</a>
+                    </div>
+                    <nav className="board_list">
+                        <ul>
+                            {cellList.map(cell => {
+                                return <li align='right'>{cell}</li>
+                            })}
+                        </ul>
+                    </nav>
 
-            <div>
-                <ListGroup defaultActiveKey="#1" className="my-1">
-                    <ListGroup.Item action href="#1">
-                        숄더프레스
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="#2">
-                        프론트레터럴레이즈
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="#3">
-                        스쿼트
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="#4">
-                        런지
-                    </ListGroup.Item>
-                </ListGroup>
+                    {list}
 
-                {list}
-            </div>
+                    <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} />
 
-            <Form method='post' action='/api/feedbackWorkout'>
-                <Form.Group>
-                    <Form.Control as="textarea" name="feedback" placeholder="피드백 입력" className="mb-3" onChange={inputChange} />
-                </Form.Group>
-                <Form.Group>
-                    <Button variant="dark" type="submit" className="m-2 rounded-pill" onClick={() => document.location.href = '/'}>
-                        등록
-                    </Button>
-                    <Button variant="outline-dark" type="button" className="m-2 rounded-pill" onClick={() => document.location.href = '/'} >
-                        취소
-                    </Button>
-                </Form.Group>
-            </Form>
-        </Container >
+                    <div className="bt_wrap">
+                        <button className="on" onClick={() => document.location.href = '/memberList'}>등록</button>
+                        <a href="/memberList">목록</a>
+                    </div>
+                </div>
+            </form >
+        </div >
     )
 }
 
