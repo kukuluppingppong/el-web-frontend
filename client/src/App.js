@@ -8,6 +8,8 @@ import MemberView from './pages/member/MemberView';
 import MemberEdit from './pages/member/MemberEdit';
 import MemberInbody from './pages/member/MemberInbody';
 import TrainerWrite from './pages/trainer/TrainerWrite';
+import TrainerView from './pages/trainer/TrainerView';
+import TrainerEdit from './pages/trainer/TrainerEdit';
 import FeedbackWorkout from './pages/feedback/FeedbackWorkout';
 import FeedbackDiet from './pages/feedback/FeedbackDiet';
 import Notification from './pages/notification/Notification';
@@ -37,6 +39,8 @@ function App() {
           <Route exact path='/memberWrite' element={<MemberWrite />}></Route>
           <Route exact path='/memberInbody' element={<MemberInbody />}></Route>
           <Route exact path='/trainerWrite' element={<TrainerWrite />}></Route>
+          <Route exact path='/trainerView' element={<TrainerView />}></Route>
+          <Route exact path='/trainerEdit' element={<TrainerEdit />}></Route>
           <Route exact path='/feedbackWorkout' element={<FeedbackWorkout />}></Route>
           <Route exact path='/feedbackDiet' element={<FeedbackDiet />}></Route>
           <Route exact path='/QnAList' element={<QnAList />}></Route>

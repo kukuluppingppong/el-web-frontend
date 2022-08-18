@@ -134,7 +134,8 @@ h3 {
   border-radius: 12px 0px 0px 12px;
 }
 
-.feedback_list li {
+.feedback_list li,
+.feedback_list a {
   display: block;
   text-align: left;
   font-size: 1.5rem;
@@ -294,7 +295,8 @@ h3 {
   border-radius: 8px;
 }
 
-.board_list li {
+.board_list li,
+.board_list a {
   display: block;
   text-align: left;
   font-size: 1.5rem;
@@ -303,8 +305,9 @@ h3 {
   padding: 20px 0;
 }
 
-.board_list li:hover {
-  color: black;
+.board_list li a {
+  color: #888888;
+  text-decoration: none;
 }
 
 .board_write {
