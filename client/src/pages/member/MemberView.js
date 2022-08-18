@@ -29,7 +29,7 @@ function MemberView() {
                     <ul>
                         <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
                         <li align='right'>개인정보</li>
-                        <li align='right'>인바디정보</li>
+                        <li align='right'><a href="/memberInbody">인바디정보</a></li>
                         <li align='right'>운동기록</li>
                         <li align='right'>식단기록</li>
                     </ul>
@@ -81,10 +81,6 @@ function MemberView() {
                             <dl>
                                 <dt>이메일</dt>
                                 <dd>{data.email}</dd>
-                            </dl>
-                            <dl>
-                                <dt>인바디</dt>
-                                <dd><a href="/memberInbody">인바디 정보 보러가기</a></dd>
                             </dl>
                         </div>
                     </div>

@@ -62,7 +62,7 @@ h3 {
 .on {
   display: inline-block;
   min-width: 80px;
-  margin-left: 10px;
+  margin: 20px 0 0 10px;
   padding: 10px;
   border: 1px solid #000;
   border-radius: 2px;
@@ -288,7 +288,7 @@ h3 {
 .board_list {
   float: left;
   width: 30%;
-  height: 720px;
+  height: 700px;
   padding: 15px;
   background-color: #EFF0F2;
   border-radius: 8px;
@@ -310,7 +310,7 @@ h3 {
 .board_write {
   float: right;
   width: 60%;
-  height: 720px;
+  height: 700px;
   margin-left: 30px;
 }
 
@@ -327,6 +327,7 @@ h3 {
   display: inline-block;
   width: 50%;
   vertical-align: middle;
+  margin-bottom: 20px;
 }
 
 .board_write .title dt,
@@ -335,13 +336,15 @@ h3 {
 .board_write .info dd {
   display: inline-block;
   vertical-align: middle;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .board_write .title dt,
 .board_write .info dt,
 .board_write dd {
   width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .board_write .info input[type="text"],
@@ -351,9 +354,16 @@ h3 {
 .board_write .info input[type="tel"],
 .board_write .info input[type="email"],
 .board_write .info .cont {
-  width: 200px;
+  width: 230px;
+  height: 48px;
   padding: 10px;
   box-sizing: border-box;
+  border: 1px solid #C2C6CC;
+  border-radius: 8px;
+}
+
+.board_write .info .cont {
+  height: 121px;
 }
 
 .board_write .title input[type="text"] {

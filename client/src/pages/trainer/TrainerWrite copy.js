@@ -10,9 +10,11 @@ const TrainerWrite = () => {
         birth: '',
         height: '',
         weight: '',
-        file: '',
         award: '',
+        file: '',
+        fileName: '',
         career: '',
+        addr: '',
     })
 
     const inputChange = (e) => {
@@ -33,7 +35,6 @@ const TrainerWrite = () => {
             <nav className="board_list">
                 <ul>
                     <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
-                    <li><input type="file" name="file" /></li>
                     <li align='right'>개인정보</li>
                     <li align='right'>자기소개</li>
                     <li align='right'>인바디정보</li>
@@ -74,6 +75,22 @@ const TrainerWrite = () => {
                             <dl>
                                 <dt>체중</dt>
                                 <dd><input type="number" name="weight" placeholder="체중 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>전화번호</dt>
+                                <dd><input type="tel" name="phone" placeholder="전화번호 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>이메일</dt>
+                                <dd><input type="email" name="email" placeholder="이메일 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>헬스장위치</dt>
+                                <dd><input type="text" name="addr" placeholder="헬스장위치 입력" className="mb-3" onChange={inputChange} /></dd>
+                            </dl>
+                            <dl>
+                                <dt>프로필사진</dt>
+                                <dd><input type="file" name="file" className="mb-3" /></dd>
                             </dl>
                             <dl>
                                 <dt>수상</dt>

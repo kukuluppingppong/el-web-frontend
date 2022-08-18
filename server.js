@@ -181,17 +181,16 @@ app.post('/api/memberUpdate', (req, res, next) => {
 app.post('/api/trainerUpdate', (req, res, next) => {
     console.log(req.requestData);
     const id = req.requestData.id;
+    const name = req.requestData.name;
     const age = req.requestData.age;
     const sex = req.requestData.sex;
     const birth = req.requestData.birth;
     const height = req.requestData.height;
     const weight = req.requestData.weight;
-    const phone = req.requestData.phone;
-    const email = req.requestData.email;
     const award = req.requestData.award;
     const career = req.requestData.career;
     const image = '';
-    const sql = `update trainer set age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', phone='${phone}', email='${email}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
+    const sql = `update trainer set name='${name}', age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record updated");
