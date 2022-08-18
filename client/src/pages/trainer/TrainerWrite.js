@@ -34,7 +34,7 @@ const TrainerWrite = () => {
                 <ul>
                     <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
                     <li><input type="file" name="file" /></li>
-                    <li align='right'>개인정보</li>
+                    <li align='right'><a href="/trainerView">개인정보</a></li>
                     <li align='right'>자기소개</li>
                     <li align='right'>인바디정보</li>
                     <li align='right'>SNS</li>
@@ -88,7 +88,6 @@ const TrainerWrite = () => {
                     <div className="bt_wrap">
                         <a href="/">목록</a>
                         <button className="on" onClick={() => document.location.href = `/api/trainerUpdate/${sessionStorage.getItem('id')}`}>수정</button>
-                        <button className="on" onClick={() => document.location.href = `/api/trainerDelete/${sessionStorage.getItem('id')}`}>삭제</button>
                     </div>
                 </div>
             </form>
