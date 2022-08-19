@@ -90,8 +90,8 @@ const TrainerWrite = () => {
                         </div>
                     </div>
                     <div className="bt_wrap">
-                        <a href="/">목록</a>
-                        <button className="on" onClick={() => document.location.href = `/api/trainerUpdate/${sessionStorage.getItem('id')}`}>수정</button>
+                        <button className="on" onClick={() => document.location.href = `/api/trainerUpdate/${sessionStorage.getItem('id')}`}>등록</button>
+                        <a href="/">취소</a>
                     </div>
                 </div>
             </form>

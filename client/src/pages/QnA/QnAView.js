@@ -81,8 +81,8 @@ const QnAView = () => {
 
                     </form>
                     <div className="bt_wrap">
+                        <a href="/QnAList">목록</a>
                         <button type="submit" className="on" onClick={() => document.location.href = `/QnAList/&{data.id}`}>등록</button>
-                        <button className="on" onClick={() => document.location.href = "/QnAList"}>목록</button>
                     </div>
                 </div>
             </div >

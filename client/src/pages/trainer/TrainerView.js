@@ -174,7 +174,6 @@ function TrainerView() {
                         </div>
                     </div>
                     <div className="bt_wrap">
-                        <a href="/">목록</a>
                         <button className="on" onClick={() => document.location.href = `/trainerEdit/${id}`}>수정</button>
                     </div>
                 </div>

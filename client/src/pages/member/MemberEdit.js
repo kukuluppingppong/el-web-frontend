@@ -45,13 +45,13 @@ const MemberEdit = () => {
         return (
             <div key={data.id} className="board_wrap">
                 <div className="board_title">
-                    <strong>회원 수정</strong>
+                    <strong>{data.name}</strong>
                     <p>회원 정보를 수정해주세요.</p>
                 </div>
                 <nav className="board_list">
                     <ul>
                         <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="/img/ic_member.png" alt="프로필사진"></img></button></li>
-                        <li align='right'><Link to={`/memberView/1`}>개인정보</Link></li>
+                        <li align='right'><Link to={`/memberView/${data.id}`}>개인정보</Link></li>
                         <li align='right'><Link to={`/memberInbody`}>인바디정보</Link></li>
                         <li align='right'><Link to={`/feedbackWorkout`}>운동기록</Link></li>
                         <li align='right'><Link to={`/feedbackDiet`}>식단기록</Link></li>
