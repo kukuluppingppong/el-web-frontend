@@ -64,8 +64,9 @@ app.post('/api/memberView/:id', (req, res) => {
     })
 })
 
-app.get('/api/trainerView', (req, res) => {
-    const id = sessionStorage.getItem('id');
+app.post('/api/trainerView/:id', (req, res) => {
+    console.log(req.params)
+    const id = req.params.id;
     const sql = `select * from trainer where id=${id};`
     connection.query(sql, (err, data) => {
         if (!err) {

@@ -39,8 +39,8 @@ function App() {
           <Route exact path='/memberWrite' element={<MemberWrite />}></Route>
           <Route exact path='/memberInbody' element={<MemberInbody />}></Route>
           <Route exact path='/trainerWrite' element={<TrainerWrite />}></Route>
-          <Route exact path='/trainerView' element={<TrainerView />}></Route>
-          <Route exact path='/trainerEdit' element={<TrainerEdit />}></Route>
+          <Route exact path='/trainerView/:id' element={<TrainerView />}></Route>
+          <Route exact path='/trainerEdit/:id' element={<TrainerEdit />}></Route>
           <Route exact path='/feedbackWorkout' element={<FeedbackWorkout />}></Route>
           <Route exact path='/feedbackDiet' element={<FeedbackDiet />}></Route>
           <Route exact path='/QnAList' element={<QnAList />}></Route>

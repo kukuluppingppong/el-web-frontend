@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 const TrainerWrite = () => {
@@ -24,6 +25,8 @@ const TrainerWrite = () => {
         })
     }
 
+    const id = sessionStorage.getItem('id');
+
     return (
         <div className="board_wrap">
             <div className="board_title">
@@ -32,17 +35,18 @@ const TrainerWrite = () => {
             </div>
             <nav className="board_list">
                 <ul>
-                    <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
+                    <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="/img/ic_member.png" alt="프로필사진"></img></button></li>
                     <li><input type="file" name="file" /></li>
-                    <li align='right'><a href="/trainerView">개인정보</a></li>
+                    <li align='right'><Link to={"/trainerWrite"}>내정보 등록</Link></li>
+                    <li align='right'><Link to={`/trainerView/${id}`}>내정보 상세</Link></li>
+                    <li align='right'><Link to={`/trainerEdit/${id}`}>내정보 수정</Link></li>
                     <li align='right'>자기소개</li>
-                    <li align='right'>인바디정보</li>
                     <li align='right'>SNS</li>
                 </ul>
             </nav>
 
             <form method="post" action="/api/trainerUpdate" multipart="form-data">
-                <input type="hidden" name="id" value={sessionStorage.getItem('id')} />
+                <input type="hidden" name="id" value={id} />
                 <div className="board_write_wrap">
                     <div className="board_write">
                         <div class="info">

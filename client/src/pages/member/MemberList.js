@@ -50,9 +50,7 @@ function MemberList() {
         <div className='memberList'>
             <h3>회원목록</h3>
             <Search />
-            <Button variant="dark" type="button" className="my-2 rounded-pill" onClick={() => document.location.href = '/memberWrite'}>
-                글쓰기&nbsp;<CreateIcon />
-            </Button>
+            <button className="bt_write" onClick={() => document.location.href = '/memberWrite'}>신규회원 등록&nbsp;<CreateIcon /></button>
             <TableContainer component={Paper} aria-label="simple table">
                 <Table>
                     <TableHead>

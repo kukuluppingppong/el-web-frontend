@@ -27,11 +27,11 @@ function MemberView() {
                 </div>
                 <nav className="board_list">
                     <ul>
-                        <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="img/ic_member.png" alt="프로필사진"></img></button></li>
-                        <li align='right'>개인정보</li>
-                        <li align='right'><a href="/memberInbody">인바디정보</a></li>
-                        <li align='right'>운동기록</li>
-                        <li align='right'>식단기록</li>
+                        <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="/img/ic_member.png" alt="프로필사진"></img></button></li>
+                        <li align='right'><Link to={`/memberView/1`}>개인정보</Link></li>
+                        <li align='right'><Link to={`/memberInbody`}>인바디정보</Link></li>
+                        <li align='right'><Link to={`/feedbackWorkout`}>운동기록</Link></li>
+                        <li align='right'><Link to={`/feedbackDiet`}>식단기록</Link></li>
                     </ul>
                 </nav>
 
