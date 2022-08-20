@@ -4361,7 +4361,7 @@ fieldset:disabled .btn {
     --bs-navbar-active-color: #343a40;
     --bs-navbar-brand-padding-y: 0.29375rem;
     --bs-navbar-brand-margin-end: 1rem;
-    --bs-navbar-brand-font-size: 1.375rem;
+    --bs-navbar-brand-font-size: 2rem;
     --bs-navbar-brand-color: #343a40;
     --bs-navbar-brand-hover-color: #343a40;
     --bs-navbar-nav-link-padding-x: 0.5rem;
@@ -4447,7 +4447,8 @@ fieldset:disabled .btn {
 .navbar-collapse {
     flex-basis: 100%;
     flex-grow: 1;
-    align-items: center
+    align-items: center;
+    font-size: 1.2rem;
 }
 
 .navbar-toggler {

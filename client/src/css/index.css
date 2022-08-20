@@ -353,20 +353,18 @@ h3 {
 }
 
 .board_write .title dt,
-.board_write .title dd,
-.board_write .info dt,
-.board_write .info dd {
+.board_write .info dt {
   display: inline-block;
   vertical-align: middle;
-  font-size: 1.3rem;
-}
-
-.board_write .title dt,
-.board_write .info dt,
-.board_write dd {
   width: 100%;
   font-size: 1.5rem;
   margin-bottom: 10px;
+}
+
+.board_write .title dd,
+.board_write .info dd {
+  font-size: 1.3rem;
+  color: #9A9A9A;
 }
 
 .board_write .info input[type="text"],
