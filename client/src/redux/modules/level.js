@@ -2,8 +2,8 @@ import { createAction, handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
     createRequestActionTypes
-  } from '../lib/createRequestSaga';
-import * as authAPI from '../lib/api/auth';
+} from '../../lib/createRequestSaga';
+import * as authAPI from '../../lib/api/auth';
 
 const INITIALIZE = 'level/INITIALIZE'; // 모든 내용 초기화
 const UNLOAD_LEVEL = 'level/UNLOAD_LEVEL'; //레벨 비우기
@@ -20,7 +20,7 @@ export const unloadLevel = createAction(UNLOAD_LEVEL);
 
 const findLevelSaga = createRequestSaga(FIND_LEVEL, authAPI.findLevel);
 
-export function* levelSaga(){
+export function* levelSaga() {
     yield takeLatest(FIND_LEVEL, findLevelSaga);
 }
 
@@ -32,16 +32,16 @@ const initialState = {
 const level = handleActions(
     {
         [INITIALIZE]: state => initialState,
-        [FIND_LEVEL]: state=>({
+        [FIND_LEVEL]: state => ({
             ...state,
             levelInfo: null,
             error: null,
         }),
-        [FIND_LEVEL_SUCCESS]: (state, { payload: levelInfo}) => ({
+        [FIND_LEVEL_SUCCESS]: (state, { payload: levelInfo }) => ({
             ...state,
             levelInfo,
         }),
-        [FIND_LEVEL_FAILIRE]: (state, { payload: error}) => ({
+        [FIND_LEVEL_FAILIRE]: (state, { payload: error }) => ({
             ...state,
             error,
         }),

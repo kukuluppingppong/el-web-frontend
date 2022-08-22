@@ -1,8 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes,
-} from '../lib/createRequestSaga';
-import * as postsAPI from '../lib/api/posts';
+} from '../../lib/createRequestSaga';
+import * as postsAPI from '../../lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
@@ -78,11 +78,11 @@ const write = handleActions(
       ...state,
       postError,
     }),
-    [SET_ORIGINAL_POST]: (state, {payload: post}) => ({
-       ...state,
-       title: post.title,
-       body: post.body,
-       originalPostId: post._id, 
+    [SET_ORIGINAL_POST]: (state, { payload: post }) => ({
+      ...state,
+      title: post.title,
+      body: post.body,
+      originalPostId: post._id,
     }),
     [UPDATE_POST_SUCCESS]: (state, { payload: post }) => ({
       ...state,

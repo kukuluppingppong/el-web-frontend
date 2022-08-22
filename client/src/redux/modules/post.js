@@ -1,8 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes,
-} from '../lib/createRequestSaga';
-import * as postsAPI from '../lib/api/posts';
+} from '../../lib/createRequestSaga';
+import * as postsAPI from '../../lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 const [
@@ -62,7 +62,7 @@ const post = handleActions(
     [WRITE_COMMENT_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error,
-    }),  
+    }),
     [UNLOAD_POST]: () => initialState,
   },
   initialState,

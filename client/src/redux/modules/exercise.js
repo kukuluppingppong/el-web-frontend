@@ -2,8 +2,8 @@ import { createAction, handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
     createRequestActionTypes
-  } from '../lib/createRequestSaga';
-import * as authAPI from '../lib/api/auth';
+} from '../../lib/createRequestSaga';
+import * as authAPI from '../../lib/api/auth';
 
 const INITIALIZE = 'exercise/INITIALIZE'; // 모든 내용 초기화
 const UNLOAD_EXERCISE = 'exercise/UNLOAD_exercise'; //운동 비우기
@@ -16,12 +16,12 @@ const [
 export const writeExercise = createAction(WRITE_EXERCISE, ({ title, username }) => ({
     title,
     username
-  }));
+}));
 export const unloadExercise = createAction(UNLOAD_EXERCISE);
 
 const writeExerciseSaga = createRequestSaga(WRITE_EXERCISE, authAPI.exercise);
 
-export function* exerciseSaga(){
+export function* exerciseSaga() {
     yield takeLatest(WRITE_EXERCISE, writeExerciseSaga);
 }
 
@@ -33,16 +33,16 @@ const initialState = {
 const exercise = handleActions(
     {
         [INITIALIZE]: state => initialState,
-        [WRITE_EXERCISE]: state=>({
+        [WRITE_EXERCISE]: state => ({
             ...state,
             exercise: null,
             error: null,
         }),
-        [WRITE_EXERCISE_SUCCESS]: (state, { payload: exercise}) => ({
+        [WRITE_EXERCISE_SUCCESS]: (state, { payload: exercise }) => ({
             ...state,
             exercise,
         }),
-        [WRITE_EXERCISE_FAILIRE]: (state, { payload: error}) => ({
+        [WRITE_EXERCISE_FAILIRE]: (state, { payload: error }) => ({
             ...state,
             error,
         }),

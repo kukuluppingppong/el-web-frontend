@@ -1,8 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes,
-} from '../lib/createRequestSaga';
-import * as postsAPI from '../lib/api/posts';
+} from '../../lib/createRequestSaga';
+import * as postsAPI from '../../lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 const [
@@ -17,13 +17,13 @@ const [
 ] = createRequestActionTypes('get/SEARCH_POSTS');
 
 export const listPosts = createAction(
-    LIST_POSTS,
-    ({ username, page }) => ({ username, page }),
+  LIST_POSTS,
+  ({ username, page }) => ({ username, page }),
 );
 
 export const searchPosts = createAction(
-    SEARCH_POSTS,
-    ({ page, option, content }) => ({ page, option, content }),
+  SEARCH_POSTS,
+  ({ page, option, content }) => ({ page, option, content }),
 );
 
 const listPostsSaga = createRequestSaga(LIST_POSTS, postsAPI.listPosts);
