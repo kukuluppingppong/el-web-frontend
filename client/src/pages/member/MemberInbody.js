@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import MemberList from '../../components/MemberList'
 
 
 function MemberInbody() {
@@ -11,15 +12,8 @@ function MemberInbody() {
                 <strong>김동양님</strong>
                 <p>회원 인바디 정보를 확인하세요.</p>
             </div>
-            <nav className="board_list">
-                <ul>
-                    <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="/img/ic_member.png" alt="프로필사진"></img></button></li>
-                    <li align='right'><Link to={`/memberView/1`}>개인정보</Link></li>
-                    <li align='right'><Link to={`/memberInbody`}>인바디정보</Link></li>
-                    <li align='right'><Link to={`/feedbackWorkout`}>운동기록</Link></li>
-                    <li align='right'><Link to={`/feedbackDiet`}>식단기록</Link></li>
-                </ul>
-            </nav>
+
+            <MemberList />
 
             <div className="board_write_wrap">
                 <div className="board_write">

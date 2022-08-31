@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import MemberList from '../../components/MemberList'
 
 
 function MemberWrite() {
@@ -32,15 +32,8 @@ function MemberWrite() {
                 <strong>신규회원 등록</strong>
                 <p>회원 정보를 모두 입력해주세요.</p>
             </div>
-            <nav className="board_list">
-                <ul>
-                    <li align='right'><button className="bt_member" onClick={() => document.location.href = '#'}><img src="/img/ic_member.png" alt="프로필사진"></img></button></li>
-                    <li align='right'><Link to={`/memberView/1`}>개인정보</Link></li>
-                    <li align='right'><Link to={`/memberInbody`}>인바디정보</Link></li>
-                    <li align='right'><Link to={`/feedbackWorkout`}>운동기록</Link></li>
-                    <li align='right'><Link to={`/feedbackDiet`}>식단기록</Link></li>
-                </ul>
-            </nav>
+
+            <MemberList />
 
             <form method="post" action="/api/memberWrite">
                 <div className="board_write_wrap">
