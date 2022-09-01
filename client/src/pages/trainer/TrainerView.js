@@ -29,7 +29,6 @@ function TrainerView() {
 
                 <TrainerList />
 
-                <input type="hidden" name="id" value={id} />
                 <div className="board_write_wrap">
                     <div className="board_write">
                         <div class="info">
@@ -84,8 +83,7 @@ function TrainerView() {
                         </div>
                     </div>
                     <div className="bt_wrap">
-                        <a href="/">목록</a>
-                        <button className="on" onClick={() => document.location.href = `/trainerEdit/${data.id}`}>수정</button>
+                        <button className="on" onClick={() => document.location.href = `/trainerEdit/${id}`}>수정</button>
                     </div>
                 </div>
             </div >
@@ -94,73 +92,6 @@ function TrainerView() {
 
     return (
         <div className='trainerView'>
-            <div className="board_wrap">
-                <div className="board_title">
-                    <strong>내정보 상세</strong>
-                    <p>내 정보를 확인하세요.</p>
-                </div>
-
-                <TrainerList />
-
-                <input type="hidden" name="id" value={id} />
-                <div className="board_write_wrap">
-                    <div className="board_write">
-                        <div class="info">
-                            <dl>
-                                <dt>이름</dt>
-                                <dd>이름</dd>
-                            </dl>
-                            <dl>
-                                <dt>연령</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>성별</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>생년월일</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>키</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>체중</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>전화번호</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>이메일</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>수상</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>이력</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>헬스장위치</dt>
-                                <dd>연령</dd>
-                            </dl>
-                            <dl>
-                                <dt>프로필사진</dt>
-                                <dd>연령</dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <div className="bt_wrap">
-                        <button className="on" onClick={() => document.location.href = `/trainerEdit/${id}`}>수정</button>
-                    </div>
-                </div>
-            </div >
             {mapViewPost}
         </div>
     )

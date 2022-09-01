@@ -26,16 +26,13 @@ function App() {
   return (
     <Layout>
       <Container style={{ minHeight: "80vh", marginTop: "50px" }}>
-        {/* <BoardList />
-        <BoardWrite />
-        <BoardView />
-        <BoardEdit /> */}
 
         <Routes>
           <Route exact path='/' element={<MemberList />}></Route>
           <Route exact path='/memberList' element={<MemberList />}></Route>
           <Route exact path='/memberView/:id' element={<MemberView />}></Route>
           <Route exact path='/memberEdit/:id' element={<MemberEdit />}></Route>
+          <Route exact path='/memberDelete/:id' element={<MemberList />}></Route>
           <Route exact path='/memberWrite' element={<MemberWrite />}></Route>
           <Route exact path='/memberInbody' element={<MemberInbody />}></Route>
           <Route exact path='/trainerWrite' element={<TrainerWrite />}></Route>

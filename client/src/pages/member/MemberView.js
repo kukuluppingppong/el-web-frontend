@@ -15,6 +15,10 @@ function MemberView() {
         setLoadMemberView(loadMemberView.data);
     }
 
+    const resMemberDelete = async () => {
+        await axios.post(`/api/memberDelete/${id}`);
+    }
+
     useEffect(() => {
         resMemberView()
     }, [])
@@ -80,7 +84,7 @@ function MemberView() {
                     </div>
                     <div className="bt_wrap">
                         <button className="on" onClick={() => document.location.href = `/memberEdit/${data.id}`}>수정</button>
-                        <button className="on" onClick={() => document.location.href = `/api/memberDelete/${data.id}`}>삭제</button>
+                        <button className="on" onClick={() => resMemberDelete()}>삭제</button>
                         <a href="/memberList">목록</a>
                     </div>
                 </div>

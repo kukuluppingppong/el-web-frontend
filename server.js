@@ -17,8 +17,6 @@ app.use(cors());
 const multer = require('multer');
 const upload = multer({ dest: './upload' })
 
-app.use('/image', express.static('./upload'));
-
 app.get('/api/memberList', (req, res) => {
     console.log('/api/memberList');
     connection.query('select * from member', (err, data) => {
@@ -67,7 +65,7 @@ app.post('/api/memberView/:id', (req, res) => {
 app.post('/api/trainerView/:id', (req, res) => {
     console.log(req.params)
     const id = req.params.id;
-    const sql = `select * from trainer where id=${id};`
+    const sql = `select * from trainer where id='${id}';`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send(data);
@@ -178,7 +176,10 @@ app.post('/api/memberUpdate', (req, res, next) => {
         res.send(result);
     })
 })
-app.post('/api/trainerUpdate', (req, res, next) => {
+
+app.use('/image', express.static('./upload'));
+
+app.post('/api/trainerUpdate', upload.single('image'), (req, res, next) => {
     console.log(req.requestData);
     const id = req.requestData.id;
     const name = req.requestData.name;
@@ -189,7 +190,7 @@ app.post('/api/trainerUpdate', (req, res, next) => {
     const weight = req.requestData.weight;
     const award = req.requestData.award;
     const career = req.requestData.career;
-    const image = '';
+    const image = 'http://localhost:4000/image/' + req.requestData.file;
     const sql = `update trainer set name='${name}', age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
@@ -217,10 +218,10 @@ app.post('/api/trainerUpdate', (req, res, next) => {
 //     })
 // })
 
-app.delete('/api/memberDelete/:id', (req, res, next) => {
+app.post('/api/memberDelete/:id', (req, res, next) => {
     const id = req.params.id;
     console.log(id);
-    const sql = `delete from member where id='${id}'`;
+    const sql = `delete from member where id=${id}`;
     connection.query(sql, (err, data) => {
         console.log(sql);
         res.send(data);
