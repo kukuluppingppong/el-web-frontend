@@ -15,10 +15,13 @@ import FeedbackDiet from './pages/feedback/FeedbackDiet';
 import Notification from './pages/notification/Notification';
 import QnAList from './pages/QnA/QnAList';
 import QnAView from './pages/QnA/QnAView';
-import BoardList from './pages/board/BoardList';
-import BoardWrite from './pages/board/BoardWrite';
-import BoardView from './pages/board/BoardView';
-import BoardEdit from './pages/board/BoardEdit';
+// import BoardList from './pages/board/BoardList';
+// import BoardWrite from './pages/board/BoardWrite';
+// import BoardView from './pages/board/BoardView';
+// import BoardEdit from './pages/board/BoardEdit';
+import Counter from './redux/features/counter/Counter';
+import PostsList from './redux/features/posts/PostsList';
+import AddPostForm from './redux/features/posts/AddPostForm';
 
 
 function App() {
@@ -26,7 +29,6 @@ function App() {
   return (
     <Layout>
       <Container style={{ minHeight: "80vh", marginTop: "50px" }}>
-
         <Routes>
           <Route exact path='/' element={<MemberList />}></Route>
           <Route exact path='/memberList' element={<MemberList />}></Route>
@@ -43,6 +45,10 @@ function App() {
           <Route exact path='/QnAList' element={<QnAList />}></Route>
           <Route exact path='/QnAView/:seq' element={<QnAView />}></Route>
           <Route exact path='/notification' element={<Notification />}></Route>
+
+          <Route exact path='/counter' element={<Counter />}></Route>
+          <Route exact path='/postsList' element={<PostsList />}></Route>
+          <Route exact path='/addPostForm' element={<AddPostForm />}></Route>
         </Routes>
 
       </Container>
