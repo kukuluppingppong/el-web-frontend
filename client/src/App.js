@@ -22,6 +22,8 @@ import QnAView from './pages/QnA/QnAView';
 import Counter from './redux/features/counter/Counter';
 import PostsList from './redux/features/posts/PostsList';
 import AddPostForm from './redux/features/posts/AddPostForm';
+import EditPostForm from './redux/features/posts/EditPostForm';
+import SinglePostPage from './redux/features/posts/SinglePostPage';
 
 
 function App() {
@@ -49,6 +51,10 @@ function App() {
           <Route exact path='/counter' element={<Counter />}></Route>
           <Route exact path='/postsList' element={<PostsList />}></Route>
           <Route exact path='/addPostForm' element={<AddPostForm />}></Route>
+          <Route exact path='/post/edit/:postId' element={<EditPostForm />}></Route>
+          <Route exact path='/post/:postId' element={<SinglePostPage />}></Route>
+          <Route exact path='/user/usersList' element={<EditPostForm />}></Route>
+          <Route exact path='/user/:userId' element={<SinglePostPage />}></Route>
         </Routes>
 
       </Container>
