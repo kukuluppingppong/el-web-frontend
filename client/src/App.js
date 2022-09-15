@@ -16,13 +16,13 @@ import Notification from './pages/notification/Notification';
 import QnAList from './pages/QnA/QnAList';
 import QnAView from './pages/QnA/QnAView';
 
-import Counter from './redux/features/counter/Counter';
-import PostsList from './redux/features/posts/PostsList';
-import AddPostForm from './redux/features/posts/AddPostForm';
-import EditPostForm from './redux/features/posts/EditPostForm';
-import SinglePostPage from './redux/features/posts/SinglePostPage';
-import UsersList from './redux/features/users/UsersList';
-import UserPage from './redux/features/users/UserPage';
+// import Counter from './redux/features/counter/Counter';
+// import PostsList from './redux/features/posts/PostsList';
+// import AddPostForm from './redux/features/posts/AddPostForm';
+// import EditPostForm from './redux/features/posts/EditPostForm';
+// import SinglePostPage from './redux/features/posts/SinglePostPage';
+// import UsersList from './redux/features/users/UsersList';
+// import UserPage from './redux/features/users/UserPage';
 
 
 function App() {
@@ -47,13 +47,13 @@ function App() {
           <Route exact path='/QnAView/:seq' element={<QnAView />}></Route>
           <Route exact path='/notification' element={<Notification />}></Route>
 
-          <Route exact path='/counter' element={<Counter />}></Route>
+          {/* <Route exact path='/counter' element={<Counter />}></Route>
           <Route exact path='/post/postsList' element={<PostsList />}></Route>
           <Route exact path='/post/addPostForm' element={<AddPostForm />}></Route>
           <Route exact path='/post/edit/:postId' element={<EditPostForm />}></Route>
           <Route exact path='/post/:postId' element={<SinglePostPage />}></Route>
           <Route exact path='/user/usersList' element={<UsersList />}></Route>
-          <Route exact path='/user/:userId' element={<UserPage />}></Route>
+          <Route exact path='/user/:userId' element={<UserPage />}></Route> */}
         </Routes>
       </Container>
     </Layout >
