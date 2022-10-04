@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import MemberList from '../../components/MemberList'
-import InbodyChart from '../../components/chart/InbodyChart';
 
 
 function MemberInbody() {
@@ -21,7 +20,6 @@ function MemberInbody() {
                     <div class="info">
                         <img src="img/inbody.png" alt="회원인바디" height="650px" />
                     </div>
-                    <InbodyChart />
                 </div>
                 <div className="bt_wrap">
                     <button className="on" onClick={() => document.location.href = "/memberList"}>목록</button>
