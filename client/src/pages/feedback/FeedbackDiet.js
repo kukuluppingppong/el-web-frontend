@@ -58,8 +58,8 @@ const QnADiet = () => {
             <form method="post" action="/api/feedback">
                 <div className="board_list_wrap">
                     <div className="bt_wrap_feedback">
-                        <a href="/feedbackWorkout" className="bt_workout">운동</a>
-                        <a href="/feedbackDiet" className="bt_diet">식단</a>
+                        <a href="/feedbackWorkout" className="bt_diet">운동</a>
+                        <a href="/feedbackDiet" className="bt_workout">식단</a>
                     </div>
                     <nav className="feedback_list">
                         <ul>

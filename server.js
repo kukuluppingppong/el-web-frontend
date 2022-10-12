@@ -41,6 +41,34 @@ app.get('/api/QnAList', (req, res) => {
     })
 })
 
+app.get('/api/feedback/workoutList/:date', (req, res) => {
+    console.log(req.params)
+    const date = req.params.date;
+    const sql = `select * from workout where date='${date}';`
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send(data);
+            console.log(data);
+        } else {
+            console.log(err);
+        }
+    })
+})
+
+app.get('/api/feedback/dietList/:date', (req, res) => {
+    console.log(req.params)
+    const date = req.params.date;
+    const sql = `select * from diet where date='${date}';`
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send(data);
+            console.log(data);
+        } else {
+            console.log(err);
+        }
+    })
+})
+
 var requestData = function (req, res, next) {
     req.requestData = req.body;
     next();

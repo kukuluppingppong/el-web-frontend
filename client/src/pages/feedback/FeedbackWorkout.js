@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
 import FullCalendar, { CalendarApi } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -22,13 +24,37 @@ const QnAWorkout = () => {
         })
     }
 
-    const cellList = ["숄더프레스", "프론트레이즈", "스쿼트", "런지"]
+    const [loadWorkoutList, setLoadWorkoutList] = useState([]);
 
-    const list = data.workoutInfo.map((data, index) => (
-        <div key={index} className="card">
-            <img className="card_img" src={data.image.src} alt={data.image.alt} />
+    const date = '2022-10-12';
+    const resWorkoutList = async () => {
+        const loadWorkoutList = await axios.get(`/api/feedback/workoutList/${date}`);
+        console.log(loadWorkoutList.data);
+        setLoadWorkoutList(loadWorkoutList.data);
+    }
+
+    useEffect(() => {
+        resWorkoutList()
+    }, [])
+
+    const cellList = loadWorkoutList.map(data => (
+        <li li key={data.seq} align='right'><a href='#' onClick={() => document.location.href = `/feedbackWorkout/${data.seq}`}>{data.name}</a></li>
+    ))
+
+    const params = window.location.pathname.split('/');
+    const viewPost = []
+    for (let i = 0; i < loadWorkoutList.length; i++) {
+        if (loadWorkoutList[i].seq === Number(params[2])) {
+            console.log(loadWorkoutList[i]);
+            viewPost.push(loadWorkoutList[i])
+        }
+    }
+
+    const list = viewPost.map(data => (
+        <div key={data.seq} className="card">
+            <img className="card_img" src={data.url} />
             <div className="card_body">
-                <p className="card_text"> {data.desc}</p>
+                <p className="card_text"> {data.feedback}</p>
                 <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
                 <button className="bt_send" onClick={() => document.location.href = '/memberList'}><SendIcon fontSize="large" /></button>
             </div>
@@ -64,14 +90,10 @@ const QnAWorkout = () => {
                     </div>
                     <nav className="feedback_list">
                         <ul>
-                            {cellList.map(cell => {
-                                return <li align='right'>{cell}</li>
-                            })}
+                            {cellList}
                         </ul>
                     </nav>
-
                     {list}
-
                 </div>
             </form >
         </div >
