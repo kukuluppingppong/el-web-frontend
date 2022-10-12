@@ -17,14 +17,6 @@ import Notification from './pages/notification/Notification';
 import QnAList from './pages/QnA/QnAList';
 import QnAView from './pages/QnA/QnAView';
 
-// import Counter from './redux/features/counter/Counter';
-// import PostsList from './redux/features/posts/PostsList';
-// import AddPostForm from './redux/features/posts/AddPostForm';
-// import EditPostForm from './redux/features/posts/EditPostForm';
-// import SinglePostPage from './redux/features/posts/SinglePostPage';
-// import UsersList from './redux/features/users/UsersList';
-// import UserPage from './redux/features/users/UserPage';
-
 
 function App() {
 
@@ -45,6 +37,7 @@ function App() {
           <Route exact path='/feedbackWorkout' element={<FeedbackWorkout />}></Route>
           <Route exact path='/feedbackWorkout/:seq' element={<FeedbackWorkout />}></Route>
           <Route exact path='/feedbackDiet' element={<FeedbackDiet />}></Route>
+          <Route exact path='/feedbackDiet/:seq' element={<FeedbackDiet />}></Route>
           <Route exact path='/QnAList' element={<QnAList />}></Route>
           <Route exact path='/QnAView/:seq' element={<QnAView />}></Route>
           <Route exact path='/notification' element={<Notification />}></Route>

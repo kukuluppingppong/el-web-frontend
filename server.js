@@ -158,11 +158,21 @@ app.post('/api/memberWrite', (req, res, next) => {
 //     })
 // })
 
-app.post('/api/feedback', (req, res, next) => {
-    console.log(req.requestData);
-    const date = req.requestData.date;
+app.post('/api/feedback/workoutUpdate', (req, res, next) => {
+    const seq = req.requestData.seq;
     const feedback = req.requestData.feedback;
-    const sql = `insert into feedback (date,feedback) values ('${date}','${feedback}');`;
+    const sql = `update workout set feedback='${feedback}' where seq=${seq}`;
+    connection.query(sql, async (err, result) => {
+        if (err) throw err;
+        console.log("1 record inserted");
+        res.send(result);
+    })
+})
+
+app.post('/api/feedback/dietUpdate', (req, res, next) => {
+    const seq = req.requestData.seq;
+    const feedback = req.requestData.feedback;
+    const sql = `update diet set feedback='${feedback}' where seq=${seq}`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record inserted");

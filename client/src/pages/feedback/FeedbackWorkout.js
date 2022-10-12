@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { Button, Form, Container, ListGroup, Card } from 'react-bootstrap';
-import FullCalendar, { CalendarApi } from '@fullcalendar/react';
+import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import SendIcon from '@mui/icons-material/Send';
-import data from '../../data/data.json';
 import '../../css/calendar.css';
 
 
@@ -52,11 +49,12 @@ const QnAWorkout = () => {
 
     const list = viewPost.map(data => (
         <div key={data.seq} className="card">
+            <input type="hidden" name="seq" value={data.seq} />
             <img className="card_img" src={data.url} />
             <div className="card_body">
                 <p className="card_text"> {data.feedback}</p>
                 <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
-                <button className="bt_send" onClick={() => document.location.href = '/memberList'}><SendIcon fontSize="large" /></button>
+                <button className="bt_send" onClick={() => document.location.href = `/feedbackWorkout/${data.seq}`}><SendIcon fontSize="large" /></button>
             </div>
         </div>
     )
@@ -82,7 +80,7 @@ const QnAWorkout = () => {
                 eventColor='#4F4F4F'
             />
 
-            <form method="post" action="/api/feedback">
+            <form method="post" action="/api/feedback/workoutUpdate">
                 <div className="board_list_wrap">
                     <div className="bt_wrap_feedback">
                         <a href="/feedbackWorkout" className="bt_workout">운동</a>

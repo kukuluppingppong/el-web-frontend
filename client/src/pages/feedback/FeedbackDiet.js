@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import FullCalendar, { CalendarApi } from '@fullcalendar/react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import SendIcon from '@mui/icons-material/Send';
-import data from '../../data/data.json';
 import '../../css/calendar.css';
 
 
@@ -21,14 +21,39 @@ const QnADiet = () => {
         })
     }
 
-    const cellList = ["아침", "점심", "저녁"]
+    const [loadDietList, setLoadDietList] = useState([]);
 
-    const list = data.dietInfo.map((data, index) => (
-        <div key={index} className="card">
-            <img className="card_img" src={data.image.src} alt={data.image.alt} />
+    const date = '2022-10-12';
+    const resDietList = async () => {
+        const loadDietList = await axios.get(`/api/feedback/dietList/${date}`);
+        console.log(loadDietList.data);
+        setLoadDietList(loadDietList.data);
+    }
+
+    useEffect(() => {
+        resDietList()
+    }, [])
+
+    const cellList = loadDietList.map(data => (
+        <li li key={data.seq} align='right'><a href='#' onClick={() => document.location.href = `/feedbackDiet/${data.seq}`}>{data.time}</a></li>
+    ))
+
+    const params = window.location.pathname.split('/');
+    const viewPost = []
+    for (let i = 0; i < loadDietList.length; i++) {
+        if (loadDietList[i].seq === Number(params[2])) {
+            console.log(loadDietList[i]);
+            viewPost.push(loadDietList[i])
+        }
+    }
+
+    const list = viewPost.map(data => (
+        <div key={data.seq} className="card">
+            <input type="hidden" name="seq" value={data.seq} />
+            <img className="card_img" src={data.url} />
             <div className="card_body">
-                <p className="card_text"> {data.desc}</p>
-                <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} />
+                <p className="card_text"> {data.feedback}</p>
+                <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
                 <button className="bt_send" onClick={() => document.location.href = '/memberList'}><SendIcon fontSize="large" /></button>
             </div>
         </div>
@@ -55,7 +80,7 @@ const QnADiet = () => {
                 eventColor='#4F4F4F'
             />
 
-            <form method="post" action="/api/feedback">
+            <form method="post" action="/api/feedback/dietUpdate">
                 <div className="board_list_wrap">
                     <div className="bt_wrap_feedback">
                         <a href="/feedbackWorkout" className="bt_diet">운동</a>
@@ -63,14 +88,10 @@ const QnADiet = () => {
                     </div>
                     <nav className="feedback_list">
                         <ul>
-                            {cellList.map(cell => {
-                                return <li align='right'>{cell}</li>
-                            })}
+                            {cellList}
                         </ul>
                     </nav>
-
                     {list}
-
                 </div>
             </form>
         </div >
