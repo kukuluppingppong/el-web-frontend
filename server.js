@@ -41,10 +41,11 @@ app.get('/api/QnAList', (req, res) => {
     })
 })
 
-app.get('/api/feedback/workoutList/:date', (req, res) => {
+app.get('/api/feedback/workoutList/:id&/:date', (req, res) => {
     console.log(req.params)
+    const id = req.params.id;
     const date = req.params.date;
-    const sql = `select * from workout where date='${date}';`
+    const sql = `select * from workout where id='${id}' and date='${date}';`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send(data);
@@ -55,10 +56,11 @@ app.get('/api/feedback/workoutList/:date', (req, res) => {
     })
 })
 
-app.get('/api/feedback/dietList/:date', (req, res) => {
+app.get('/api/feedback/dietList/:id&/:date', (req, res) => {
     console.log(req.params)
+    const id = req.params.id;
     const date = req.params.date;
-    const sql = `select * from diet where date='${date}';`
+    const sql = `select * from diet where id='${id}' and date='${date}';`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send(data);
@@ -79,7 +81,7 @@ app.use(requestData)
 app.post('/api/memberView/:id', (req, res) => {
     console.log(req.params)
     const id = req.params.id;
-    const sql = `select * from member where id=${id};`
+    const sql = `select * from member where id='${id}';`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send(data);

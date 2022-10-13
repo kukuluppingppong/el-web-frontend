@@ -34,10 +34,10 @@ function App() {
           <Route exact path='/trainerWrite' element={<TrainerWrite />}></Route>
           <Route exact path='/trainerView/:id' element={<TrainerView />}></Route>
           <Route exact path='/trainerEdit/:id' element={<TrainerEdit />}></Route>
-          <Route exact path='/feedbackWorkout' element={<FeedbackWorkout />}></Route>
-          <Route exact path='/feedbackWorkout/:seq' element={<FeedbackWorkout />}></Route>
-          <Route exact path='/feedbackDiet' element={<FeedbackDiet />}></Route>
-          <Route exact path='/feedbackDiet/:seq' element={<FeedbackDiet />}></Route>
+          <Route exact path='/feedbackWorkout/:id' element={<FeedbackWorkout />}></Route>
+          <Route exact path='/feedbackWorkout/:id&/:seq' element={<FeedbackWorkout />}></Route>
+          <Route exact path='/feedbackDiet/:id' element={<FeedbackDiet />}></Route>
+          <Route exact path='/feedbackDiet/:id&/:seq' element={<FeedbackDiet />}></Route>
           <Route exact path='/QnAList' element={<QnAList />}></Route>
           <Route exact path='/QnAView/:seq' element={<QnAView />}></Route>
           <Route exact path='/notification' element={<Notification />}></Route>

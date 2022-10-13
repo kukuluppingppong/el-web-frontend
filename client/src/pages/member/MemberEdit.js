@@ -129,4 +129,4 @@ const MemberEdit = () => {
     )
 }
 
-export default MemberEdit
+export default MemberEdit;
