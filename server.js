@@ -141,6 +141,22 @@ app.post('/api/memberWrite', (req, res, next) => {
     })
 })
 
+// app.post('/api/scheduleWrite/:schedule', (req, res, next) => {
+//     console.log(req.params.schedule);
+//     const id = req.params.schedule.id;
+//     const date = req.params.schedule.date;
+//     const title = req.params.schedule.title;
+//     const start = req.params.schedule.start;
+//     const end = req.params.schedule.end;
+//     const color = req.params.schedule.backgroundColor;
+//     const sql = `insert into schedule (id,date,title,start,end,color) values ('${id}','${date}','${title}','${start}','${end}',${color});`;
+//     connection.query(sql, async (err, result) => {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//         res.send(result);
+//     })
+// })
+
 // app.post('/api/trainerWrite', upload.single('image'), (req, res, next) => {
 //     console.log(req.requestData);
 //     const age = req.requestData.age;

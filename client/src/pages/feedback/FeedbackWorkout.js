@@ -5,6 +5,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import SendIcon from '@mui/icons-material/Send';
 import '../../css/calendar.css';
 
@@ -28,7 +29,7 @@ const FeedbackWorkout = () => {
 
     const [loadWorkoutList, setLoadWorkoutList] = useState([]);
 
-    const date = '2022-10-12';
+    const date = '2022-10-17';
     const resWorkoutList = async () => {
         const loadWorkoutList = await axios.get(`/api/feedback/workoutList/${id}&/${date}`);
         console.log(loadWorkoutList.data);
@@ -91,6 +92,7 @@ const FeedbackWorkout = () => {
             const defaultColor = EventColor(color);
             const schedule = {
                 id: Date.now(),
+                date: event.startStr,
                 title,
                 start: event.startStr,
                 end: event.endStr,
@@ -102,6 +104,7 @@ const FeedbackWorkout = () => {
     };
 
     const events = [{ title: title, date: new Date() }];
+    const API_KEY = 'AIzaSyBeAminwiaTKe8qBvCDCN-K7Bq5BS2eIyA';
 
     return (
         <div className="board_wrap">
@@ -111,9 +114,13 @@ const FeedbackWorkout = () => {
             </div>
 
             <FullCalendar
-                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                plugins={[dayGridPlugin, googleCalendarPlugin]}
                 initialView='dayGridMonth'
-                events={events}
+                googleCalendarApiKey={API_KEY}
+                events={{
+                    googleCalendarId: 'e001b0763de075eb328d5abb876d9cad1f54568cce0d118f2646c31d8f3de83d@group.calendar.google.com',
+                }}
+                // events={{ events }}
                 eventSources={[schedules]}
                 dayMaxEvents={true}
                 editable={true}
