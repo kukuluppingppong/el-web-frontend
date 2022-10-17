@@ -114,14 +114,13 @@ const FeedbackWorkout = () => {
             </div>
 
             <FullCalendar
-                plugins={[dayGridPlugin, googleCalendarPlugin]}
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, googleCalendarPlugin]}
                 initialView='dayGridMonth'
                 googleCalendarApiKey={API_KEY}
                 events={{
                     googleCalendarId: 'e001b0763de075eb328d5abb876d9cad1f54568cce0d118f2646c31d8f3de83d@group.calendar.google.com',
                 }}
-                // events={{ events }}
-                eventSources={[schedules]}
+                eventSources={[events, schedules]}
                 dayMaxEvents={true}
                 editable={true}
                 droppable={true}
