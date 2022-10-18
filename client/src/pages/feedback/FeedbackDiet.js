@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Calendar from '../../components/Calendar';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -36,7 +36,7 @@ const FeedbackDiet = () => {
     }, [])
 
     const cellList = loadDietList.map(data => (
-        <li li key={data.seq} align='right'><a href='#' onClick={() => document.location.href = `/feedbackDiet/${id}&/${data.seq}`}>{data.time}</a></li>
+        <li li key={data.seq} align='right'><Link to={`/feedbackDiet/${id}&/${data.seq}`}>{data.time}</Link></li>
     ))
 
     const params = window.location.pathname.split('/');
@@ -77,8 +77,8 @@ const FeedbackDiet = () => {
             <form method="post" action="/api/feedback/dietUpdate">
                 <div className="board_list_wrap">
                     <div className="bt_wrap_feedback">
-                        <a href="#" className="bt_diet" onClick={() => document.location.href = `/feedbackWorkout/${id}`}>운동</a>
-                        <a href="#" className="bt_workout" onClick={() => document.location.href = `/feedbackDiet/${id}`}>식단</a>
+                        <Link to={`/feedbackWorkout/${id}`} className="bt_diet">운동</Link>
+                        <Link to={`/feedbackDiet/${id}`} className="bt_workout">식단</Link>
                     </div>
                     <nav className="feedback_list">
                         <ul>
