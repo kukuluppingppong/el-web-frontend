@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ScheduleModal from "./modals/ScheduleModal";
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -7,13 +8,6 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import '../css/calendar.css';
 
 const Calendar = (props) => {
-
-    // const handleEventClick = (click) => {
-    //     if (window.confirm(`delete the event '${click.event.title}'`)) {
-    //         const eventId = click.event._def.publicId * 1;
-    //         onDelete(eventId);
-    //     }
-    // };
 
     const [schedules, setSchedules] = useState([]);
     const addSchdule = (schedule) => {
@@ -43,14 +37,42 @@ const Calendar = (props) => {
         }
     };
 
+    const [info, setInfo] = useState([]);
+    const [scheduleModalOn, setScheduleModalOn] = useState(false);
+
+    const handleEventClick = (info) => {
+        info.jsEvent.stopPropagation();
+        info.jsEvent.preventDefault();
+        const detail = {
+            date: info.event.startStr,
+            title: info.event.title,
+            description: info.event.extendedProps.description,
+            start: info.event.startStr,
+            end: info.event.endStr,
+        };
+        setInfo(detail);
+        setScheduleModalOn(true);
+    };
+
     const events = props.events;
     const API_KEY = 'AIzaSyBeAminwiaTKe8qBvCDCN-K7Bq5BS2eIyA';
 
     return (
         <div>
+            <ScheduleModal
+                info={info}
+                show={scheduleModalOn}
+                onHide={() => setScheduleModalOn(false)}
+            />
+
             <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, googleCalendarPlugin]}
                 initialView='dayGridMonth'
+                headerToolbar={{
+                    start: 'today prev,next',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek,timeGridDay',
+                }}
                 googleCalendarApiKey={API_KEY}
                 events={{
                     googleCalendarId: 'e001b0763de075eb328d5abb876d9cad1f54568cce0d118f2646c31d8f3de83d@group.calendar.google.com',
@@ -61,6 +83,7 @@ const Calendar = (props) => {
                 droppable={true}
                 selectable={true}
                 select={handleDateSelect}
+                eventClick={handleEventClick}
                 moreLinkClick="popover"
                 contentHeight="500px"
                 eventDisplay='block'
