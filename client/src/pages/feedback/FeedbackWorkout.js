@@ -31,6 +31,13 @@ const FeedbackWorkout = () => {
         setLoadWorkoutList(loadWorkoutList.data);
     }
 
+    const resWorkoutView = async (data) => {
+        const loadWorkoutView = await axios.post(`/api/feedback/workoutUpdate/${data.seq}&/${feedbackWorkout.feedback}`);
+        console.log(loadWorkoutView.data);
+        setFeedbackWorkout(loadWorkoutView.data);
+        document.location.href = `/feedbackWorkout/${id}&/${data.seq}`
+    }
+
     useEffect(() => {
         resWorkoutList()
     }, [])
@@ -57,7 +64,7 @@ const FeedbackWorkout = () => {
             <div className="card_body">
                 <p className="card_text"> {data.feedback}</p>
                 <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
-                <button className="bt_send" onClick={() => document.location.href = `/feedbackWorkout/${id}/${data.seq}`}><SendIcon fontSize="large" /></button>
+                <button className="bt_send" onClick={() => resWorkoutView(data)}><SendIcon fontSize="large" /></button>
             </div>
         </div>
     )
@@ -74,20 +81,18 @@ const FeedbackWorkout = () => {
 
             <Calendar events={events} />
 
-            <form method="post" action="/api/feedback/workoutUpdate">
-                <div className="board_list_wrap">
-                    <div className="bt_wrap_feedback">
-                        <Link to={`/feedbackWorkout/${id}`} className="bt_workout">운동</Link>
-                        <Link to={`/feedbackDiet/${id}`} className="bt_diet">식단</Link>
-                    </div>
-                    <nav className="feedback_list">
-                        <ul>
-                            {cellList}
-                        </ul>
-                    </nav>
-                    {list}
-                </div >
-            </form >
+            <div className="board_list_wrap">
+                <div className="bt_wrap_feedback">
+                    <Link to={`/feedbackWorkout/${id}`} className="bt_workout">운동</Link>
+                    <Link to={`/feedbackDiet/${id}`} className="bt_diet">식단</Link>
+                </div>
+                <nav className="feedback_list">
+                    <ul>
+                        {cellList}
+                    </ul>
+                </nav>
+                {list}
+            </div >
         </div >
     )
 }

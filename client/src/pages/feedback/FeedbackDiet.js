@@ -31,6 +31,13 @@ const FeedbackDiet = () => {
         setLoadDietList(loadDietList.data);
     }
 
+    const resDietView = async (data) => {
+        const loadDietView = await axios.post(`/api/feedback/dietUpdate/${data.seq}&/${feedbackDiet.feedback}`);
+        console.log(loadDietView.data);
+        setFeedbackDiet(loadDietView.data);
+        document.location.href = `/feedbackDiet/${id}&/${data.seq}`
+    }
+
     useEffect(() => {
         resDietList()
     }, [])
@@ -57,7 +64,7 @@ const FeedbackDiet = () => {
             <div className="card_body">
                 <p className="card_text"> {data.feedback}</p>
                 <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
-                <button className="bt_send" onClick={() => document.location.href = `/feedbackDiet/${id}&/${data.seq}`}><SendIcon fontSize="large" /></button>
+                <button className="bt_send" onClick={() => resDietView(data)}><SendIcon fontSize="large" /></button>
             </div>
         </div>
     )
@@ -74,20 +81,18 @@ const FeedbackDiet = () => {
 
             <Calendar events={events} />
 
-            <form method="post" action="/api/feedback/dietUpdate">
-                <div className="board_list_wrap">
-                    <div className="bt_wrap_feedback">
-                        <Link to={`/feedbackWorkout/${id}`} className="bt_diet">운동</Link>
-                        <Link to={`/feedbackDiet/${id}`} className="bt_workout">식단</Link>
-                    </div>
-                    <nav className="feedback_list">
-                        <ul>
-                            {cellList}
-                        </ul>
-                    </nav>
-                    {list}
+            <div className="board_list_wrap">
+                <div className="bt_wrap_feedback">
+                    <Link to={`/feedbackWorkout/${id}`} className="bt_diet">운동</Link>
+                    <Link to={`/feedbackDiet/${id}`} className="bt_workout">식단</Link>
                 </div>
-            </form>
+                <nav className="feedback_list">
+                    <ul>
+                        {cellList}
+                    </ul>
+                </nav>
+                {list}
+            </div>
         </div >
     )
 }

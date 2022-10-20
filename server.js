@@ -176,9 +176,9 @@ app.post('/api/memberWrite', (req, res, next) => {
 //     })
 // })
 
-app.post('/api/feedback/workoutUpdate', (req, res, next) => {
-    const seq = req.requestData.seq;
-    const feedback = req.requestData.feedback;
+app.post('/api/feedback/workoutUpdate/:seq&/:feedback', (req, res, next) => {
+    const seq = req.params.seq;
+    const feedback = req.params.feedback;
     const sql = `update workout set feedback='${feedback}' where seq=${seq}`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
@@ -187,9 +187,9 @@ app.post('/api/feedback/workoutUpdate', (req, res, next) => {
     })
 })
 
-app.post('/api/feedback/dietUpdate', (req, res, next) => {
-    const seq = req.requestData.seq;
-    const feedback = req.requestData.feedback;
+app.post('/api/feedback/dietUpdate/:seq&/:feedback', (req, res, next) => {
+    const seq = req.params.seq;
+    const feedback = req.params.feedback;
     const sql = `update diet set feedback='${feedback}' where seq=${seq}`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
