@@ -6,8 +6,6 @@ import SendIcon from '@mui/icons-material/Send';
 
 
 const FeedbackDiet = () => {
-    const { id } = useParams();
-
     const [feedbackDiet, setFeedbackDiet] = useState({
         date: '',
         feedback: '',
@@ -22,6 +20,16 @@ const FeedbackDiet = () => {
         })
     }
 
+    const { id } = useParams();
+
+    const [loadMemberView, setLoadMemberView] = useState([]);
+
+    const resMemberView = async () => {
+        const loadMemberView = await axios.get(`/api/memberView/${id}`);
+        console.log(loadMemberView.data);
+        setLoadMemberView(loadMemberView.data);
+    }
+
     const [loadDietList, setLoadDietList] = useState([]);
 
     const date = '2022-10-12';
@@ -31,14 +39,15 @@ const FeedbackDiet = () => {
         setLoadDietList(loadDietList.data);
     }
 
-    const resDietView = async (data) => {
-        const loadDietView = await axios.post(`/api/feedback/dietUpdate/${data.seq}&/${feedbackDiet.feedback}`);
+    const resDietView = async (seq) => {
+        const loadDietView = await axios.put('/api/feedback/dietUpdate', { seq: seq, feedback: feedbackDiet.feedback, });
         console.log(loadDietView.data);
         setFeedbackDiet(loadDietView.data);
-        document.location.href = `/feedbackDiet/${id}&/${data.seq}`
+        document.location.href = `/feedbackDiet/${id}&/${seq}`
     }
 
     useEffect(() => {
+        resMemberView()
         resDietList()
     }, [])
 
@@ -64,7 +73,7 @@ const FeedbackDiet = () => {
             <div className="card_body">
                 <p className="card_text"> {data.feedback}</p>
                 <textarea name="feedback" placeholder="피드백 입력" className="cont" onChange={inputChange} ></textarea>
-                <button className="bt_send" onClick={() => resDietView(data)}><SendIcon fontSize="large" /></button>
+                <button className="bt_send" onClick={() => resDietView(data.seq)}><SendIcon fontSize="large" /></button>
             </div>
         </div>
     )
@@ -75,7 +84,7 @@ const FeedbackDiet = () => {
     return (
         <div className="board_wrap">
             <div className="board_title">
-                <strong>김동양님</strong>
+                <strong>{loadMemberView.name}</strong>
                 <p>식단 피드백을 입력해주세요.</p>
             </div>
 
