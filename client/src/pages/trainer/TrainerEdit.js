@@ -28,10 +28,9 @@ const MemberEdit = () => {
         })
     }
 
-    const [loadTrainerView, setLoadTrainerView] = useState([]);
-
     const { id } = useParams();
 
+    const [loadTrainerView, setLoadTrainerView] = useState([]);
     const resTrainerView = async () => {
         const loadTrainerView = await axios.get(`/api/trainerView/${id}`);
         console.log(loadTrainerView.data);
