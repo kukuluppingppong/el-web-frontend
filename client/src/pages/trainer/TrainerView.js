@@ -22,7 +22,7 @@ function TrainerView() {
         return (
             <div key={index} className="board_wrap">
                 <div className="board_title">
-                    <strong>내정보 상세</strong>
+                    <strong>{data.name}님</strong>
                     <p>내 정보를 확인하세요.</p>
                 </div>
 
