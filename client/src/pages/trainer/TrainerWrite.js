@@ -21,27 +21,16 @@ const TrainerWrite = () => {
     const inputChange = (e) => {
         console.log(e.target.name)
         console.log(e.target.value)
-        if (e.target.name === "file") {
-            setWriteInfo({
-                ...writeInfo,
-                [e.target.name]: e.target.files[0]
-            })
-        } else {
-            setWriteInfo({
-                ...writeInfo,
-                [e.target.name]: e.target.value
-            })
-        }
+        setWriteInfo({
+            ...writeInfo,
+            [e.target.name]: e.target.value
+        })
     }
 
     const id = sessionStorage.getItem('id');
 
     const resTrainerWrite = async (writeInfo) => {
-        const config = {
-            header: { 'content-type': 'multipart/fomr-data' }
-        }
-
-        const loadTrainerrWrite = await axios.put(`/api/trainerUpdate/${id}`, writeInfo, config);
+        const loadTrainerrWrite = await axios.put(`/api/trainerUpdate/${id}`, writeInfo);
         console.log(loadTrainerrWrite.data);
         document.location.href = `/trainerView/${id}`;
     }
@@ -53,7 +42,7 @@ const TrainerWrite = () => {
                 <p>내 정보를 모두 입력해주세요.</p>
             </div>
 
-            <TrainerList inputChange={inputChange} />
+            <TrainerList />
 
             <div className="board_write_wrap">
                 <div className="board_write">
