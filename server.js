@@ -270,7 +270,7 @@ app.put('/api/memberUpdate', (req, res, next) => {
 
 app.use('/image', express.static('./upload'));
 
-app.put('/api/trainerUpdate/:id', (req, res, next) => {
+app.put('/api/trainerUpdate/:id', upload.single('file'), (req, res, next) => {
     console.log(req.requestData);
     const id = req.params.id;
     const name = req.requestData.name;
@@ -281,33 +281,13 @@ app.put('/api/trainerUpdate/:id', (req, res, next) => {
     const weight = req.requestData.weight;
     const award = req.requestData.award;
     const career = req.requestData.career;
-    const image = '';
+    const image = req.file.filename ? req.file.filename : "";
     const sql = `update trainer set name='${name}', age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record updated");
     })
 })
-
-// app.post('/api/trainerUpdate/:id', upload.single('image'), (req, res, next) => {
-//     console.log(req.requestData);
-//     const id = req.params.id;
-//     const age = req.requestData.age;
-//     const sex = req.requestData.sex;
-//     const birth = req.requestData.birth;
-//     const height = req.requestData.height;
-//     const weight = req.requestData.weight;
-//     const phone = req.requestData.phone;
-//     const email = req.requestData.email;
-//     const award = req.requestData.award;
-//     const career = req.requestData.career;
-//     const image = req.file.fileName;
-//     const sql = `update member set age=${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', phone='${phone}', email='${email}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
-//     connection.query(sql, async (err, result) => {
-//         if (err) throw err;
-//         console.log("1 record updated");
-//     })
-// })
 
 app.put('/api/QnAUpdate', (req, res, next) => {
     const seq = req.requestData.seq;
