@@ -30,7 +30,7 @@ const TrainerWrite = () => {
 
     const id = sessionStorage.getItem('id');
 
-    const resTrainerWrite = async (writeInfo) => {
+    const resTrainerWrite = async () => {
         const loadTrainerWrite = await axios.put(`/api/trainerUpdate/${id}`, writeInfo);
         console.log(loadTrainerWrite.data);
         document.location.href = `/trainerView/${id}`;

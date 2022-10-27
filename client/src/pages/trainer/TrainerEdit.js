@@ -31,7 +31,7 @@ const MemberEdit = () => {
 
     const { id } = useParams();
 
-    const resTrainerUpdate = async (editInfo) => {
+    const resTrainerUpdate = async () => {
         const loadTrainerUpdate = await axios.put(`/api/trainerUpdate/${id}`, editInfo);
         console.log(loadTrainerUpdate.data);
         document.location.href = `/trainerView/${id}`;
