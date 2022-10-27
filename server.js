@@ -288,8 +288,9 @@ app.put('/api/trainerUpdate/:id', (req, res, next) => {
     const weight = req.requestData.weight;
     const award = req.requestData.award;
     const career = req.requestData.career;
+    const addr = req.requestData.addr;
     const image = '';
-    const sql = `update trainer set name='${name}', age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', award='${award}', career='${career}', image='${image}' where id='${id}'`;
+    const sql = `update trainer set name='${name}', age='${age}', sex='${sex}', birth='${birth}', height='${height}', weight='${weight}', award='${award}', career='${career}', addr='${addr}', image='${image}' where id='${id}'`;
     connection.query(sql, async (err, result) => {
         if (err) throw err;
         console.log("1 record updated");
