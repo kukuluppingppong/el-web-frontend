@@ -173,7 +173,7 @@ h3 {
 
 .bt_wrap_feedback .bt_workout,
 .bt_diet {
-  back display: inline-block;
+  display: inline-block;
   text-decoration: none;
   text-align: center;
   width: 180px;
