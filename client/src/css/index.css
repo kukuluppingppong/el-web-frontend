@@ -217,6 +217,12 @@ h3 {
   margin: 0 0 0 35px;
 }
 
+.bt_member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
 .board_list_wrap {
   margin: 50px 0 10px 0;
 }
