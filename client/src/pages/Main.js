@@ -60,9 +60,9 @@ const Main = () => {
 
             <div className="category1">
                 <Slider {...settings}>
-                    <img className="cimg" src="img/exercise15.jpg" />
-                    <img className="cimg" src="img/exercise18.jpg" />
-                    <img className="cimg" src="img/exercise20.jpg" />
+                    <img className="cimg" src="/img/exercise15.jpg" alt="carousel" />
+                    <img className="cimg" src="/img/exercise18.jpg" alt="carousel" />
+                    <img className="cimg" src="/img/exercise20.jpg" alt="carousel" />
                 </Slider>
             </div>
             <br />

@@ -56,7 +56,7 @@ const Calendar = (props) => {
     };
 
     const events = props.events;
-    const API_KEY = 'AIzaSyBeAminwiaTKe8qBvCDCN-K7Bq5BS2eIyA';
+    const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
     return (
         <div>
